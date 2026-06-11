@@ -13,3 +13,7 @@ raw/assets/*.pdf
 # Editors
 .vscode/
 .idea/
+
+# Tool-specific local state
+.claude/
+.obsidian/
