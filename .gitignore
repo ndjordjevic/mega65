@@ -1,0 +1,15 @@
+# pin-llm-wiki — full git clone trees (deep detail only, large)
+raw/github/*/
+raw/github/*-clone/
+
+# Official PDFs — large binaries; download from files.mega65.org (see raw/assets/README.md)
+raw/assets/*.pdf
+
+# OS
+.DS_Store
+*.swp
+*~
+
+# Editors
+.vscode/
+.idea/
