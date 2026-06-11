@@ -10,6 +10,34 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-11 | ingest | commodore-65-wikipedia | C65 prototype history + specs (background reference)
+
+- From dansanderson.com intro-paragraph link audit; user requested ingest
+- Created: raw/web/commodore-65-wikipedia.md, wiki/sources/commodore-65-wikipedia.md
+- Captures the original C65 (C64DX) the MEGA65 recreates: CSG 4510 @3.54MHz, VIC-III, dual SID, BASIC 10.0; cancelled 1991; MEGA65 project from 2015
+- Updated: wiki/index.md (18 sources)
+
+## 2026-06-11 | ingest | MEGA65-mega65-rom-public | official ROM issue tracker + BASIC 65/KERNAL changelog
+
+- From dansanderson.com intro-paragraph link audit (MEGA65 ROM link)
+- Finding: repo is a *public issue tracker* for the closed-source ROM — not ROM source; value is CHANGELOG.md (authoritative BASIC 65/KERNAL version history)
+- Created: raw/github/MEGA65-mega65-rom-public.md, wiki/sources/MEGA65-mega65-rom-public.md
+- Other intro links already covered (mega65.org, mega65-core, Confluence docs, c64-wiki); Commodore 64 Wikipedia skipped as redundant with c64-wiki.com
+
+## 2026-06-11 | ingest | dansanderson-mega65-symbols | I/O register symbol generator (from a dansanderson.com projects-list audit)
+
+- Audited dansanderson.com's "other MEGA65 projects" link list against the wiki: Welcome Guide, Digest, EasyAsm, User's Guide all already covered; Mastodon bot + Zazzle merch correctly excluded (feed/commerce, in resources.md)
+- Gap found + ingested: github.com/dansanderson/mega65-symbols — generates I/O register symbol files (ACME/Kick/ca65/cc65/Ophis/Rust) from iomap.txt (built from mega65-core VHDL)
+- Created: raw/github/dansanderson-mega65-symbols.md, wiki/sources/dansanderson-mega65-symbols.md
+- Updated: wiki/index.md (16 sources)
+
+## 2026-06-11 | refresh | wiebow.mega65.com | restructured raw into per-post folder + captured all 3 posts (kept — concrete cross-dev pipeline)
+
+- Reviewed for usefulness: the cross-development guide is the most copy-pasteable build pipeline in the wiki (Ethernet deploy specifics not found elsewhere). Kept.
+- Discovered 2 uncaptured posts on the (now-dormant) blog; captured both
+- Converted raw/web/wiebow.mega65.com.md → raw/web/wiebow.mega65.com/ folder (3 files): cross-development.md (near-verbatim, full make.sh + code), hardware-system-and-concepts.md (5-layer architecture, HYPPO, Freezer), the-mega-discovery.md (intro, no tech)
+- Updated: wiki/sources/wiebow.mega65.com.md → index with a 3-post table (newest first)
+
 ## 2026-06-11 | refresh | retrocogs.mega65.com | restructured raw into per-post folder (kept — register-level VIC-IV reference)
 
 - Reviewed for usefulness: small (5 posts) but unique register-level VIC-IV graphics tutorials; revived Aug 2025 (FCM/NCM, RRB). Kept rather than removed.
