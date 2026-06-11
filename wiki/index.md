@@ -15,7 +15,7 @@ created: 2026-06-10
 | [[mega65.org]] | web | deep | 2026-06-10 | |
 | [[dansanderson.com]] | web | deep | 2026-06-10 | |
 | [[retrocombs.com]] | web | standard | 2026-06-10 | refreshed 2026-06-11: 32 blog posts |
-| [[retrocogs.mega65.com]] | web | standard | 2026-06-10 | |
+| [[retrocogs.mega65.com]] | web | standard | 2026-06-10 | refreshed 2026-06-11: 5 VIC-IV posts |
 | [[wiebow.mega65.com]] | web | standard | 2026-06-10 | |
 | [[files.mega65.org]] | web | brief | 2026-06-10 | |
 | [[mega65.atlassian.net]] | web | brief | 2026-06-10 | |

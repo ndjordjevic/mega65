@@ -10,6 +10,13 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-11 | refresh | retrocogs.mega65.com | restructured raw into per-post folder (kept — register-level VIC-IV reference)
+
+- Reviewed for usefulness: small (5 posts) but unique register-level VIC-IV graphics tutorials; revived Aug 2025 (FCM/NCM, RRB). Kept rather than removed.
+- Converted raw/web/retrocogs.mega65.com.md → raw/web/retrocogs.mega65.com/ folder (5 files), one per post
+- Kept content near-verbatim (full register details + Kick Assembler code), not condensed — the author intends a living reference
+- Updated: wiki/sources/retrocogs.mega65.com.md → index with a posts table (newest first); tightened the framing (it overlaps dansanderson concepts + RetroCogs-Mega65Tutorials code, unique value is the register-level prose)
+
 ## 2026-06-11 | refresh | retrocombs.com | restructured raw into per-post folder + captured all 32 blog posts
 
 - Converted raw/web/retrocombs.com.md → raw/web/retrocombs.com/ folder (34 files)
