@@ -10,6 +10,14 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-11 | refresh | retrocombs.com | restructured raw into per-post folder + captured all 32 blog posts
+
+- Converted raw/web/retrocombs.com.md → raw/web/retrocombs.com/ folder (34 files)
+- Site sections: resource-page.md (the link hub), users-guide-series.md (UG series index)
+- Blog: all 32 retroCombs posts captured as individual summary .md files (2020-12 → 2024-08), incl. the 5-chapter User's Guide Series
+- Scope decision: dansanderson pattern applied to retroCombs' *own* content only; the external link directory (Cores/Tools/Gear/etc.) is summarized in resource-page.md, not given per-link raw pages (overlaps resources.md)
+- Updated: wiki/sources/retrocombs.com.md → index with one-line summary + link per post; Blog table is the complete 32 in /mega65-blog order (newest first); site sections + external directory as separate sections
+
 ## 2026-06-11 | refresh | dansanderson.com | restructured raw + captured the complete Digest
 
 - Converted raw/web/dansanderson.com.md → raw/web/dansanderson.com/ folder (53 files)
