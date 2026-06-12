@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/MEGA65/m65dbg
 tags: [debugger, serial-monitor, symbolic-debugging, breakpoints, 45gs02, step-through, ophis, acme, cc65, cross-development]
-related: [MEGA65-mega65-tools, lgblgblgb-xemu, wiebow.mega65.com]
+related: [MEGA65-mega65-tools, lgblgblgb-xemu, wiebow.mega65.com, dansanderson-dis65]
 product: m65dbg
 detail_level: standard
 created: 2026-06-12

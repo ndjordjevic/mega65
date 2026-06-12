@@ -20,8 +20,34 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 <!-- Websites -->
 
 <!-- GitHub repos -->
+- [ ] https://github.com/dansanderson/tpn65 <!-- note: host-side BASIC 65 cross-transpiler (Eleven-like: labels, long names, optional line numbers); unique dev path not covered elsewhere in wiki -->
+- [ ] https://github.com/dansanderson/homebrew-mega65 <!-- detail:brief --> <!-- note: brew tap for mega65-m65connect + mega65-xemu on macOS; practical onboarding complement to retrocombs Xemu guides -->
+- [ ] https://github.com/dansanderson/joytest65 <!-- detail:brief --> <!-- note: joystick/paddle tester; documents CIA $DC00/$DC01 register bits and assembly read patterns -->
+- [ ] https://github.com/dansanderson/mega65-pcfonts <!-- detail:brief --> <!-- note: 43 Oldschool PC fonts converted to MEGA65 TCR format; documents Tall Character mode usage -->
+- [ ] https://github.com/cc65/cc65 <!-- note: official cc65 cross-compiler suite; cited in [[dansanderson.com]] cross-development series for MEGA65/C65 (Dan also maintains a personal fork with extra commits) -->
+- [ ] https://github.com/dansanderson/bf-mega65 <!-- detail:brief --> <!-- note: 45GS02 Brainf*ck interpreter example; already in resources.md -->
+- [ ] https://github.com/dansanderson/bsa-vscode <!-- detail:brief --> <!-- note: VS Code syntax/definitions for BSA assembler; pairs with upstream https://github.com/Edilbert/BSA (MEGA65/BSA is a fork) -->
 - [ ] https://github.com/RetroCogs/GameShell65 <!-- detail:brief --> <!-- note: Kick Assembler game framework (RRB-heavy, GameStates, Pixies, DMA-buffered frame loop); README has placeholder sections — 2 stars, niche, but shows real game architecture; natural next step after Mega65Tutorials -->
 - [ ] https://github.com/RetroCogs/GS65_ShmupExample <!-- detail:brief --> <!-- note: example shmup using GameShell65 framework; 0 stars, 14 commits; companion to GameShell65 if that is ingested -->
+- [ ] https://github.com/MirageBD/MegaTool <!-- note: graphics conversion + cruncher utility (gfx2code, imgconvert, cruncher); no README — purpose inferred from source filenames; used by RetroCogs in their game dev workflow -->
+- [ ] https://github.com/lgblgblgb/megacyc <!-- note: 45GS02 opcode/cycle timing tester for real MEGA65 + Xemu; helps validate emulator CPU timing against hardware -->
+- [ ] https://github.com/lgblgblgb/mega80 <!-- note: CP/M v2.2 on MEGA65 via software i8080 emulation + custom CBIOS; D81 in dist/bin — unique platform experiment by Xemu author -->
+- [ ] https://github.com/lgblgblgb/mega65-utils <!-- note: LGB utility collection — mega65info (hardware query), m65c (cross-platform SD/file commander), navigator, eth-tool (early Ethernet/monitor UDP), c65izer; WIP but 6★, complements [[MEGA65-mega65-tools]] -->
+- [ ] https://github.com/lgblgblgb/c64-sfx-cartridge-player <!-- detail:brief --> <!-- note: AdLib/OPL2 DRO player for C64 SFX cartridge and MEGA65 (direct OPL register access); doubles as MEGA65 OPL hardware test -->
+- [ ] https://github.com/lgblgblgb/fdc65bas <!-- detail:brief --> <!-- note: BASIC65 floppy sector read via direct FDC POKE/PEEK; niche I/O learning example -->
+
+<!-- MEGA65 org — originals only (org forks skipped; upstream queued separately where noted) -->
+- [ ] https://github.com/MEGA65/eleven <!-- note: on-device BASIC 65 IDE/transpiler (labels, long names, build-to-PRG); maintained by Gurce; Confluence Eleven Walkthrough; pairs with tpn65 cross-transpiler -->
+- [ ] https://github.com/MEGA65/m65connect <!-- note: official Xojo GUI — SD card manager, PRG/bitstream/ROM transfer, terminal, remote keyboard, ROM configurator; complements [[MEGA65-mega65-tools]] -->
+- [ ] https://github.com/MEGA65/mega65-libc <!-- note: official C library for cc65 and llvm-mos; dependency of mega65-fdisk; fills C dev gap next to cc65/cc65 -->
+- [ ] https://github.com/MEGA65/mega65-weeip <!-- note: official WeeIP TCP/IP port — DHCP, DNS, PETSCII terminal, HTTP fetch; Ethernet networking on real hardware -->
+- [ ] https://github.com/MEGA65/mega65-examples <!-- note: official community example collection (per-topic dirs + build instructions); linked from [[mega65.org]] -->
+- [ ] https://github.com/MEGA65/mega65-freezemenu <!-- note: FREEZER.M65 + integrated SD utilities (MEGAINFO, CHARSET, slot freeze/restore); required on SD card for normal operation -->
+- [ ] https://github.com/MEGA65/mega65-fdisk <!-- note: SD-card FDISK+format utility; builds with mega65-libc + cc65 -->
+- [ ] https://github.com/MEGA65/open-roms <!-- note: unencumbered open-source C64/C65 ROM replacement project; initial focus includes MEGA65 -->
+- [ ] https://github.com/MEGA65/c65-specifications <!-- detail:brief --> <!-- note: updated Commodore C65/C64DX system specification; team corrections — background for [[commodore-65-wikipedia]] and register questions -->
+- [ ] https://github.com/MEGA65/mega-basic64 <!-- detail:brief --> <!-- note: experimental MEGA65-extended C64 BASIC 2 (256-colour text, tiles/canvases); team testbed, not shipping ROM -->
+- [ ] https://github.com/Edilbert/BSA <!-- note: upstream of MEGA65/BSA fork — Bit Shifter Assembler for 6502/65C02/45GS02; listed in [[MEGA65-mega65-code-snippets]] -->
 
 <!-- YouTube: playlists are not ingestible — expand first, then queue picked videos here.
      yt-dlp --flat-playlist --print "https://www.youtube.com/watch?v=%(id)s  # %(title)s" "https://www.youtube.com/playlist?list=PLPehmjqZolWArdt53pl1QyJurZDu3oJKy"
@@ -45,6 +71,7 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://github.com/lgblgblgb/xemu <!-- detail:brief --> <!-- note: emulator; usage docs only, skip internals --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/MEGA65/mega65-core <!-- detail:brief --> <!-- note: FPGA core; brief until hardware-level questions arise --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/MEGA65/m65dbg <!-- detail:standard --> <!-- note: symbolic debugger — breakpoints, step/step-over/finish, register display, memory watch, disassembly with source listings; supports Ophis/ACME/CC65 symbol maps; complements mega65-tools (transfer/flash/monitor) with source-level debugging --> <!-- ingested 2026-06-12 -->
+- [x] https://github.com/dansanderson/dis65 <!-- note: 6502/65C02/65CE02/45GS02 disassembler; PRG-aware, acme/kickass output; complements m65dbg and cross-dev workflow --> <!-- ingested 2026-06-12 -->
 
 <!-- Processed lines are moved here automatically.
      Format after ingest: - [x] https://... with an "ingested YYYY-MM-DD" HTML comment appended.

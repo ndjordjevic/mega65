@@ -30,5 +30,6 @@ created: 2026-06-10
 | [[MEGA65-mega65-rom-public]] | github | standard | 2026-06-11 | ROM issue tracker + BASIC 65/KERNAL changelog |
 | [[commodore-65-wikipedia]] | web | standard | 2026-06-11 | C65 prototype history + specs (background) |
 | [[MEGA65-m65dbg]] | github | standard | 2026-06-12 | symbolic debugger; breakpoints, step-through, serial/xemu |
+| [[dansanderson-dis65]] | github | standard | 2026-06-12 | PRG-aware disassembler; ACME/KickAss output |
 
-_18 sources ingested._
+_19 sources ingested._

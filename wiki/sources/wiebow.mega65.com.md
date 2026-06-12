@@ -2,11 +2,11 @@
 type: source
 source_url: https://wiebow.mega65.com/
 tags: [cross-development, kick-assembler-45gs02, etherload, mega65-ftp, c1541-d81, xemu, matrix-mode-debugger, build-automation, fpga, hyppo, freezer, system-architecture]
-related: [dansanderson.com, retrocogs.mega65.com, mega65.atlassian.net, RetroCogs-Mega65Tutorials, MEGA65-mega65-tools, lgblgblgb-xemu]
+related: [dansanderson.com, retrocogs.mega65.com, mega65.atlassian.net, RetroCogs-Mega65Tutorials, MEGA65-mega65-tools, lgblgblgb-xemu, dansanderson-dis65]
 product: wiebow
 detail_level: standard
 created: 2026-06-10
-updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 Wiebo de Wit's MEGA65 blog — a small (3-post), now-dormant blog whose standout is a **complete, copy-pasteable Linux cross-development pipeline** (Dec 2023): assemble 45GS02 code with the Kick Assembler 65CE02 fork, build a D81 with `c1541`, and deploy to both Xemu and a real MEGA65 over Ethernet — all from one `make.sh` (Ctrl-B in Sublime), with a verified **3.3-second** edit-build-run loop. The most concrete build recipe in this wiki; its Ethernet-deployment specifics (the `etherload -5` reboot flag, IPv6 link-local) aren't spelled out elsewhere. Also a clean layered-architecture overview for newcomers. Complements the broader tool survey in [[dansanderson.com]] (cross-development-1/2) and the graphics focus of [[retrocogs.mega65.com]].

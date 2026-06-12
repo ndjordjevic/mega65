@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | ingest | dansanderson-dis65 | PRG-aware disassembler for 6502/65C02/65CE02/45GS02 and Commodore PRGs
+
+- Created: wiki/sources/dansanderson-dis65.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
 ## 2026-06-12 | ingest | MEGA65-m65dbg | enhanced serial debugger — symbolic debugging, breakpoints, step-through for 45GS02
 
 - Created: wiki/sources/MEGA65-m65dbg.md

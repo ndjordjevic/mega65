@@ -2,11 +2,11 @@
 type: source
 source_url: https://dansanderson.com/mega65/
 tags: [mega65-welcome-guide, cross-development, 45gs02-assembly, acme-assembler, basic-65, xemu, sd-card-setup, mega65-digest, vic-iv, rrb, petscii, sid, kernal, calypsi-c, llvm-mos]
-related: [mega65.org, retrocogs.mega65.com, wiebow.mega65.com, dansanderson-easyasm65, RetroCogs-Mega65Tutorials]
+related: [mega65.org, retrocogs.mega65.com, wiebow.mega65.com, dansanderson-easyasm65, RetroCogs-Mega65Tutorials, dansanderson-dis65]
 product: dansanderson
 detail_level: deep
 created: 2026-06-10
-updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 Dan Sanderson's MEGA65 hub — the single best onboarding and programming tutorial resource in the ecosystem. Dan is a MEGA65 Steering Committee member and contributor to the official documentation, ROM, and FPGA core. The site hosts the **MEGA65 Welcome Guide** (19-chapter new-owner booklet), **Dan's MEGA65 Digest** (monthly newsletter with deep technical articles), and the **Cross Development series**. This wiki covers the Welcome Guide, the **complete Digest (all 44 posts)**, and 7 related **Lab Notes** articles (the deep technical posts under `/lab-notes/`, cross-tagged to MEGA65 but not part of the numbered Digest).
