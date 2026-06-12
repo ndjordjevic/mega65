@@ -20,6 +20,8 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 <!-- Websites -->
 
 <!-- GitHub repos -->
+- [ ] https://github.com/RetroCogs/GameShell65 <!-- detail:brief --> <!-- note: Kick Assembler game framework (RRB-heavy, GameStates, Pixies, DMA-buffered frame loop); README has placeholder sections — 2 stars, niche, but shows real game architecture; natural next step after Mega65Tutorials -->
+- [ ] https://github.com/RetroCogs/GS65_ShmupExample <!-- detail:brief --> <!-- note: example shmup using GameShell65 framework; 0 stars, 14 commits; companion to GameShell65 if that is ingested -->
 
 <!-- YouTube: playlists are not ingestible — expand first, then queue picked videos here.
      yt-dlp --flat-playlist --print "https://www.youtube.com/watch?v=%(id)s  # %(title)s" "https://www.youtube.com/playlist?list=PLPehmjqZolWArdt53pl1QyJurZDu3oJKy"
@@ -35,7 +37,6 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://wiebow.mega65.com/2023/12/31/cross-development-for-the-mega65/ <!-- note: cross-dev setup guide --> <!-- ingested 2026-06-10 -->
 - [x] https://files.mega65.org/html/main.php <!-- detail:brief --> <!-- no-companion --> <!-- note: filehost; catalog only --> <!-- ingested 2026-06-10 -->
 - [x] https://mega65.atlassian.net/wiki/spaces/MEGA65/overview <!-- detail:standard --> <!-- note: full page index via REST API; 9 sections, 66+ pages catalogued --> <!-- ingested 2026-06-10 --> <!-- refreshed 2026-06-12 -->
-- [x] https://www.c64-wiki.com/wiki/mega65 <!-- detail:brief --> <!-- note: background/history reference --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/MEGA65/mega65-user-guide <!-- detail:deep --> <!-- clone --> <!-- note: LaTeX source of all 5 official books; the greppable spec --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/RetroCogs/Mega65Tutorials <!-- detail:standard --> <!-- clone --> <!-- note: 45GS02 assembly tutorials with code --> <!-- ingested 2026-06-10 --> <!-- refreshed 2026-06-12 -->
 - [x] https://github.com/MEGA65/mega65-tools <!-- note: mega65_ftp, etherload, CLI dev tools --> <!-- ingested 2026-06-10 -->
@@ -43,6 +44,7 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://github.com/dansanderson/easyasm65 <!-- note: on-device assembler --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/lgblgblgb/xemu <!-- detail:brief --> <!-- note: emulator; usage docs only, skip internals --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/MEGA65/mega65-core <!-- detail:brief --> <!-- note: FPGA core; brief until hardware-level questions arise --> <!-- ingested 2026-06-10 -->
+- [x] https://github.com/MEGA65/m65dbg <!-- detail:standard --> <!-- note: symbolic debugger — breakpoints, step/step-over/finish, register display, memory watch, disassembly with source listings; supports Ophis/ACME/CC65 symbol maps; complements mega65-tools (transfer/flash/monitor) with source-level debugging --> <!-- ingested 2026-06-12 -->
 
 <!-- Processed lines are moved here automatically.
      Format after ingest: - [x] https://... with an "ingested YYYY-MM-DD" HTML comment appended.

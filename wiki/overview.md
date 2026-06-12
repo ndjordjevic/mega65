@@ -33,3 +33,11 @@ The official site [[mega65.org]] establishes the foundation of this domain: the 
 [[dansanderson-easyasm65]] covers the on-device path: EasyAsm assembles all 45GS02 instructions with Acme-compatible syntax inside the MEGA65's own screen editor (`MOUNT "EASYASM.D81" : BOOT`, Edit mode, Help-key menu), assembling to memory or disk — its README, embedded in full in the raw capture, is the complete manual.
 
 [[lgblgblgb-xemu]] is the de-facto MEGA65 emulator (SDL2, GPL-2.0, master/next/dev branches) at the center of every workflow here, and [[MEGA65-mega65-core]] is the VHDL source of the machine itself — release 0.97.2 — tracked at brief detail for release/flashing questions, with builder.mega65.org doing automated builds.
+
+[[dansanderson-mega65-symbols]] provides ready-to-include I/O register symbol files for six toolchains (ACME, Kick Assembler, ca65, cc65, Ophis, Rust), generated from `iomap.txt` in the MEGA65 core's VHDL — so register names track real hardware. Including the file for your toolchain at project start eliminates raw `$D0xx` address lookups throughout your source code.
+
+[[MEGA65-mega65-rom-public]] is the public issue tracker and CHANGELOG for the closed-source MEGA65 ROM. The repository has no ROM source code, but its `CHANGELOG.md` is the authoritative version history — the definitive answer to "which ROM version introduced BASIC 65 feature X?" covering releases from 920287 (Jan 2022) through the current stable 920413 (v0.97, April 2025).
+
+[[commodore-65-wikipedia]] provides the historical and hardware-spec baseline for the Commodore 65 prototype (C64DX) that the MEGA65 recreates: CSG 4510 @ 3.54 MHz, VIC-III, dual SID, BASIC 10.0, cancelled 1991. Useful when a MEGA65 register or mode traces back to the original C65 design — for the MEGA65's own implementation see [[MEGA65-mega65-core]] and [[MEGA65-mega65-user-guide]].
+
+[[MEGA65-m65dbg]] is the project's enhanced serial debugger — the step up from the built-in Matrix Mode Monitor when symbolic source-level tracing is needed. It adds symbolic debugging (Ophis/ACME/CC65 symbol maps), hardware breakpoints, step/step-over/finish, memory watch, disassembly with source listings, and PETSCII screenshots over a serial connection to real hardware or a Unix socket to [[lgblgblgb-xemu]]. Borrows FTP and hardware-interaction code directly from [[MEGA65-mega65-tools]].

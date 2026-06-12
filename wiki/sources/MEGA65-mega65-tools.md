@@ -2,11 +2,11 @@
 type: source
 source_url: https://github.com/MEGA65/mega65-tools
 tags: [m65-cli, mega65-ftp, etherload, coretool, romdiff, cross-platform-build, hardware-deployment]
-related: [wiebow.mega65.com, dansanderson.com, MEGA65-mega65-code-snippets]
+related: [wiebow.mega65.com, dansanderson.com, MEGA65-mega65-code-snippets, MEGA65-m65dbg]
 product: mega65-tools
 detail_level: standard
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 The official MEGA65 command-line tool suite (C, actively developed — pushed June 2026): everything needed to talk to real hardware from a PC. These are the binaries behind the deployment workflows in [[wiebow.mega65.com]] and [[dansanderson.com]].

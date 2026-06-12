@@ -13,3 +13,4 @@ Immutable GitHub repo captures. Written by the fetch step; never edited manually
 | raw/github/dansanderson-easyasm65.md | dansanderson/easyasm65 | 15 | main | v0.1 | 2026-06-10 | full manual in README |
 | raw/github/lgblgblgb-xemu.md | lgblgblgb/xemu | 266 | master | rolling | 2026-06-10 | brief |
 | raw/github/MEGA65-mega65-core.md | MEGA65/mega65-core | 284 | development | release-0.97.2 | 2026-06-10 | brief |
+| raw/github/MEGA65-m65dbg.md | MEGA65/m65dbg | 13 | master | none | 2026-06-12 | |

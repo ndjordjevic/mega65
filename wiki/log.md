@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | ingest | MEGA65-m65dbg | enhanced serial debugger — symbolic debugging, breakpoints, step-through for 45GS02
+
+- Created: wiki/sources/MEGA65-m65dbg.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
 ## 2026-06-12 | refresh | RetroCogs-Mega65Tutorials | added full clone; detail deep → standard
 
 - Added: raw/github/RetroCogs-Mega65Tutorials/ (full clone — 16 .asm files, mega65system.asm, mega65macros.asm, asset binaries)

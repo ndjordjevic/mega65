@@ -2,11 +2,11 @@
 type: source
 source_url: https://github.com/lgblgblgb/xemu
 tags: [emulator, sdl2, commodore-65, mega65-emulation, cross-platform]
-related: [mega65.org, wiebow.mega65.com, dansanderson.com]
+related: [mega65.org, wiebow.mega65.com, dansanderson.com, MEGA65-m65dbg]
 product: xemu
 detail_level: brief
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 Xemu by LGB (Gábor Lénárt) — the SDL2-based multi-machine emulator whose MEGA65 target (`xmega65`) is the de-facto standard MEGA65 emulator and the centerpiece of every cross-development workflow in this wiki. GPL-2.0, actively maintained since 2016.
