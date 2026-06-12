@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | ingest | dansanderson-homebrew-mega65 | macOS Homebrew tap for M65Connect, Xemu, and mega65-tools
+
+- Created: wiki/sources/dansanderson-homebrew-mega65.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
 ## 2026-06-12 | ingest | dansanderson-tpn65 | Eleven-like BASIC 65 cross-transpiler for petcat-based host workflows
 
 - Created: wiki/sources/dansanderson-tpn65.md

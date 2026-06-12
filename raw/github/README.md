@@ -16,3 +16,4 @@ Immutable GitHub repo captures. Written by the fetch step; never edited manually
 | raw/github/MEGA65-m65dbg.md | MEGA65/m65dbg | 13 | master | none | 2026-06-12 | |
 | raw/github/dansanderson-dis65.md | dansanderson/dis65 | 0 | main | none | 2026-06-12 | PRG-aware disassembler; ACME/KickAss output |
 | raw/github/dansanderson-tpn65.md | dansanderson/tpn65 | 0 | main | none | 2026-06-12 | |
+| raw/github/dansanderson-homebrew-mega65.md | dansanderson/homebrew-mega65 | 0 | main | none | 2026-06-12 | macOS tap for M65Connect, Xemu, mega65-tools |

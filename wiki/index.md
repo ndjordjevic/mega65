@@ -32,5 +32,6 @@ created: 2026-06-10
 | [[MEGA65-m65dbg]] | github | standard | 2026-06-12 | symbolic debugger; breakpoints, step-through, serial/xemu |
 | [[dansanderson-dis65]] | github | standard | 2026-06-12 | PRG-aware disassembler; ACME/KickAss output |
 | [[dansanderson-tpn65]] | github | standard | 2026-06-12 | Eleven-like BASIC 65 cross-transpiler; petcat-ready host workflow |
+| [[dansanderson-homebrew-mega65]] | github | brief | 2026-06-12 | macOS Homebrew tap for M65Connect, Xemu, and mega65-tools |
 
-_20 sources ingested._
+_21 sources ingested._

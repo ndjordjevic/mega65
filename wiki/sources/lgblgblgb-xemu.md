@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/lgblgblgb/xemu
 tags: [emulator, sdl2, commodore-65, mega65-emulation, cross-platform]
-related: [mega65.org, wiebow.mega65.com, dansanderson.com, MEGA65-m65dbg]
+related: [mega65.org, wiebow.mega65.com, dansanderson.com, MEGA65-m65dbg, dansanderson-homebrew-mega65]
 product: xemu
 detail_level: brief
 created: 2026-06-10
