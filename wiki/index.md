@@ -20,7 +20,7 @@ created: 2026-06-10
 | [[files.mega65.org]] | web | brief | 2026-06-10 | |
 | [[mega65.atlassian.net]] | web | standard | 2026-06-10 | refreshed 2026-06-12: full section + page index (66+ pages) |
 | [[MEGA65-mega65-user-guide]] | github | deep | 2026-06-10 | full clone; greppable spec |
-| [[RetroCogs-Mega65Tutorials]] | github | deep | 2026-06-10 | |
+| [[RetroCogs-Mega65Tutorials]] | github | standard | 2026-06-10 | refreshed 2026-06-12: full clone; 16 .asm files greppable |
 | [[MEGA65-mega65-tools]] | github | standard | 2026-06-10 | |
 | [[MEGA65-mega65-code-snippets]] | github | standard | 2026-06-10 | |
 | [[dansanderson-easyasm65]] | github | standard | 2026-06-10 | |

@@ -37,7 +37,7 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://mega65.atlassian.net/wiki/spaces/MEGA65/overview <!-- detail:standard --> <!-- note: full page index via REST API; 9 sections, 66+ pages catalogued --> <!-- ingested 2026-06-10 --> <!-- refreshed 2026-06-12 -->
 - [x] https://www.c64-wiki.com/wiki/mega65 <!-- detail:brief --> <!-- note: background/history reference --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/MEGA65/mega65-user-guide <!-- detail:deep --> <!-- clone --> <!-- note: LaTeX source of all 5 official books; the greppable spec --> <!-- ingested 2026-06-10 -->
-- [x] https://github.com/RetroCogs/Mega65Tutorials <!-- detail:deep --> <!-- note: 45GS02 assembly tutorials with code --> <!-- ingested 2026-06-10 -->
+- [x] https://github.com/RetroCogs/Mega65Tutorials <!-- detail:standard --> <!-- clone --> <!-- note: 45GS02 assembly tutorials with code --> <!-- ingested 2026-06-10 --> <!-- refreshed 2026-06-12 -->
 - [x] https://github.com/MEGA65/mega65-tools <!-- note: mega65_ftp, etherload, CLI dev tools --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/MEGA65/mega65-code-snippets <!-- note: meta-repo of example code --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/dansanderson/easyasm65 <!-- note: on-device assembler --> <!-- ingested 2026-06-10 -->

@@ -4,14 +4,16 @@ source_url: https://github.com/RetroCogs/Mega65Tutorials
 tags: [45gs02-assembly, vic-iv-tutorials, rrb-pixies, fcm-ncm, kick-assembler, software-sprites, parallax]
 related: [retrocogs.mega65.com, wiebow.mega65.com, MEGA65-mega65-code-snippets, MEGA65-mega65-user-guide]
 product: retrocogs
-detail_level: deep
+detail_level: standard
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 The companion code repo to [[retrocogs.mega65.com]] — a 15-step graduated curriculum of working 45GS02 assembly programs for VIC-IV graphics programming, from a blank skeleton to advanced software-sprite ("pixie") engines. Each numbered tutorial pairs with a blog post; together they are the most complete hands-on course for MEGA65 graphics coding.
 
-_All claims below are sourced from ../../raw/github/RetroCogs-Mega65Tutorials.md unless otherwise noted._
+**Full clone at `raw/github/RetroCogs-Mega65Tutorials/`** — all `.asm` files, `mega65system.asm`/`mega65macros.asm` library, and asset binaries are directly readable and greppable.
+
+_All claims below are sourced from `raw/github/RetroCogs-Mega65Tutorials/` unless otherwise noted._
 
 ## What it does
 

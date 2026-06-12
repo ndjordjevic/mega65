@@ -10,6 +10,13 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | refresh | RetroCogs-Mega65Tutorials | added full clone; detail deep → standard
+
+- Added: raw/github/RetroCogs-Mega65Tutorials/ (full clone — 16 .asm files, mega65system.asm, mega65macros.asm, asset binaries)
+- Removed: raw/github/RetroCogs-Mega65Tutorials.md (shallow README capture, superseded by clone)
+- Updated: wiki/sources/RetroCogs-Mega65Tutorials.md (detail_level: deep → standard; source reference updated to clone)
+- Updated: wiki/index.md, inbox.md
+
 ## 2026-06-12 | housekeeping | raw/assets/ removed — PDFs redundant with LaTeX clone
 
 - Deleted: raw/assets/ (6 PDFs, ~161MB) — all content is in raw/github/MEGA65-mega65-user-guide/ (285 source images + 87 .tex files)
