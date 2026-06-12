@@ -16,7 +16,32 @@ Answer **any question** about MEGA65 retro computer from local files first; web 
 
 This wiki is the authoritative local source for this domain. Go online for gaps or newer information rather than filling them from training data alone.
 
-**Escalation:** if neither the wiki, the books, nor a web search settles it (e.g. hardware-revision quirks, unreleased features), suggest asking on the MEGA65 Discord (`#mega65`, link in `resources.md`) — and when the answer comes back, capture it in a wiki notes page.
+**Escalation:** if neither the wiki, the books, nor a web search settles it (e.g. hardware-revision quirks, unreleased features), you can **search the MEGA65 Discord live** (see below) before suggesting the human ask there. When an answer comes back — from your search or from the human asking — capture it in a wiki notes page.
+
+---
+
+## Searching the MEGA65 Discord (live, via Playwright)
+
+The agent can search the MEGA65 Discord server on demand by driving a logged-in browser — **no bot, no token, no admin rights**. This is a **read-only lookup tool**, used *after* the wiki/books/web steps above (it sits at the same stage as web search, for community knowledge that isn't written down anywhere else).
+
+**Setup (one-time, already done):** a project-local `playwright` MCP server is registered in `~/.claude.json` for this repo. It runs its own Chromium with a **persistent profile**, so the human's Discord login survives between sessions. If the browser is **not** logged in, stop and ask the human to log in (navigate to `https://discord.com/login`, let them sign in, then continue) — never attempt to log in on their behalf.
+
+**How to run a search:**
+
+1. Navigate to the MEGA65 server: `https://discord.com/channels/719326990221574164` (server ID `719326990221574164`).
+2. Click the search box — selector `div[role="combobox"][aria-label="Search"]` — type the query, submit with Enter.
+3. Wait ~2.5s, snapshot, and read the **`region "Search Results"`** part of the snapshot (the channel message list in the background is *not* the results). The header reads `N Results` or `No Results`.
+4. Report: the link/answer found, which channel + author + date it came from, and a quoted snippet.
+
+**Reformulate-and-retry (do this automatically):** Discord search is **keyword AND-matching, not semantic** — it finds words, not intent. If a query returns `No Results` or weak hits, retry a few times, varying:
+- **Fewer / core keywords** (`getting started` → `start`; multi-word phrases often match nothing).
+- **Synonyms** (`beginner` → `new`, `noob`; `hardware` → `board`, `revision`, `R6`).
+- **Domain terms a MEGA65 dev would actually type** (`DMA bug` → `DMAgic`; `SD card` → `SDcard`).
+- **Operators** to narrow/widen: `in:#channel`, `from:user`, `has:link`.
+
+Cap at a handful of reformulations unless the human says "keep trying." **Show the queries you tried and their hit counts**, and distinguish a *search-limitation miss* (the words aren't there) from a *real absence* — never fabricate an answer from a miss. For **intent** questions ("where do I start?") say upfront that keyword search is the wrong instrument and point to the better source (server channel structure, pinned posts, or the local wiki / User's Guide).
+
+**Risk & scope — stay low-signal:** this works *because* it's the human's real login at human pace through the official web client. Keep it that way: a few searches per session is fine. **Do not** bulk-scrape or auto-scroll whole channels, and **do not** use user-token exporters (e.g. DiscordChatExporter) — Discord actively enforces against scripted/high-volume user-token access (account logout + ToS-abuse flags). **Do not ingest** Discord content into the wiki unless the human explicitly asks; this tool is for live lookups, not harvesting.
 
 > **Wiki management:** Use `/pin-llm-wiki` (`init`, `run`, `lint`, `queue`, `remove`) to ingest sources and manage this wiki. The skill runs in Claude Code, Cursor, and GitHub Copilot — full workflow instructions live in the skill files.
 
