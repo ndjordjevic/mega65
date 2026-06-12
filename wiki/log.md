@@ -10,6 +10,13 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | remove | c64-wiki.com | soft-deleted (redundant after commodore-65-wikipedia ingest)
+
+- Reason: content fully covered by [[commodore-65-wikipedia]] (lineage) + [[MEGA65-mega65-user-guide]] (specs); only unique value was two benchmark figures, not worth a separate source
+- Archived: wiki/sources/c64-wiki.com.md → wiki/.archive/sources/c64-wiki.com.md
+- Archived: raw/web/c64-wiki.com.md → wiki/.archive/raw/web/c64-wiki.com.md
+- Updated: wiki/index.md (17 sources), wiki/overview.md, wiki/log.md
+
 ## 2026-06-12 | refresh | mega65.atlassian.net | expanded from brief to full section + page index
 
 - Previous: top-level nav only (overview page, partially blocked by Confluence JS rendering)

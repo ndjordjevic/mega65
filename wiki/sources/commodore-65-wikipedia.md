@@ -2,7 +2,7 @@
 type: source
 source_url: https://en.wikipedia.org/wiki/Commodore_65
 tags: [commodore-65, c64dx, history, vic-iii, csg-4510, sid, prototype, hardware-specs, background]
-related: [dansanderson.com, c64-wiki.com, mega65.org, MEGA65-mega65-core]
+related: [dansanderson.com, mega65.org, MEGA65-mega65-core]
 product: commodore-65
 detail_level: standard
 created: 2026-06-11
@@ -28,7 +28,7 @@ Conceived 1990 by Fred Bowen et al.; cancelled 1991 by Irving Gould amid falling
 
 ## When to use
 
-For the historical and original-hardware context behind MEGA65 features (why "C65 mode," why VIC-III/VIC-IV, the 4510/45GS02 lineage, dual SIDs). It's general background — for authoritative MEGA65 register/keyword detail use the official references in `raw/assets/` and [[MEGA65-mega65-user-guide]], and for C64 specifics [[c64-wiki.com]].
+For the historical and original-hardware context behind MEGA65 features (why "C65 mode," why VIC-III/VIC-IV, the 4510/45GS02 lineage, dual SIDs). It's general background — for authoritative MEGA65 register/keyword detail use the official references in `raw/assets/` and [[MEGA65-mega65-user-guide]].
 
 ## Ecosystem
 

@@ -2,7 +2,7 @@
 type: overview
 domain: "MEGA65 retro computer"
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 sources: []
 ---
 
@@ -21,8 +21,6 @@ The official site [[mega65.org]] establishes the foundation of this domain: the 
 [[files.mega65.org]] is the official software distribution point — games, demos, utilities, ROMs, cores, manuals, and owner articles — browsed live rather than statically captured, with account-gated downloads and owner-only ROMs.
 
 [[mega65.atlassian.net]] is the collaborative Confluence wiki: BASIC 65 how-tos, compatible hardware, system development notes, and the canonical release notes (0.97 "10th Anniversary Edition" and the 0.97.2 R6A bugfix release as of early 2026); its Ethernet-tools and petcat pages back the workflows described by [[wiebow.mega65.com]] and [[dansanderson.com]].
-
-[[c64-wiki.com]] supplies the third-party hardware spec sheet: GS4510 CPU at switchable 1/2/3.5/40.5 MHz with 32-bit extensions and 28-bit address space, DMAgic-compatible DMA (40MB/s fills), VIC-IV at native 720×576 with up to 1,024 on-screen colors, quad soft-SIDs, 384KB fast RAM + 8MB Attic RAM, on an Artix-7 100T FPGA — useful for quick lookups, with stale corners to cross-check.
 
 [[MEGA65-mega65-user-guide]] is the wiki's authority layer: the LaTeX source of all five official books in one repo, kept here as a full local clone so the entire spec is greppable — 45GS02 instruction set, VIC-IV/SID/Ethernet/CIA register appendices, memory map, hypervisor calls, KERNAL jump table, and the complete BASIC 65 keyword reference. For any official-spec question, grep these `.tex` files before searching the web.
 

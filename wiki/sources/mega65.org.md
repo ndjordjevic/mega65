@@ -2,7 +2,7 @@
 type: source
 source_url: https://mega65.org/
 tags: [mega65, commodore-65, fpga-retro-computer, xemu-emulator, basic-65, alternative-cores, official-documentation]
-related: [dansanderson.com, files.mega65.org, mega65.atlassian.net, c64-wiki.com, lgblgblgb-xemu, MEGA65-mega65-core, MEGA65-mega65-user-guide]
+related: [dansanderson.com, files.mega65.org, mega65.atlassian.net, lgblgblgb-xemu, MEGA65-mega65-core, MEGA65-mega65-user-guide]
 product: mega65
 detail_level: deep
 created: 2026-06-10

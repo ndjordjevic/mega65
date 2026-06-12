@@ -34,7 +34,7 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://retrocogs.mega65.com/ <!-- note: 45GS02/VIC-IV coding tutorials blog --> <!-- ingested 2026-06-10 -->
 - [x] https://wiebow.mega65.com/2023/12/31/cross-development-for-the-mega65/ <!-- note: cross-dev setup guide --> <!-- ingested 2026-06-10 -->
 - [x] https://files.mega65.org/html/main.php <!-- detail:brief --> <!-- no-companion --> <!-- note: filehost; catalog only --> <!-- ingested 2026-06-10 -->
-- [x] https://mega65.atlassian.net/wiki/spaces/MEGA65/overview <!-- detail:brief --> <!-- note: Confluence may fetch poorly; PDFs cover same ground --> <!-- ingested 2026-06-10 -->
+- [x] https://mega65.atlassian.net/wiki/spaces/MEGA65/overview <!-- detail:standard --> <!-- note: full page index via REST API; 9 sections, 66+ pages catalogued --> <!-- ingested 2026-06-10 --> <!-- refreshed 2026-06-12 -->
 - [x] https://www.c64-wiki.com/wiki/mega65 <!-- detail:brief --> <!-- note: background/history reference --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/MEGA65/mega65-user-guide <!-- detail:deep --> <!-- clone --> <!-- note: LaTeX source of all 5 official books; the greppable spec --> <!-- ingested 2026-06-10 -->
 - [x] https://github.com/RetroCogs/Mega65Tutorials <!-- detail:deep --> <!-- note: 45GS02 assembly tutorials with code --> <!-- ingested 2026-06-10 -->
