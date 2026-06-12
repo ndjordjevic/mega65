@@ -18,3 +18,4 @@ Immutable GitHub repo captures. Written by the fetch step; never edited manually
 | raw/github/dansanderson-tpn65.md | dansanderson/tpn65 | 0 | main | none | 2026-06-12 | |
 | raw/github/dansanderson-homebrew-mega65.md | dansanderson/homebrew-mega65 | 0 | main | none | 2026-06-12 | macOS tap for M65Connect, Xemu, mega65-tools |
 | raw/github/dansanderson-joytest65.md | dansanderson/joytest65 | 0 | main | v0.1 | 2026-06-12 | joystick/paddle tester; CIA and SID input example |
+| raw/github/dansanderson-mega65-pcfonts.md | dansanderson/mega65-pcfonts | 3 | main | none | 2026-06-12 | 43 PC fonts; TCR archive and D81 browser |

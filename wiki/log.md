@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | ingest | dansanderson-mega65-pcfonts | MEGA65 TCR font archive and conversion pipeline
+
+- Created: raw/github/dansanderson-mega65-pcfonts.md, wiki/sources/dansanderson-mega65-pcfonts.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
 ## 2026-06-12 | ingest | dansanderson-joytest65 | joystick and paddle tester for the MEGA65; CIA and SID input example
 
 - Created: wiki/sources/dansanderson-joytest65.md

@@ -34,5 +34,6 @@ created: 2026-06-10
 | [[dansanderson-tpn65]] | github | standard | 2026-06-12 | Eleven-like BASIC 65 cross-transpiler; petcat-ready host workflow |
 | [[dansanderson-homebrew-mega65]] | github | brief | 2026-06-12 | macOS Homebrew tap for M65Connect, Xemu, and mega65-tools |
 | [[dansanderson-joytest65]] | github | brief | 2026-06-12 | joystick/paddle tester; CIA $DC00/$DC01 and POT register example |
+| [[dansanderson-mega65-pcfonts]] | github | brief | 2026-06-12 | PC font archive and TCR converter for MEGA65 Tall ChaRacter mode |
 
-_22 sources ingested._
+_23 sources ingested._
