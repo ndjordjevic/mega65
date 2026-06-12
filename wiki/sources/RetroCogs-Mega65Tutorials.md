@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/RetroCogs/Mega65Tutorials
 tags: [45gs02-assembly, vic-iv-tutorials, rrb-pixies, fcm-ncm, kick-assembler, software-sprites, parallax]
-related: [retrocogs.mega65.com, wiebow.mega65.com, MEGA65-mega65-code-snippets, MEGA65-mega65-user-guide]
+related: [retrocogs.mega65.com, wiebow.mega65.com, MEGA65-mega65-code-snippets, MEGA65-mega65-user-guide, RetroCogs-GameShell65, RetroCogs-GS65_ShmupExample, MEGA65-mega65-examples, dansanderson-bf-mega65]
 product: retrocogs
 detail_level: standard
 created: 2026-06-10
@@ -13,7 +13,7 @@ The companion code repo to [[retrocogs.mega65.com]] — a 15-step graduated curr
 
 **Full clone at `raw/github/RetroCogs-Mega65Tutorials/`** — all `.asm` files, `mega65system.asm`/`mega65macros.asm` library, and asset binaries are directly readable and greppable.
 
-_All claims below are sourced from `raw/github/RetroCogs-Mega65Tutorials/` unless otherwise noted._
+_All claims below are sourced from ../../raw/github/RetroCogs-Mega65Tutorials.md (and full clone at `raw/github/RetroCogs-Mega65Tutorials/`) unless otherwise noted._
 
 ## What it does
 

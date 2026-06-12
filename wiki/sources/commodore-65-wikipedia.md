@@ -2,11 +2,11 @@
 type: source
 source_url: https://en.wikipedia.org/wiki/Commodore_65
 tags: [commodore-65, c64dx, history, vic-iii, csg-4510, sid, prototype, hardware-specs, background]
-related: [dansanderson.com, mega65.org, MEGA65-mega65-core]
+related: [dansanderson.com, mega65.org, MEGA65-mega65-core, MEGA65-c65-specifications]
 product: commodore-65
 detail_level: standard
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-06-12
 ---
 
 Encyclopedia background on the **Commodore 65** (C64DX) — the 1990–91 prototype successor to the C64 that the **MEGA65 recreates in FPGA**. Useful as the historical/spec baseline: when a MEGA65 register, mode, or BASIC feature traces back to "the original C65," this is the reference for what that machine actually was. For the MEGA65's own implementation, see [[MEGA65-mega65-core]] and the official docs; for community history with more colour, [[dansanderson.com]] (chicagoland, first-ten-years).

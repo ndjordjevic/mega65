@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/MEGA65/mega65-tools
 tags: [m65-cli, mega65-ftp, etherload, coretool, romdiff, cross-platform-build, hardware-deployment]
-related: [wiebow.mega65.com, dansanderson.com, MEGA65-mega65-code-snippets, MEGA65-m65dbg, dansanderson-homebrew-mega65]
+related: [wiebow.mega65.com, dansanderson.com, MEGA65-mega65-code-snippets, MEGA65-m65dbg, dansanderson-homebrew-mega65, lgblgblgb-mega65-utils, MEGA65-m65connect]
 product: mega65-tools
 detail_level: standard
 created: 2026-06-10

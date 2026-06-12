@@ -11,6 +11,8 @@ updated: 2026-06-12
 
 The official **MEGA65 Confluence wiki** — community-collaborative documentation space with nine top-level sections covering newcomer onboarding, BASIC 65 how-tos, cross-development tools, compatible hardware, FPGA/system internals, and release notes. Write access via Discord (admins: gardners, deft, dddaaann, lydon); anonymous access shows structure and loads most pages fine individually. Full page index in `../../raw/web/mega65.atlassian.net/space-structure.md`.
 
+_All claims below are sourced from ../../raw/web/mega65.atlassian.net/ unless otherwise noted._
+
 _Page URLs follow the pattern `https://mega65.atlassian.net/wiki/spaces/MEGA65/pages/{id}`. Structure captured via REST API 2026-06-12._
 
 ## Sections

@@ -2,11 +2,11 @@
 type: source
 source_url: https://github.com/MEGA65/mega65-user-guide
 tags: [official-books-latex-source, basic-65-reference, 45gs02-registers, viciv-registers, memory-map, hypervisor-calls, xelatex, greppable-spec]
-related: [mega65.org, dansanderson.com, MEGA65-mega65-core, RetroCogs-Mega65Tutorials]
+related: [mega65.org, dansanderson.com, MEGA65-mega65-core, RetroCogs-Mega65Tutorials, MEGA65-c65-specifications, dansanderson-mega65-pcfonts]
 product: mega65-user-guide
 detail_level: deep
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 The LaTeX source of **all five official MEGA65 books** (User's Guide, Developer's Guide, BASIC 65 Reference, Chipset Reference, and the ~1,433-page Compendium) in one community-maintained repo — 87 chapter/appendix `.tex` files, built with XeLaTeX via a Makefile and published to the Filehost by Jenkins. **This wiki keeps a full clone at `raw/github/MEGA65-mega65-user-guide/`**, which makes the entire official specification greppable plain text: this is the single most authoritative source in the wiki for any register, BASIC keyword, opcode, or memory-map question.

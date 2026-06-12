@@ -10,6 +10,116 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | ingest | Edilbert-BSA | Bit Shifter Assembler for 6502/65C02/45GS02; single-file C, MEGA65/BSA upstream
+
+- Created: wiki/sources/Edilbert-BSA.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-mega-basic64 | experimental MEGA65-extended C64 BASIC 2 with tile/canvas graphics
+
+- Created: wiki/sources/MEGA65-mega-basic64.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-c65-specifications | updated Commodore C65/C64DX system specification
+
+- Created: wiki/sources/MEGA65-c65-specifications.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-open-roms | clean-room open-source C64/C65/MEGA65 ROM replacement (292 stars)
+
+- Created: wiki/sources/MEGA65-open-roms.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-mega65-fdisk | SD card FDISK+format utility; builds with mega65-libc + CC65
+
+- Created: wiki/sources/MEGA65-mega65-fdisk.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-mega65-freezemenu | FREEZER.M65 + integrated SD utilities; required SD card essentials
+
+- Created: wiki/sources/MEGA65-mega65-freezemenu.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-mega65-examples | official community example collection (asm, C, C++, Rust)
+
+- Created: wiki/sources/MEGA65-mega65-examples.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-mega65-weeip | WeeIP TCP/IP stack port: DHCP, DNS, PETSCII terminal, HTTP fetch
+
+- Created: wiki/sources/MEGA65-mega65-weeip.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-mega65-libc | official C library for CC65 and LLVM-MOS; FAT32 I/O and MEGA65 APIs
+
+- Created: wiki/sources/MEGA65-mega65-libc.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-m65connect | official Xojo GUI: SD card manager, PRG/ROM transfer, remote keyboard
+
+- Created: wiki/sources/MEGA65-m65connect.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MEGA65-eleven | on-device BASIC 65 IDE/preprocessor: labels, long names, EE editor
+
+- Created: wiki/sources/MEGA65-eleven.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | lgblgblgb-fdc65bas | BASIC65 floppy sector read via direct FDC POKE/PEEK
+
+- Created: wiki/sources/lgblgblgb-fdc65bas.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | lgblgblgb-c64-sfx-cartridge-player | OPL2/AdLib DRO player for C64 SFX cartridge and MEGA65
+
+- Created: wiki/sources/lgblgblgb-c64-sfx-cartridge-player.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | lgblgblgb-mega65-utils | LGB utility collection: megainfo, m65c SD commander, eth-tool
+
+- Created: wiki/sources/lgblgblgb-mega65-utils.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | lgblgblgb-mega80 | CP/M v2.2 on MEGA65 via software i8080 emulation
+
+- Created: wiki/sources/lgblgblgb-mega80.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | lgblgblgb-megacyc | 45GS02 opcode cycle-timing tester; validates Xemu CPU emulation
+
+- Created: wiki/sources/lgblgblgb-megacyc.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | MirageBD-MegaTool | host-side graphics conversion (gfx2code, imgconvert) and cruncher
+
+- Created: wiki/sources/MirageBD-MegaTool.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | RetroCogs-GS65_ShmupExample | complete shmup example using GameShell65 framework
+
+- Created: wiki/sources/RetroCogs-GS65_ShmupExample.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | RetroCogs-GameShell65 | KickAssembler game framework: RRB, Pixies, DMA frame buffering
+
+- Created: wiki/sources/RetroCogs-GameShell65.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | dansanderson-bsa-vscode | VS Code extension for BSA assembler: syntax highlighting, LSP
+
+- Created: wiki/sources/dansanderson-bsa-vscode.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | dansanderson-bf-mega65 | Brainf*ck interpreter in 45GS02 assembly for MEGA65
+
+- Created: wiki/sources/dansanderson-bf-mega65.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
+## 2026-06-12 | ingest | cc65-cc65 | complete cross-development suite: C compiler, ca65 assembler, ld65 linker
+
+- Created: wiki/sources/cc65-cc65.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
 ## 2026-06-12 | ingest | dansanderson-mega65-pcfonts | MEGA65 TCR font archive and conversion pipeline
 
 - Created: raw/github/dansanderson-mega65-pcfonts.md, wiki/sources/dansanderson-mega65-pcfonts.md

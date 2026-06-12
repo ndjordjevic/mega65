@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/dansanderson/tpn65
 tags: [basic-65, cross-development, eleven-like-syntax, petcat, python-cli, labels, preprocessor]
-related: [dansanderson.com, dansanderson-easyasm65]
+related: [dansanderson.com, dansanderson-easyasm65, MEGA65-eleven]
 product: tpn65
 detail_level: standard
 created: 2026-06-12

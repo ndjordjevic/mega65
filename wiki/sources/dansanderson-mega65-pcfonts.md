@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/dansanderson/mega65-pcfonts
 tags: [tall-character-mode, pc-fonts, tcr-files, font-conversion, d81-images, python-scripts]
-related: []
+related: [MEGA65-mega65-user-guide, dansanderson.com]
 product: mega65-pcfonts
 detail_level: brief
 created: 2026-06-12

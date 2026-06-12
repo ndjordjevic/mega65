@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/dansanderson/homebrew-mega65
 tags: [homebrew-tap, macos, m65connect, xemu, mega65-tools, package-distribution]
-related: [dansanderson.com, lgblgblgb-xemu, MEGA65-mega65-tools]
+related: [dansanderson.com, lgblgblgb-xemu, MEGA65-mega65-tools, MEGA65-m65connect]
 product: homebrew-mega65
 detail_level: brief
 created: 2026-06-12

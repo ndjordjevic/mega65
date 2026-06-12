@@ -2,11 +2,11 @@
 type: source
 source_url: https://github.com/MEGA65/mega65-code-snippets
 tags: [meta-repository, example-code, assemblers, ides, community-projects, alternative-cores, s65-toolkit]
-related: [RetroCogs-Mega65Tutorials, MEGA65-mega65-tools, dansanderson-easyasm65]
+related: [RetroCogs-Mega65Tutorials, MEGA65-mega65-tools, dansanderson-easyasm65, MEGA65-mega65-examples]
 product: mega65-code-snippets
 detail_level: standard
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 The official meta-repository: a curated link directory of MEGA65 development resources — assemblers, IDEs, toolchains, example repos, complete games, and core-porting frameworks. It contains no code itself; its value is the map of the community's GitHub ecosystem.
