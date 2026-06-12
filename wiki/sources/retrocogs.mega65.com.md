@@ -31,7 +31,7 @@ _All claims below are sourced from ../../raw/web/retrocogs.mega65.com/ unless ot
 
 ## When to use
 
-The go-to source when writing **VIC-IV graphics code**: setting up a custom screen size, smooth scrolling, full-color / nibble-color characters, or an RRB-based software-sprite engine — and you want the exact register names, bits, and addresses. Read alongside the official Chipset Reference (`raw/assets/`) for register authority and [[RetroCogs-Mega65Tutorials]] for the runnable code. For a gentler, more conceptual take on the same modes, see [[dansanderson.com]] (raster-rewrite-buffer, every-pixel-a-color, super-extended-attribute-mode).
+The go-to source when writing **VIC-IV graphics code**: setting up a custom screen size, smooth scrolling, full-color / nibble-color characters, or an RRB-based software-sprite engine — and you want the exact register names, bits, and addresses. Read alongside the official Chipset Reference ([[MEGA65-mega65-user-guide]]) for register authority and [[RetroCogs-Mega65Tutorials]] for the runnable code. For a gentler, more conceptual take on the same modes, see [[dansanderson.com]] (raster-rewrite-buffer, every-pixel-a-color, super-extended-attribute-mode).
 
 ## Ecosystem
 

@@ -31,4 +31,4 @@ Grab this at the **start of any MEGA65 assembly/C/Rust project** so register acc
 
 ## Ecosystem
 
-By the author of the Welcome Guide and Digest ([[dansanderson.com]]); upstream data comes from [[MEGA65-mega65-core]] (VHDL → iomap.txt). Authoritative register documentation lives in the official Chipset Reference (`raw/assets/`); this turns that into usable symbols.
+By the author of the Welcome Guide and Digest ([[dansanderson.com]]); upstream data comes from [[MEGA65-mega65-core]] (VHDL → iomap.txt). Authoritative register documentation lives in the official Chipset Reference ([[MEGA65-mega65-user-guide]]); this turns that into usable symbols.

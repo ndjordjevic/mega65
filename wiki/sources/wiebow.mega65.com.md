@@ -29,7 +29,7 @@ _All claims below are sourced from ../../raw/web/wiebow.mega65.com/ unless other
 
 ## When to use
 
-The first thing to follow when **standing up your own assembly build pipeline**, especially for the Ethernet-deployment details (IPv6 link-local, the `-5` reboot flag) that other sources gloss over. For the layered hardware/HYPPO/Freezer concepts, the hardware post is a clean overview (cross-check against the official Chipset/Developer references in `raw/assets/`). Windows users: dirmaster and M65Connect for disk-image management.
+The first thing to follow when **standing up your own assembly build pipeline**, especially for the Ethernet-deployment details (IPv6 link-local, the `-5` reboot flag) that other sources gloss over. For the layered hardware/HYPPO/Freezer concepts, the hardware post is a clean overview (cross-check against the official Chipset/Developer references in [[MEGA65-mega65-user-guide]]). Windows users: dirmaster and M65Connect for disk-image management.
 
 ## Ecosystem
 

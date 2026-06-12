@@ -28,7 +28,7 @@ Conceived 1990 by Fred Bowen et al.; cancelled 1991 by Irving Gould amid falling
 
 ## When to use
 
-For the historical and original-hardware context behind MEGA65 features (why "C65 mode," why VIC-III/VIC-IV, the 4510/45GS02 lineage, dual SIDs). It's general background — for authoritative MEGA65 register/keyword detail use the official references in `raw/assets/` and [[MEGA65-mega65-user-guide]].
+For the historical and original-hardware context behind MEGA65 features (why "C65 mode," why VIC-III/VIC-IV, the 4510/45GS02 lineage, dual SIDs). It's general background — for authoritative MEGA65 register/keyword detail use the official references in [[MEGA65-mega65-user-guide]].
 
 ## Ecosystem
 

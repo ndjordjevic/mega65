@@ -25,7 +25,6 @@ wiki/         ← my notes: summarized, cross-linked pages per source
 raw/          ← the original material, captured so I can always check it
   web/          fetched articles & sites (e.g. all of Dan Sanderson's Digest)
   github/       code repos, tutorials, the user-guide LaTeX source
-  assets/       the official PDF manuals (see raw/assets/README.md)
 resources.md  ← catalog of every MEGA65 resource I know about
 ```
 
@@ -38,4 +37,4 @@ The wiki is built and maintained with **[pin-llm-wiki](https://github.com/ndjord
 - **`context-strategy.md`** — why I built the knowledge layer this way.
 - **`inbox.md` / `.pin-llm-wiki.yml`** — source queue and config for the tool.
 
-To add or refresh sources, see the [pin-llm-wiki docs](https://github.com/ndjordjevic/pin-llm-wiki). Note: the large PDF manuals and the full LaTeX clone are gitignored — grab the manuals from [files.mega65.org](https://files.mega65.org) (index in `raw/assets/README.md`).
+To add or refresh sources, see the [pin-llm-wiki docs](https://github.com/ndjordjevic/pin-llm-wiki). Note: the full LaTeX clone (`raw/github/MEGA65-mega65-user-guide/`) is gitignored — clone it with `git clone --recurse-submodules https://github.com/MEGA65/mega65-user-guide raw/github/MEGA65-mega65-user-guide`.

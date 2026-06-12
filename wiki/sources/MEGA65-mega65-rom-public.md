@@ -28,7 +28,7 @@ A public place to file ROM bugs, plus `CHANGELOG.md` tracking every BASIC 65 and
 
 ## When to use
 
-When a BASIC 65 keyword or KERNAL routine depends on a minimum ROM version, or to see what changed between firmware releases. For the feature *documentation* (not version history), use [[MEGA65-mega65-user-guide]] (BASIC 65 Reference) and the PDFs in `raw/assets/`; download ROM binaries from [[files.mega65.org]].
+When a BASIC 65 keyword or KERNAL routine depends on a minimum ROM version, or to see what changed between firmware releases. For the feature *documentation* (not version history), use [[MEGA65-mega65-user-guide]] (BASIC 65 Reference); download ROM binaries from [[files.mega65.org]].
 
 ## Ecosystem
 

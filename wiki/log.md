@@ -10,6 +10,12 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | housekeeping | raw/assets/ removed — PDFs redundant with LaTeX clone
+
+- Deleted: raw/assets/ (6 PDFs, ~161MB) — all content is in raw/github/MEGA65-mega65-user-guide/ (285 source images + 87 .tex files)
+- Updated: AGENTS.md, CLAUDE.md, README.md (removed PDF references, updated spec lookup protocol)
+- Updated: wiki/sources/wiebow.mega65.com.md, retrocogs.mega65.com.md, commodore-65-wikipedia.md, MEGA65-mega65-rom-public.md, dansanderson-mega65-symbols.md (raw/assets/ → [[MEGA65-mega65-user-guide]])
+
 ## 2026-06-12 | remove | c64-wiki.com | soft-deleted (redundant after commodore-65-wikipedia ingest)
 
 - Reason: content fully covered by [[commodore-65-wikipedia]] (lineage) + [[MEGA65-mega65-user-guide]] (specs); only unique value was two benchmark figures, not worth a separate source

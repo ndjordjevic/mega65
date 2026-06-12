@@ -10,7 +10,7 @@ Answer **any question** about MEGA65 retro computer from local files first; web 
 
 1. **Wiki first, then drill down on demand.** Read `wiki/index.md` to identify relevant pages, follow `[[wikilinks]]` into the relevant source pages, and cite wiki page names. A source page may be an **index of summaries** (e.g. `wiki/sources/dansanderson.com.md` lists every blog post with a one-paragraph summary and a link to its raw file). When the wiki summary answers the question, stop there. When you need more detail, follow this chain:
    **wiki page → raw page → original URL.** The raw captures under `raw/web/<site>/` are often *condensed summaries*, not verbatim copies — each begins with a `- URL:` line. If the raw summary still lacks the detail you need (exact code, full steps, a value not summarized), fetch that `- URL:` directly before falling back to a general web search.
-2. **Official-spec questions** (BASIC 65 keywords, VIC-IV/45GS02/45E100 registers, memory map, DOS): grep the books' LaTeX source in `raw/github/MEGA65-mega65-user-guide/`, or read the matching PDF pages in `raw/assets/` (index + reading tips in `raw/assets/README.md`; PDF readers support page ranges).
+2. **Official-spec questions** (BASIC 65 keywords, VIC-IV/45GS02/45E100 registers, memory map, DOS): grep the books' LaTeX source in `raw/github/MEGA65-mega65-user-guide/` — 87 `.tex` files, fully greppable plain text.
 3. **Catalog lookups** (which tool/site/channel exists for X): `resources.md` is the human-readable catalog of all known MEGA65 resources.
 4. **Only then web-search** — and say clearly that the wiki didn't cover it. When a search produces a genuinely useful new source, close the loop: `/pin-llm-wiki queue <url>` so the next session gets it for free.
 
@@ -46,8 +46,6 @@ raw/
     MEGA65-mega65-user-guide/  ← full clone: greppable LaTeX source of all 5 official books
   youtube/          ← immutable YouTube video captures (transcript + metadata)
   web/              ← immutable web page/site captures
-  assets/           ← official PDF books (User's Guide, BASIC 65 Ref, Dev Guide,
-                       Chipset Ref, Compendium); index in raw/assets/README.md
 
 inbox.md            ← agents may add to ## Pending via `queue`; all other edits are human-driven
 .pin-llm-wiki.yml   ← config (detail level, source types, lint cadence, etc.)
