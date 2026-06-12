@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/dansanderson/easyasm65
 tags: [on-device-assembler, 45gs02, acme-syntax, screen-editor, edit-mode, basic-integration]
-related: [dansanderson.com, MEGA65-mega65-code-snippets, dansanderson-tpn65]
+related: [dansanderson.com, MEGA65-mega65-code-snippets, dansanderson-tpn65, dansanderson-joytest65]
 product: easyasm
 detail_level: standard
 created: 2026-06-10

@@ -20,7 +20,6 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 <!-- Websites -->
 
 <!-- GitHub repos -->
-- [ ] https://github.com/dansanderson/joytest65 <!-- detail:brief --> <!-- note: joystick/paddle tester; documents CIA $DC00/$DC01 register bits and assembly read patterns -->
 - [ ] https://github.com/dansanderson/mega65-pcfonts <!-- detail:brief --> <!-- note: 43 Oldschool PC fonts converted to MEGA65 TCR format; documents Tall Character mode usage -->
 - [ ] https://github.com/cc65/cc65 <!-- note: official cc65 cross-compiler suite; cited in [[dansanderson.com]] cross-development series for MEGA65/C65 (Dan also maintains a personal fork with extra commits) -->
 - [ ] https://github.com/dansanderson/bf-mega65 <!-- detail:brief --> <!-- note: 45GS02 Brainf*ck interpreter example; already in resources.md -->
@@ -72,6 +71,7 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://github.com/dansanderson/dis65 <!-- note: 6502/65C02/65CE02/45GS02 disassembler; PRG-aware, acme/kickass output; complements m65dbg and cross-dev workflow --> <!-- ingested 2026-06-12 -->
 - [x] https://github.com/dansanderson/tpn65 <!-- note: host-side BASIC 65 cross-transpiler (Eleven-like: labels, long names, optional line numbers); unique dev path not covered elsewhere in wiki --> <!-- ingested 2026-06-12 -->
 - [x] https://github.com/dansanderson/homebrew-mega65 <!-- detail:brief --> <!-- note: brew tap for mega65-m65connect + mega65-xemu on macOS; practical onboarding complement to retrocombs Xemu guides --> <!-- ingested 2026-06-12 -->
+- [x] https://github.com/dansanderson/joytest65 <!-- detail:brief --> <!-- note: joystick/paddle tester; documents CIA $DC00/$DC01 register bits and assembly read patterns --> <!-- ingested 2026-06-12 -->
 
 <!-- Processed lines are moved here automatically.
      Format after ingest: - [x] https://... with an "ingested YYYY-MM-DD" HTML comment appended.
