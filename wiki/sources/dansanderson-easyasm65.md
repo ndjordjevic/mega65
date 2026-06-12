@@ -2,11 +2,11 @@
 type: source
 source_url: https://github.com/dansanderson/easyasm65
 tags: [on-device-assembler, 45gs02, acme-syntax, screen-editor, edit-mode, basic-integration]
-related: [dansanderson.com, MEGA65-mega65-code-snippets]
+related: [dansanderson.com, MEGA65-mega65-code-snippets, dansanderson-tpn65]
 product: easyasm
 detail_level: standard
 created: 2026-06-10
-updated: 2026-06-10
+updated: 2026-06-12
 ---
 
 EasyAsm by Dan Sanderson — an on-device 45GS02 assembler that turns the MEGA65 itself into a complete assembly development environment, using the machine's own screen editor and OS. The raw capture embeds the full README, which is the complete EasyAsm manual. The on-device counterpart to the cross-development workflows of [[dansanderson.com]] and [[wiebow.mega65.com]].

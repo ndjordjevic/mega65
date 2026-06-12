@@ -15,3 +15,4 @@ Immutable GitHub repo captures. Written by the fetch step; never edited manually
 | raw/github/MEGA65-mega65-core.md | MEGA65/mega65-core | 284 | development | release-0.97.2 | 2026-06-10 | brief |
 | raw/github/MEGA65-m65dbg.md | MEGA65/m65dbg | 13 | master | none | 2026-06-12 | |
 | raw/github/dansanderson-dis65.md | dansanderson/dis65 | 0 | main | none | 2026-06-12 | PRG-aware disassembler; ACME/KickAss output |
+| raw/github/dansanderson-tpn65.md | dansanderson/tpn65 | 0 | main | none | 2026-06-12 | |

@@ -31,5 +31,6 @@ created: 2026-06-10
 | [[commodore-65-wikipedia]] | web | standard | 2026-06-11 | C65 prototype history + specs (background) |
 | [[MEGA65-m65dbg]] | github | standard | 2026-06-12 | symbolic debugger; breakpoints, step-through, serial/xemu |
 | [[dansanderson-dis65]] | github | standard | 2026-06-12 | PRG-aware disassembler; ACME/KickAss output |
+| [[dansanderson-tpn65]] | github | standard | 2026-06-12 | Eleven-like BASIC 65 cross-transpiler; petcat-ready host workflow |
 
-_19 sources ingested._
+_20 sources ingested._

@@ -2,7 +2,7 @@
 type: source
 source_url: https://dansanderson.com/mega65/
 tags: [mega65-welcome-guide, cross-development, 45gs02-assembly, acme-assembler, basic-65, xemu, sd-card-setup, mega65-digest, vic-iv, rrb, petscii, sid, kernal, calypsi-c, llvm-mos]
-related: [mega65.org, retrocogs.mega65.com, wiebow.mega65.com, dansanderson-easyasm65, RetroCogs-Mega65Tutorials, dansanderson-dis65]
+related: [mega65.org, retrocogs.mega65.com, wiebow.mega65.com, dansanderson-easyasm65, RetroCogs-Mega65Tutorials, dansanderson-dis65, dansanderson-tpn65]
 product: dansanderson
 detail_level: deep
 created: 2026-06-10
