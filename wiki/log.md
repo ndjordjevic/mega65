@@ -10,6 +10,14 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-12 | refresh | mega65.atlassian.net | expanded from brief to full section + page index
+
+- Previous: top-level nav only (overview page, partially blocked by Confluence JS rendering)
+- Method: Confluence REST API (anonymous) — fetched child pages per section reliably where HTML rendering failed
+- Created: raw/web/mega65.atlassian.net/space-structure.md (full page index: 9 sections, 66+ pages with IDs + URLs)
+- Updated: wiki/sources/mega65.atlassian.net.md → complete index with per-section tables and 1–2 sentence description per page
+- Updated: wiki/index.md (detail_level: brief → standard)
+
 ## 2026-06-11 | ingest | commodore-65-wikipedia | C65 prototype history + specs (background reference)
 
 - From dansanderson.com intro-paragraph link audit; user requested ingest

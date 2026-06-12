@@ -18,7 +18,7 @@ created: 2026-06-10
 | [[retrocogs.mega65.com]] | web | standard | 2026-06-10 | refreshed 2026-06-11: 5 VIC-IV posts |
 | [[wiebow.mega65.com]] | web | standard | 2026-06-10 | refreshed 2026-06-11: 3 posts (cross-dev pipeline) |
 | [[files.mega65.org]] | web | brief | 2026-06-10 | |
-| [[mega65.atlassian.net]] | web | brief | 2026-06-10 | |
+| [[mega65.atlassian.net]] | web | standard | 2026-06-10 | refreshed 2026-06-12: full section + page index (66+ pages) |
 | [[c64-wiki.com]] | web | brief | 2026-06-10 | |
 | [[MEGA65-mega65-user-guide]] | github | deep | 2026-06-10 | full clone; greppable spec |
 | [[RetroCogs-Mega65Tutorials]] | github | deep | 2026-06-10 | |
