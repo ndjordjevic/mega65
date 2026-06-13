@@ -10,6 +10,13 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-13 | ingest | c65gs.blogspot.com | creator's dev blog — full index of all 427 posts (2014→2026); C65GS bring-up → MEGAphone
+
+- Created: wiki/sources/c65gs.blogspot.com.md (index of 427 posts; title + date + 1-line gloss each, grouped by year)
+- Raw: raw/web/c65gs.blogspot.com.md (Blogger feed API capture — summary feed, paginated over all 427 entries)
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/web/README.md, inbox.md
+- Restructure (slug collision): the previous `c65gs.blogspot.com` page was a single full post (MK-II keyboard rationale), not the blog. Renamed it → `c65gs-mk-ii-keyboard` so the domain slug can own the blog index. Renamed wiki/sources/c65gs.blogspot.com.md → wiki/sources/c65gs-mk-ii-keyboard.md and raw/web/c65gs.blogspot.com.md → raw/web/c65gs-mk-ii-keyboard.md; rewired raw_files/banner/product/related, plus [[c65gs.blogspot.com]] references in wiki/index.md, wiki/overview.md, raw/web/README.md, and the related: list in MEGA65-mega65-kbd-pcb.
+
 ## 2026-06-13 | ingest | m-e-g-a.org | German museum org (MEGA eV); MEGA65 community hub; MegaSPUTM SCUMM engine (ki-bo/megasputm); Maniac Mansion + Monkey Island
 
 - Created: wiki/sources/m-e-g-a.org.md

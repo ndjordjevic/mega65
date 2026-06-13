@@ -59,8 +59,9 @@ created: 2026-06-10
 | [[Edilbert-BSA]] | github | standard | 2026-06-12 | Bit Shifter Assembler for 6502/65C02/45GS02; single-file C, Unlicense, MEGA65/BSA upstream |
 | [[sy2002-MiSTer2MEGA65]] | github | standard | 2026-06-13 | FPGA core-porting framework; QNICE SoC; reference impl is C64MEGA65 |
 | [[MEGA65-mega65-kbd-pcb]] | github | standard | 2026-06-13 | MK-II keyboard PCB (6 I2C IO expanders, NKRO, Cherry MX); KiCad design; chip-shortage redesign of MK-I |
-| [[c65gs.blogspot.com]] | web | standard | 2026-06-13 | creator's design-rationale post for MK-II keyboard (Chipaggedon, I2C choice, NKRO); unified with mega65-kbd-pcb |
+| [[c65gs-mk-ii-keyboard]] | web | standard | 2026-06-13 | creator's design-rationale post for MK-II keyboard (Chipaggedon, I2C choice, NKRO); unified with mega65-kbd-pcb |
 | [[9Ib7z64z9N4-mister2mega65-explained]] | youtube | standard | 2026-06-13 | Oliver Graf explainer: FPGA basics, MEGA65 vs MiSTer, M2M framework, QNICE, early C64 core demo |
 | [[m-e-g-a.org]] | web | standard | 2026-06-13 | German museum org; MEGA65 community hub; MegaSPUTM SCUMM engine (Maniac Mansion/Monkey Island on MEGA65) |
+| [[c65gs.blogspot.com]] | web | standard | 2026-06-13 | creator's dev blog — index of all 427 posts (2014→2026, C65GS bring-up → MEGAphone); Blogger feed API |
 
-_50 sources ingested._
+_51 sources ingested._

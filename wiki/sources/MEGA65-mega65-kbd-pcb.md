@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/MEGA65/mega65-kbd-pcb
 tags: [keyboard, pcb-design, kicad, hardware, i2c, nkro, mk-ii, cherry-mx, open-hardware]
-related: [MEGA65-mega65-core, c65gs.blogspot.com]
+related: [MEGA65-mega65-core, c65gs-mk-ii-keyboard]
 product: mega65-kbd-pcb
 detail_level: standard
 created: 2026-06-13
