@@ -2,7 +2,7 @@
 type: source
 source_url: https://github.com/sy2002/MiSTer2MEGA65
 tags: [mister2mega65, fpga-porting, vhdl, qnice, core-framework, mister, artix-7, vivado]
-related: [MEGA65-mega65-core]
+related: [MEGA65-mega65-core, 9Ib7z64z9N4-mister2mega65-explained]
 product: mister2mega65
 detail_level: standard
 created: 2026-06-13

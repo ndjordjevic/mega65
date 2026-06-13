@@ -2,7 +2,7 @@
 type: source
 source_url: https://retrocogs.mega65.com/
 tags: [vic-iv, raster-rewrite-buffer, fcm-ncm, seam, software-sprites, pixies, screen-layout, scrolling, hardware-registers, kick-assembler]
-related: [dansanderson.com, wiebow.mega65.com, RetroCogs-Mega65Tutorials]
+related: [dansanderson.com, wiebow.mega65.com, RetroCogs-Mega65Tutorials, m-e-g-a.org]
 product: retrocogs
 detail_level: standard
 created: 2026-06-10

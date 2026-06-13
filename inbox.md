@@ -22,14 +22,11 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 <!-- GitHub repos -->
 
 <!-- MEGA65 org — originals only (org forks skipped; upstream queued separately where noted) -->
-- [ ] https://github.com/MEGA65/mega65-kbd-pcb  <!-- note: MK-II keyboard PCB design — six I2C IO expanders (current R6 keyboard). Found during Lesson-01 accuracy audit. -->
-- [ ] https://c65gs.blogspot.com/2022/10/mega65-mk-ii-keyboard-pcb-design.html  <!-- note: creator's MK-II keyboard redesign story (why the Lattice CPLD was dropped). Companion to mega65-kbd-pcb. -->
 
 <!-- YouTube: playlists are not ingestible — expand first, then queue picked videos here.
      yt-dlp --flat-playlist --print "https://www.youtube.com/watch?v=%(id)s  # %(title)s" "https://www.youtube.com/playlist?list=PLPehmjqZolWArdt53pl1QyJurZDu3oJKy"
      yt-dlp --flat-playlist --print "https://www.youtube.com/watch?v=%(id)s  # %(title)s" "https://www.youtube.com/playlist?list=PLRVBh2hjFTomDGwIT7uPMJv4zH9JAUSVG"
 -->
-- [ ] https://www.youtube.com/watch?v=9Ib7z64z9N4  <!-- note: "MiSTer2MEGA65 Explained" (Oliver Graf, 18:52). First ~7 min = clearest spoken "what is an FPGA / MEGA65-as-core"; rest = porting MiSTer cores. Transcript-verified. -->
 
 
 ## Completed
@@ -77,6 +74,10 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://github.com/MEGA65/mega-basic64 <!-- detail:brief --> <!-- note: experimental MEGA65-extended C64 BASIC 2 (256-colour text, tiles/canvases); team testbed, not shipping ROM --> <!-- ingested 2026-06-12 -->
 - [x] https://github.com/Edilbert/BSA <!-- note: upstream of MEGA65/BSA fork — Bit Shifter Assembler for 6502/65C02/45GS02; listed in [[MEGA65-mega65-code-snippets]] --> <!-- ingested 2026-06-12 -->
 - [x] https://github.com/sy2002/MiSTer2MEGA65 <!-- ingested 2026-06-13 -->
+- [x] https://github.com/MEGA65/mega65-kbd-pcb  <!-- note: MK-II keyboard PCB design — six I2C IO expanders (current R6 keyboard). Found during Lesson-01 accuracy audit. --> <!-- ingested 2026-06-13 -->
+- [x] https://c65gs.blogspot.com/2022/10/mega65-mk-ii-keyboard-pcb-design.html  <!-- note: creator's MK-II keyboard redesign story (why the Lattice CPLD was dropped). Companion to mega65-kbd-pcb. --> <!-- ingested 2026-06-13 -->
+- [x] https://www.youtube.com/watch?v=9Ib7z64z9N4  <!-- note: "MiSTer2MEGA65 Explained" (Oliver Graf, 18:52). First ~7 min = clearest spoken "what is an FPGA / MEGA65-as-core"; rest = porting MiSTer cores. Transcript-verified. --> <!-- ingested 2026-06-13 -->
+- [x] https://www.m-e-g-a.org/  <!-- ingested 2026-06-13 -->
 
 <!-- Processed lines are moved here automatically.
      Format after ingest: - [x] https://... with an "ingested YYYY-MM-DD" HTML comment appended.

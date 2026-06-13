@@ -10,6 +10,27 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-13 | ingest | m-e-g-a.org | German museum org (MEGA eV); MEGA65 community hub; MegaSPUTM SCUMM engine (ki-bo/megasputm); Maniac Mansion + Monkey Island
+
+- Created: wiki/sources/m-e-g-a.org.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/web/README.md, inbox.md
+
+## 2026-06-13 | ingest | 9Ib7z64z9N4-mister2mega65-explained | Oliver Graf explainer: FPGA basics, MEGA65 vs MiSTer, M2M framework, QNICE, early C64 core alpha demo
+
+- Created: wiki/sources/9Ib7z64z9N4-mister2mega65-explained.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/youtube/README.md, inbox.md
+
+## 2026-06-13 | ingest | c65gs.blogspot.com | MK-II keyboard redesign rationale; Chipaggedon; I2C IO expander choice; unified with MEGA65-mega65-kbd-pcb
+
+- Created: wiki/sources/c65gs.blogspot.com.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/web/README.md, raw/github/README.md, inbox.md
+- Companion: raw/github/MEGA65-mega65-kbd-pcb.md
+
+## 2026-06-13 | ingest | MEGA65-mega65-kbd-pcb | MK-II keyboard PCB design; I2C IO expanders replacing Lattice FPGA; KiCad project; CC-BY-SA 4.0
+
+- Created: wiki/sources/MEGA65-mega65-kbd-pcb.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
 ## 2026-06-13 | ingest | sy2002-MiSTer2MEGA65 | FPGA core-porting framework (MiSTer → MEGA65); QNICE SoC replaces ARM/Linux HPS; Ultimate Porting Guide wiki
 
 - Created: wiki/sources/sy2002-MiSTer2MEGA65.md

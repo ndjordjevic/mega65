@@ -14,3 +14,5 @@ Immutable web page/site captures. Written by the fetch step; never edited manual
 | raw/web/files.mega65.org.md | files.mega65.org | 1 | 2026-06-10 | |
 | raw/web/mega65.atlassian.net.md | mega65.atlassian.net | 1 | 2026-06-10 | |
 | raw/web/c64-wiki.com.md | c64-wiki.com | 1 | 2026-06-10 | |
+| raw/web/c65gs.blogspot.com.md | c65gs.blogspot.com | 2 | 2026-06-13 | companion: MEGA65-mega65-kbd-pcb |
+| raw/web/m-e-g-a.org.md | m-e-g-a.org | 3 | 2026-06-13 | |
