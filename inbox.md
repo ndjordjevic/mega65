@@ -77,7 +77,7 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://github.com/MEGA65/mega65-kbd-pcb  <!-- note: MK-II keyboard PCB design — six I2C IO expanders (current R6 keyboard). Found during Lesson-01 accuracy audit. --> <!-- ingested 2026-06-13 -->
 - [x] https://c65gs.blogspot.com/2022/10/mega65-mk-ii-keyboard-pcb-design.html  <!-- note: creator's MK-II keyboard redesign story (why the Lattice CPLD was dropped). Companion to mega65-kbd-pcb. --> <!-- ingested 2026-06-13 -->
 - [x] https://www.youtube.com/watch?v=9Ib7z64z9N4  <!-- note: "MiSTer2MEGA65 Explained" (Oliver Graf, 18:52). First ~7 min = clearest spoken "what is an FPGA / MEGA65-as-core"; rest = porting MiSTer cores. Transcript-verified. --> <!-- ingested 2026-06-13 -->
-- [x] https://www.m-e-g-a.org/  <!-- ingested 2026-06-13 -->
+- [x] https://www.m-e-g-a.org/  <!-- ingested 2026-06-13 --> <!-- updated 2026-06-13: added full blog index, all 117 posts via WP feed -->
 - [x] https://c65gs.blogspot.com/ <!-- note: creator's dev blog — ingested as an INDEX of all 427 posts (title + 1-line gloss each) via Blogger feed API, not full-text. Single full post (MK-II keyboard) is [[c65gs-mk-ii-keyboard]]. --> <!-- ingested 2026-06-13 -->
 
 <!-- Processed lines are moved here automatically.

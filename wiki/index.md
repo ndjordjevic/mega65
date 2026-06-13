@@ -61,7 +61,7 @@ created: 2026-06-10
 | [[MEGA65-mega65-kbd-pcb]] | github | standard | 2026-06-13 | MK-II keyboard PCB (6 I2C IO expanders, NKRO, Cherry MX); KiCad design; chip-shortage redesign of MK-I |
 | [[c65gs-mk-ii-keyboard]] | web | standard | 2026-06-13 | creator's design-rationale post for MK-II keyboard (Chipaggedon, I2C choice, NKRO); unified with mega65-kbd-pcb |
 | [[9Ib7z64z9N4-mister2mega65-explained]] | youtube | standard | 2026-06-13 | Oliver Graf explainer: FPGA basics, MEGA65 vs MiSTer, M2M framework, QNICE, early C64 core demo |
-| [[m-e-g-a.org]] | web | standard | 2026-06-13 | German museum org; MEGA65 community hub; MegaSPUTM SCUMM engine (Maniac Mansion/Monkey Island on MEGA65) |
+| [[m-e-g-a.org]] | web | standard | 2026-06-13 | German museum org; MEGA65 community hub; MegaSPUTM SCUMM engine; indexes all 117 blog posts (2010→2026) |
 | [[c65gs.blogspot.com]] | web | standard | 2026-06-13 | creator's dev blog — index of all 427 posts (2014→2026, C65GS bring-up → MEGAphone); Blogger feed API |
 
 _51 sources ingested._

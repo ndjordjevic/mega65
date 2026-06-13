@@ -10,6 +10,12 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-13 | update | m-e-g-a.org | added full blog index — all 117 posts (2010→2026)
+
+- Updated: wiki/sources/m-e-g-a.org.md (added `## Post index` — 117 posts, title + date + 1-line gloss, grouped by year), raw/web/m-e-g-a.org.md (appended `## Posts (newest first)`)
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/web/README.md, inbox.md
+- Method: WordPress main feed paginated via `/feed/?paged=N` (12 pages; wp-json REST API and XML sitemaps disabled on this old install). Mirrors the c65gs.blogspot.com index approach.
+
 ## 2026-06-13 | ingest | c65gs.blogspot.com | creator's dev blog — full index of all 427 posts (2014→2026); C65GS bring-up → MEGAphone
 
 - Created: wiki/sources/c65gs.blogspot.com.md (index of 427 posts; title + date + 1-line gloss each, grouped by year)

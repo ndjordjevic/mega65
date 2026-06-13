@@ -15,5 +15,5 @@ Immutable web page/site captures. Written by the fetch step; never edited manual
 | raw/web/mega65.atlassian.net.md | mega65.atlassian.net | 1 | 2026-06-10 | |
 | raw/web/c64-wiki.com.md | c64-wiki.com | 1 | 2026-06-10 | |
 | raw/web/c65gs-mk-ii-keyboard.md | c65gs-mk-ii-keyboard | 2 | 2026-06-13 | companion: MEGA65-mega65-kbd-pcb |
-| raw/web/m-e-g-a.org.md | m-e-g-a.org | 3 | 2026-06-13 | |
+| raw/web/m-e-g-a.org.md | m-e-g-a.org | 3 | 2026-06-13 | + 117-post blog index (WP feed, 2026-06-13) |
 | raw/web/c65gs.blogspot.com.md | c65gs.blogspot.com | 427 | 2026-06-13 | blog post index (Blogger feed API; all 427 posts) |
