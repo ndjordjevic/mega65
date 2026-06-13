@@ -22,14 +22,14 @@ _All claims below are sourced from ../../raw/web/wiebow.mega65.com/ unless other
 | Date | Article | Summary |
 |---|---|---|
 | 2023-12-31 | [cross-development.md](../../raw/web/wiebow.mega65.com/cross-development.md) | The full Linux cross-dev pipeline: Kick Assembler 65CE02 fork (`.cpu _45gs02`), `c1541` for D81, Xemu, Sublime + 45GS02 syntax, Ethernet deploy via `mega65_ftp -e` + `etherload -5` (IPv6 link-local), complete `make.sh`, a BASIC-stub test program, Matrix Mode debugging. Concrete commands + code. |
-| 2023-10-21 | [hardware-system-and-concepts.md](../../raw/web/wiebow.mega65.com/hardware-system-and-concepts.md) | The MEGA65's 5 layers (FPGA hardware → cores → HYPPO → ROM → software); the 3 FPGA chips (Artix-7, MAX10, Lattice); 8 core slots (NO SCROLL boot); Hypervisor + Freezer (RESTORE, MEGA Info via HELP); `MEGA65.ROM`. Good newcomer orientation. |
+| 2023-10-21 | [hardware-system-and-concepts.md](../../raw/web/wiebow.mega65.com/hardware-system-and-concepts.md) | The MEGA65's 5 layers (FPGA hardware → cores → HYPPO → ROM → software); 8 core slots (NO SCROLL boot); Hypervisor + Freezer (RESTORE, MEGA Info via HELP); `MEGA65.ROM`. ⚠️ **OBSOLETE HARDWARE — this post describes an R3-era board and claims "3 FPGA chips (Artix-7, MAX10, Lattice)". The current R6 board has exactly ONE FPGA (Artix-7 `XC7A200T`); the MAX10 was removed at R4 and the MK-II keyboard uses plain I2C IO-expanders (no CPLD). Verified against the R6 schematic — see `learning/reference/r6-fpga-count-verification.md` and the [[MEGA65-mega65-user-guide]] R6 appendix. Use this post for the layer/HYPPO/Freezer concepts only, never for chip counts.** |
 | 2023-10-15 | [the-mega-discovery.md](../../raw/web/wiebow.mega65.com/the-mega-discovery.md) | Intro post — the blog's scope and the author's project goals. No technical content. |
 
 ---
 
 ## When to use
 
-The first thing to follow when **standing up your own assembly build pipeline**, especially for the Ethernet-deployment details (IPv6 link-local, the `-5` reboot flag) that other sources gloss over. For the layered hardware/HYPPO/Freezer concepts, the hardware post is a clean overview (cross-check against the official Chipset/Developer references in [[MEGA65-mega65-user-guide]]). Windows users: dirmaster and M65Connect for disk-image management.
+The first thing to follow when **standing up your own assembly build pipeline**, especially for the Ethernet-deployment details (IPv6 link-local, the `-5` reboot flag) that other sources gloss over. For the layered hardware/HYPPO/Freezer concepts, the hardware post is a clean overview — **but its chip counts are R3-era and wrong for R6 (one FPGA, not three); trust [[MEGA65-mega65-user-guide]] R6 appendix for any hardware fact.** Windows users: dirmaster and M65Connect for disk-image management.
 
 ## Ecosystem
 
