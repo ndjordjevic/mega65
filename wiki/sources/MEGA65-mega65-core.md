@@ -2,11 +2,11 @@
 type: source
 source_url: https://github.com/MEGA65/mega65-core
 tags: [fpga-core, vhdl, firmware, bitstream, builder]
-related: [mega65.org, MEGA65-mega65-user-guide, mega65.atlassian.net, MEGA65-open-roms, MEGA65-mega-basic64]
+related: [mega65.org, MEGA65-mega65-user-guide, mega65.atlassian.net, MEGA65-open-roms, MEGA65-mega-basic64, sy2002-MiSTer2MEGA65]
 product: mega65-core
 detail_level: brief
 created: 2026-06-10
-updated: 2026-06-12
+updated: 2026-06-13
 ---
 
 The MEGA65 FPGA core — the VHDL source of the machine itself ("Enhanced C65 running in FPGA"). Captured at brief detail: this wiki tracks it as the upstream of cores/bitstreams and release versions, not as a hardware-design study.

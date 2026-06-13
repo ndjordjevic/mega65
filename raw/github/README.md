@@ -43,3 +43,4 @@ Immutable GitHub repo captures. Written by the fetch step; never edited manually
 | raw/github/MEGA65-c65-specifications.md | MEGA65/c65-specifications | 11 | master | none | 2026-06-12 | |
 | raw/github/MEGA65-mega-basic64.md | MEGA65/mega-basic64 | 13 | master | none | 2026-06-12 | |
 | raw/github/Edilbert-BSA.md | Edilbert/BSA | 33 | master | none | 2026-06-12 | |
+| raw/github/sy2002-MiSTer2MEGA65.md | sy2002/MiSTer2MEGA65 | 40 | master | V2.0.1 | 2026-06-13 | |

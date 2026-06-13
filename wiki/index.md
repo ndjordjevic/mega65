@@ -58,4 +58,6 @@ created: 2026-06-10
 | [[MEGA65-mega-basic64]] | github | brief | 2026-06-12 | experimental MEGA65-extended C64 BASIC 2: 256-colour text, tile canvas system |
 | [[Edilbert-BSA]] | github | standard | 2026-06-12 | Bit Shifter Assembler for 6502/65C02/45GS02; single-file C, Unlicense, MEGA65/BSA upstream |
 
-_45 sources ingested._
+| [[sy2002-MiSTer2MEGA65]] | github | standard | 2026-06-13 | FPGA core-porting framework; QNICE SoC; reference impl is C64MEGA65 |
+
+_46 sources ingested._

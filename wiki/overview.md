@@ -2,7 +2,7 @@
 type: overview
 domain: "MEGA65 retro computer"
 created: 2026-06-10
-updated: 2026-06-12
+updated: 2026-06-13
 sources: []
 ---
 
@@ -95,3 +95,5 @@ The official site [[mega65.org]] establishes the foundation of this domain: the 
 [[MEGA65-mega-basic64]] is an experimental, now-stale (last commit 2019) extension to C64 BASIC 2 adding MEGA65-specific canvas/tile graphics and 256-colour text mode commands (CANVAS, TILE SET, COLOUR, STAMP). It was an early MEGA65 team testbed for exploring VIC-IV graphics from BASIC, showing the tile/canvas design that influenced later MEGA65 feature development. Historical reference rather than active tool.
 
 [[Edilbert-BSA]] is the Bit Shifter Assembler — a single-file C cross-assembler for 6502/65C02/45GS02, released under the Unlicense (public domain). The MEGA65/BSA fork is the version used in official MEGA65 development. BSA occupies the niche of simple, linker-free assembly projects; [[dansanderson-bsa-vscode]] provides VS Code IDE support. [[cc65-cc65]]'s ca65 is the more widely used alternative for projects needing a linker or C compilation.
+
+[[sy2002-MiSTer2MEGA65]] is a GitHub template repository and VHDL framework for porting MiSTer FPGA cores to the MEGA65. MiSTer uses an ARM co-processor running Linux for peripheral I/O (menus, ROM loading, disk mounting); the MEGA65 has none. M2M replaces the ARM/Linux HPS layer with QNICE — a 16-bit SoC that runs on the Artix-7 itself — and provides a complete HDMI pipeline (720p 50/60 Hz), virtual disk drives compatible with MiSTer's sd/img protocol, SD card access, and a configurable on-screen menu. The porting workflow: clone the template, add the MiSTer core as a submodule, implement six VHDL files in `CORE/vhdl/` (main.vhd glue, mega65.vhd wrapper, clk.vhd MMCM clocks, config.vhd menu, globals.vhd constants, keyboard.vhd mapping), and leave `M2M/` untouched. Supports R3 through R6; the reference implementation is the [Commodore 64 for MEGA65](https://github.com/MJoergen/C64MEGA65). The wiki's Ultimate Porting Guide is a 12-phase structured walkthrough with critical traps documented (1.4 MB BRAM budget, PPM-level clock precision, single-line globals.vhd constants for awk scraping). Extends the [[MEGA65-mega65-core]] ecosystem as the entry point for third-party alternate cores.

@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-13 | ingest | sy2002-MiSTer2MEGA65 | FPGA core-porting framework (MiSTer → MEGA65); QNICE SoC replaces ARM/Linux HPS; Ultimate Porting Guide wiki
+
+- Created: wiki/sources/sy2002-MiSTer2MEGA65.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/github/README.md, inbox.md
+
 ## 2026-06-12 | ingest | Edilbert-BSA | Bit Shifter Assembler for 6502/65C02/45GS02; single-file C, MEGA65/BSA upstream
 
 - Created: wiki/sources/Edilbert-BSA.md
