@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 01 — What a MEGA65 Physically Is</title>
+<style>
+  :root{
+    --ink:#1a1a17; --paper:#fdfcf8; --rule:#d9d4c5;
+    --accent:#7a1f1f; --soft:#6b6658; --chip:#eef2e9; --chip-b:#bcd0ad;
+    --fpga:#fbe7d6; --fpga-b:#e0a96d; --help:#e8eef5; --help-b:#9fb6d0;
+  }
+  *{box-sizing:border-box}
+  html{font-size:18px}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:48rem; margin:0 auto; padding:3.5rem 1.5rem 6rem}
+  .kicker{font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-family:ui-sans-serif,system-ui,sans-serif; margin:0 0 .4rem}
+  h1{font-size:2.1rem; line-height:1.15; margin:0 0 .3rem; font-weight:600}
+  .sub{color:var(--soft); font-style:italic; margin:0 0 2rem}
+  h2{font-size:1.3rem; margin:2.6rem 0 .6rem; font-weight:600; border-bottom:1px solid var(--rule); padding-bottom:.3rem}
+  p{margin:.7rem 0}
+  a{color:var(--accent)}
+  .lead{font-size:1.12rem}
+  .mission{background:#f4f1e8; border-left:3px solid var(--accent); padding:.8rem 1rem; font-size:.95rem; color:#3a362c; margin:1.4rem 0}
+  strong.key{color:var(--accent)}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin:1rem 0}
+  .card{border:1px solid var(--rule); border-radius:8px; padding:.8rem .9rem; background:#fff}
+  .card h3{margin:.1rem 0 .3rem; font-size:1rem}
+  .card.fpga{background:var(--fpga); border-color:var(--fpga-b)}
+  .card.help{background:var(--help); border-color:var(--help-b)}
+  .small{font-size:.86rem; color:var(--soft)}
+  ul.tight{margin:.4rem 0; padding-left:1.2rem}
+  ul.tight li{margin:.25rem 0}
+  sup.fn{color:var(--accent); font-size:.7rem; font-family:sans-serif}
+  .ports span{display:inline-block; background:#fff; border:1px solid var(--rule); border-radius:999px; padding:.18rem .6rem; margin:.18rem .22rem .18rem 0; font-size:.82rem; font-family:ui-sans-serif,system-ui,sans-serif}
+  figure{margin:1.6rem 0; text-align:center}
+  figcaption{font-size:.82rem; color:var(--soft); margin-top:.5rem; font-style:italic}
+  details{background:#f4f1e8; border:1px solid var(--rule); border-radius:8px; padding:.6rem .9rem; margin:.6rem 0}
+  summary{cursor:pointer; font-weight:600; font-family:ui-sans-serif,system-ui,sans-serif; font-size:.92rem}
+  details p{margin:.5rem 0 0; font-size:.95rem}
+  .src{background:#1a1a17; color:#f3efe4; border-radius:10px; padding:1.1rem 1.2rem; margin:2.2rem 0}
+  .src a{color:#f0c98a}
+  .src .label{font-family:sans-serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:#c9a36a}
+  .watch{border:1px solid var(--rule); border-left:3px solid #cc0000; border-radius:8px; background:#fff; padding:.9rem 1.1rem; margin:1.4rem 0}
+  .watch .vlabel{display:block; font-family:ui-sans-serif,system-ui,sans-serif; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:#cc0000; font-weight:700}
+  .watch .vtitle{display:inline-block; margin:.25rem 0 .4rem; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.86rem}
+  .ask{font-family:ui-sans-serif,system-ui,sans-serif; font-size:.9rem; background:#eef2e9; border:1px dashed var(--chip-b); border-radius:8px; padding:.8rem 1rem; margin:1.4rem 0}
+  nav.foot{display:flex; justify-content:space-between; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--rule); font-family:sans-serif; font-size:.85rem}
+  .muted{color:#aaa}
+  .diagram-wrap{overflow-x:auto}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="kicker">MEGA65 Hardware &amp; FPGA · Lesson 01</p>
+  <h1>What a MEGA65 <em>physically</em> is</h1>
+  <p class="sub">The one idea that makes every later lesson click: the chips aren't chips.</p>
+
+  <div class="mission">
+    <strong>Why this lesson:</strong> your mission is to understand the MEGA65 from the silicon up, ending in
+    reading and writing the gateware. You can't read gateware until you know <em>what the gate-array is pretending to be</em>.
+    Today's win: <strong>draw the MEGA65 block diagram from memory.</strong>
+  </div>
+
+  <p class="lead">A 1991 Commodore 65 had a circuit board strewn with a dozen custom chips —
+  a CPU, a video chip, sound chips — each one permanently etched in silicon.<sup class="fn">1</sup>
+  The MEGA65 recreates that whole machine, but with almost none of those chips present.
+  Instead, one modern programmable chip <em>becomes</em> all of them.</p>
+
+  <h2>The core idea: gateware, not silicon</h2>
+  <p>At the center of the board sits a <strong class="key">Xilinx Artix-7 FPGA</strong> — a
+  <em>field-programmable gate array</em>. An FPGA is a sea of logic gates whose wiring is decided by a
+  configuration file, not by the factory. Load a different file and the same physical chip behaves like
+  completely different hardware.<sup class="fn">1</sup></p>
+  <p>So the MEGA65's CPU, video chip, and sound chips are not parts you could desolder. They are
+  <strong class="key">descriptions</strong> — written in a hardware description language (VHDL) — that the
+  Artix-7 turns into live digital logic when it powers on. That description is the <em>core</em> (the gateware).
+  This is the whole reason your end-goal — reading and writing that VHDL — is even possible.</p>
+
+  <h2>FPGAs on the board: one</h2>
+  <p>On the <strong class="key">current production board — R6, shipping since 2024</strong> — there is
+  <strong class="key">exactly one FPGA</strong>: the Artix-7.<sup class="fn">3</sup> Everything else on the board is
+  ordinary fixed-function electronics.</p>
+  <div class="card fpga">
+    <h3>Xilinx Artix-7 — the machine</h3>
+    <p class="small">Runs the core that implements the entire C65-class chipset. "The MEGA65 core" = the configuration file loaded into this chip at power-on. It's the one device on the board that runs gateware — everything else is fixed-function silicon.<sup class="fn">3</sup></p>
+  </div>
+  <div class="card">
+    <h3>Takeaway</h3>
+    <p class="small"><strong>Every line of gateware in a current MEGA65 lives in one repo:</strong>
+    <a href="https://github.com/MEGA65/mega65-core">mega65-core</a> (VHDL, built with Xilinx Vivado).
+    One chip, one codebase — that's the whole target of your journey.</p>
+  </div>
+  <p class="small"><strong>Check your own unit:</strong> freeze the machine (<strong>RESTORE</strong>, long press) and press
+  <strong>HELP</strong> — the <em>MEGA Info</em> tool reports your board revision, core and ROM versions.<sup class="fn">4</sup></p>
+
+  <h2>What the Artix-7 turns into</h2>
+  <p>Inside that one chip, the core implements the custom devices that <em>would</em> have been separate silicon:<sup class="fn">2</sup></p>
+  <ul class="tight">
+    <li><strong>45GS02</strong> — the CPU (an extended 6502-family processor), ~40× the speed of a C64.</li>
+    <li><strong>VIC-IV</strong> — the video chip; drives VGA and HDMI output.</li>
+    <li><strong>4× SID</strong> — the sound chips (the legendary Commodore sound, four-fold).</li>
+    <li><strong>45E100</strong> — a fast Ethernet controller.</li>
+  </ul>
+  <p class="small">We'll devote a later lesson to each. Today they're just labels inside the box.</p>
+
+  <h2>The board: a block diagram</h2>
+  <figure>
+   <div class="diagram-wrap">
+    <svg width="620" height="430" viewBox="0 0 620 430" role="img" aria-label="MEGA65 board block diagram" font-family="ui-sans-serif,system-ui,sans-serif">
+      <!-- board -->
+      <rect x="8" y="8" width="604" height="414" rx="14" fill="#fff" stroke="#bcae8a" stroke-width="2"/>
+      <text x="20" y="30" font-size="12" fill="#8a8060">MEGA65 mainboard — R6, current production (Trenz TE0765)</text>
+
+      <!-- Artix-7 with chipset inside -->
+      <rect x="150" y="70" width="320" height="210" rx="10" fill="#fbe7d6" stroke="#e0a96d" stroke-width="2"/>
+      <text x="310" y="92" font-size="14" font-weight="700" text-anchor="middle" fill="#9a5a1d">Xilinx Artix-7 FPGA — runs the core</text>
+      <rect x="172" y="108" width="130" height="48" rx="6" fill="#eef2e9" stroke="#bcd0ad"/>
+      <text x="237" y="130" font-size="12.5" font-weight="700" text-anchor="middle">45GS02</text>
+      <text x="237" y="146" font-size="10.5" text-anchor="middle" fill="#6b6658">CPU</text>
+      <rect x="318" y="108" width="130" height="48" rx="6" fill="#eef2e9" stroke="#bcd0ad"/>
+      <text x="383" y="130" font-size="12.5" font-weight="700" text-anchor="middle">VIC-IV</text>
+      <text x="383" y="146" font-size="10.5" text-anchor="middle" fill="#6b6658">video</text>
+      <rect x="172" y="170" width="130" height="48" rx="6" fill="#eef2e9" stroke="#bcd0ad"/>
+      <text x="237" y="192" font-size="12.5" font-weight="700" text-anchor="middle">4× SID</text>
+      <text x="237" y="208" font-size="10.5" text-anchor="middle" fill="#6b6658">sound</text>
+      <rect x="318" y="170" width="130" height="48" rx="6" fill="#eef2e9" stroke="#bcd0ad"/>
+      <text x="383" y="192" font-size="12.5" font-weight="700" text-anchor="middle">45E100</text>
+      <text x="383" y="208" font-size="10.5" text-anchor="middle" fill="#6b6658">ethernet</text>
+      <text x="310" y="250" font-size="10.5" text-anchor="middle" fill="#9a5a1d" font-style="italic">…all described in VHDL (the gateware)</text>
+
+      <!-- keyboard interface -->
+      <rect x="34" y="150" width="104" height="54" rx="8" fill="#e8eef5" stroke="#9fb6d0"/>
+      <text x="86" y="174" font-size="11" font-weight="700" text-anchor="middle">keyboard</text>
+      <text x="86" y="190" font-size="9" text-anchor="middle" fill="#6b6658">I2C IO expanders</text>
+
+      <!-- memory + storage -->
+      <rect x="488" y="114" width="98" height="62" rx="8" fill="#f1ecdd" stroke="#cabf97"/>
+      <text x="537" y="138" font-size="10.5" font-weight="700" text-anchor="middle">Attic RAM</text>
+      <text x="537" y="155" font-size="9" text-anchor="middle" fill="#6b6658">8 MiB (64 MiB chip)</text>
+      <rect x="488" y="186" width="98" height="50" rx="8" fill="#f1ecdd" stroke="#cabf97"/>
+      <text x="537" y="208" font-size="11" font-weight="700" text-anchor="middle">SD ×2</text>
+      <text x="537" y="223" font-size="9.5" text-anchor="middle" fill="#6b6658">full-size + micro</text>
+
+      <!-- connectors -->
+      <line x1="138" y1="177" x2="150" y2="170" stroke="#9fb6d0" stroke-width="2"/>
+      <line x1="470" y1="145" x2="488" y2="145" stroke="#cabf97" stroke-width="2"/>
+      <line x1="470" y1="190" x2="488" y2="211" stroke="#cabf97" stroke-width="2"/>
+
+      <!-- ports row -->
+      <text x="310" y="318" font-size="12" text-anchor="middle" fill="#8a8060">External ports (what you can attach)</text>
+      <g font-size="10.5" text-anchor="middle">
+        <rect x="40" y="332" width="78" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="79" y="351">power</text>
+        <rect x="126" y="332" width="86" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="169" y="351">cartridge</text>
+        <rect x="220" y="332" width="60" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="250" y="351">IEC</text>
+        <rect x="288" y="332" width="92" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="334" y="351">VGA + HDMI</text>
+        <rect x="388" y="332" width="78" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="427" y="351">ethernet</text>
+        <rect x="474" y="332" width="64" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="506" y="351">audio</text>
+        <rect x="206" y="372" width="120" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="266" y="391">2× DE-9 joystick</text>
+        <rect x="334" y="372" width="96" height="30" rx="6" fill="#fff" stroke="#d9d4c5"/><text x="382" y="391">microSD</text>
+      </g>
+    </svg>
+   </div>
+    <figcaption>The current (R6) board: one Artix-7 <em>becomes</em> the chipset; the keyboard hangs off plain I2C expanders; RAM, SD, and the back-panel ports surround it. Redraw this from memory to complete the lesson.</figcaption>
+  </figure>
+
+  <h2>The ports — your attach points</h2>
+  <p>A mix of modern and 1980s-familiar connectors.<sup class="fn">1</sup> These are the boundary between the FPGA-world inside and the real world:</p>
+  <p class="ports">
+    <span>barrel-jack power</span><span>C64 cartridge port</span><span>IEC serial (disk drives)</span>
+    <span>VGA</span><span>HDMI</span><span>Ethernet</span><span>microSD</span><span>stereo audio</span>
+    <span>2× DE-9 (joystick / paddle / mouse)</span>
+  </p>
+  <p><strong>Memory &amp; storage:</strong> <strong class="key">8&nbsp;MiB of "Attic RAM"</strong> provides the extra memory
+  beyond the C65's — backed by a 64&nbsp;MiB SDRAM chip on R6, of which 8&nbsp;MiB is currently
+  mapped and accessible to software.<sup class="fn">4</sup>
+  Storage: two SD slots — an internal full-size SD pre-populated at the factory, and a rear microSD;
+  only one is used at a time (the rear card, if present, wins).<sup class="fn">4</sup></p>
+
+  <h2>Check yourself (retrieval practice)</h2>
+  <p class="small">Answer out loud <em>before</em> opening each — effortful recall is what makes it stick.</p>
+  <details><summary>How many FPGAs are on the R6 board, and which one?</summary>
+    <p>One — the <strong>Xilinx Artix-7</strong> (part XC7A200T), which <em>is</em> the computer. Everything else on the board is fixed-function silicon.</p></details>
+  <details><summary>Why can't you point to "the CPU chip" on the board?</summary>
+    <p>Because the CPU (45GS02) isn't a physical chip — it's VHDL gateware running <em>inside</em> the Artix-7 FPGA. The same is true of the VIC-IV, the SIDs, and the 45E100.</p></details>
+  <details><summary>Name the four custom devices the Artix-7 implements.</summary>
+    <p>45GS02 (CPU), VIC-IV (video), 4× SID (sound), 45E100 (ethernet).</p></details>
+  <details><summary>Where does <em>all</em> the gateware of a current MEGA65 live?</summary>
+    <p>In one repo: <strong>mega65-core</strong> — the VHDL that gets built (with Xilinx Vivado) into the configuration loaded onto the Artix-7. That single codebase is the end-goal of this learning track.</p></details>
+
+  <div class="src">
+    <p class="label">Primary source — read this next</p>
+    <p style="margin:.3rem 0 0"><a href="https://github.com/MEGA65/mega65-user-guide">MEGA65 User's Guide</a> — the hardware reference and its <strong>R6 “Model Specific Features” appendix</strong>, backed by the Trenz <strong>TE0765-06</strong> R6 board schematic.</p>
+    <p class="small" style="color:#cabf97">The authority for every hardware fact in this lesson — one FPGA, 64&nbsp;MiB SDRAM — and specific to the current board, not a blend of revisions. In-repo proof of the one-FPGA finding: <a href="../reference/r6-fpga-count-verification.md">r6-fpga-count-verification</a>.</p>
+  </div>
+
+  <div class="watch">
+    <span class="vlabel">▶ Watch — “MiSTer2MEGA65 Explained” · Oliver Graf · 18:52</span>
+    <a class="vtitle" href="https://www.youtube.com/watch?v=9Ib7z64z9N4">youtube.com/watch?v=9Ib7z64z9N4</a>
+    <p class="small">Watch the <strong>first ~7 minutes</strong> for this lesson: in his words, an FPGA is
+    “a chip that can be changed… logical elements, flip-flops and memory cells which can be connected and
+    reconfigured,” and the MEGA65 “is an FPGA core” running an enhanced C65 with a more-advanced (non-6502) CPU.
+    That's exactly today's "one chip becomes the chipset" idea, shown out loud.
+    <br><span style="color:var(--soft)">The rest of the video is about <em>porting other FPGA cores</em> (MiSTer → MEGA65) — save that for your later core-development goal; it's beyond Lesson 01.</span>
+    <br><span style="color:var(--soft)">✓ Verified against the actual transcript, not just the title.</span></p>
+  </div>
+
+  <div class="ask">
+    💬 <strong>I'm your teacher — ask me anything.</strong> Stuck on what an FPGA actually is at the gate level?
+    Want the C65 history? Curious how a "soft" chip can be as fast as silicon? Just ask in chat before moving on.
+  </div>
+
+  <p class="small">↪ See the running <a href="../reference/glossary.html">Glossary</a> for every term in bold.</p>
+
+  <nav class="foot">
+    <span class="muted">◀ (start)</span>
+    <span>Lesson 01 of the MEGA65 Hardware track</span>
+    <span class="muted">Next: <em>02 — What an FPGA really is</em> ▶</span>
+  </nav>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:2.5rem 0 1rem">
+  <p class="small">
+    <strong>Footnotes / sources.</strong>
+    <sup class="fn">1</sup> <a href="https://github.com/MEGA65/mega65-user-guide">MEGA65 User's Guide</a> — getting-started &amp; hardware reference (the C65's custom chipset, the FPGA, the board's ports and storage).
+    <sup class="fn">2</sup> Chip names from the MEGA65 User's Guide &amp; C65 specifications (see <a href="../RESOURCES.md">RESOURCES.md</a>); speed figure from the repo Hardware Reference.
+    <sup class="fn">3</sup> MEGA65 User's Guide, R6 target appendix: the Artix-7 is the sole FPGA. Keyboard read through six I2C IO-expander chips — <a href="https://c65gs.blogspot.com/2022/10/mega65-mk-ii-keyboard-pcb-design.html">c65gs — Keyboard PCB Design</a> and <a href="https://github.com/MEGA65/mega65-kbd-pcb">MEGA65/mega65-kbd-pcb</a>.
+    <sup class=”fn”>4</sup> <a href=”https://github.com/MEGA65/mega65-user-guide”>MEGA65 User's Guide</a>: memory-map appendix (“8MB ATTIC RAM”) and R4+ target appendix (64&nbsp;MiB SDRAM added; only 8&nbsp;MiB currently mapped as Attic RAM at $8000000–$87FFFFF); configuring chapter (two SD slots, internal full-size pre-installed, rear microSD overrides it; one used at a time); freezer chapter (freeze → HELP → MEGA Info reports board revision, core and ROM versions).
+  </p>
+
+</div>
+</body>
+</html>

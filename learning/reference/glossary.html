@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MEGA65 Hardware &amp; FPGA — Glossary</title>
+<style>
+  :root{--ink:#1a1a17;--paper:#fdfcf8;--rule:#d9d4c5;--accent:#7a1f1f;--soft:#6b6658}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.5}
+  .page{max-width:44rem;margin:0 auto;padding:3rem 1.5rem 5rem}
+  .kicker{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-family:ui-sans-serif,system-ui,sans-serif;margin:0 0 .4rem}
+  h1{font-size:1.9rem;margin:0 0 .3rem;font-weight:600}
+  .sub{color:var(--soft);font-style:italic;margin:0 0 2rem}
+  h2{font-size:1.05rem;font-family:ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:2rem 0 .5rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+  dl{margin:0}
+  dt{font-weight:700;margin:1.1rem 0 .15rem;font-size:1.02rem}
+  dd{margin:0 0 .2rem;color:#2c2920}
+  .avoid{font-size:.82rem;color:var(--soft);font-style:italic;font-family:ui-sans-serif,system-ui,sans-serif}
+  .home{font-family:sans-serif;font-size:.85rem;margin-top:2.5rem;border-top:1px solid var(--rule);padding-top:1rem}
+  a{color:var(--accent)}
+  @media print{body{background:#fff}.home{display:none}}
+</style>
+</head>
+<body>
+<div class="page">
+  <p class="kicker">MEGA65 Hardware &amp; FPGA</p>
+  <h1>Glossary</h1>
+  <p class="sub">The canonical vocabulary for this learning track. Every lesson uses these words, in these senses.</p>
+
+  <h2>The big three concepts</h2>
+  <dl>
+    <dt>FPGA</dt>
+    <dd>A <em>field-programmable gate array</em>: a chip full of logic gates whose interconnection is set by a configuration file, so one physical chip can become many different hardware designs.</dd>
+    <dd class="avoid">_Avoid_: "programmable chip", "processor"</dd>
+
+    <dt>Gateware</dt>
+    <dd>A hardware design expressed as a file that configures an FPGA — the hardware analogue of software. On the MEGA65, the gateware makes the FPGA <em>be</em> the computer.</dd>
+    <dd class="avoid">_Avoid_: "firmware", "the program"</dd>
+
+    <dt>Core</dt>
+    <dd>The specific gateware loaded onto the MEGA65's main FPGA to make it behave as a MEGA65 (or a C64, or another machine). "The MEGA65 core" = the design on the Artix-7.</dd>
+    <dd class="avoid">_Avoid_: "ROM", "OS"</dd>
+
+    <dt>VHDL</dt>
+    <dd>The hardware description language the MEGA65 core is written in — the source you will eventually read and write. (Verilog is the other major HDL.)</dd>
+  </dl>
+
+  <h2>The chip and its toolchain (current R6 board)</h2>
+  <dl>
+    <dt>Artix-7</dt>
+    <dd>The Xilinx FPGA at the center of the board — the <strong>only</strong> FPGA on the current (R6) machine. It runs the core and <em>is</em> the computer; all MEGA65 gateware targets it.</dd>
+    <dt>Vivado</dt>
+    <dd>The Xilinx toolchain that compiles the core's VHDL into the configuration file loaded onto the Artix-7.</dd>
+    <dt>R6</dt>
+    <dd>The current production board revision, shipping since 2024. In this workspace, every hardware statement refers to R6.</dd>
+    <dt>Keyboard</dt>
+    <dd>The key matrix is read through six plain I2C IO-expander chips — fixed-function silicon, no programmable logic.</dd>
+  </dl>
+
+  <h2>The custom devices the core implements</h2>
+  <dl>
+    <dt>45GS02</dt>
+    <dd>The MEGA65's CPU: an extended member of the 6502 processor family, far faster than a C64's.</dd>
+    <dd class="avoid">_Avoid_: "the 6502", "the processor chip"</dd>
+    <dt>VIC-IV</dt>
+    <dd>The video chip implemented in the core; produces the VGA and HDMI picture.</dd>
+    <dt>SID</dt>
+    <dd>The Commodore sound chip; the MEGA65 provides four of them. Stands for Sound Interface Device.</dd>
+    <dt>45E100</dt>
+    <dd>The fast Ethernet controller implemented in the core.</dd>
+  </dl>
+
+  <h2>Board, memory &amp; ports</h2>
+  <dl>
+    <dt>C65</dt>
+    <dd>The unreleased 1991 Commodore 65 the MEGA65 recreates and extends — the reason the chipset exists.</dd>
+    <dt>Attic RAM</dt>
+    <dd>The extra memory beyond the classic C64/C65 RAM: a 64&nbsp;MiB <em>SDRAM</em> on the R6 board.</dd>
+    <dd class="avoid">_Avoid_: "the RAM" (ambiguous — say Attic RAM or chip RAM)</dd>
+    <dt>IEC</dt>
+    <dd>The Commodore serial bus port for disk drives and printers.</dd>
+    <dt>Cartridge port</dt>
+    <dd>The C64-style expansion slot on the side; exposes the system bus to plug-in hardware.</dd>
+    <dt>DE-9</dt>
+    <dd>The 9-pin port (two of them) for joysticks, paddles, and mice. Often miscalled "DB-9".</dd>
+    <dd class="avoid">_Avoid_: "DB-9"</dd>
+  </dl>
+
+  <p class="home">↩ <a href="../lessons/0001-what-a-mega65-physically-is.html">Back to Lesson 01</a></p>
+</div>
+</body>
+</html>

@@ -47,6 +47,20 @@ Cap at a handful of reformulations unless the human says "keep trying." **Show t
 
 ---
 
+## Accuracy discipline — verify before teaching (and answering)
+
+The canonical mistake to prevent: stating a **board-revision-specific fact as universal truth** (we once wrote "the MEGA65 has three FPGAs" — true for R2/R3, but the current R6 has two; the MAX10 was removed at R4). A generic web search will not catch this — it even reported "3 FPGAs." Rules:
+
+1. **Cite every load-bearing claim.** If a fact matters to a lesson or answer and you can't point to a source, don't assert it — drop it or mark it "unverified, to confirm." No parametric guesses dressed as fact. (The `teach` skill already requires this; follow it strictly.)
+2. **Prefer the authoritative primary for the claim type.** Follow the source order above (wiki → User's Guide grep → web → live Discord). For hardware / register / memory-map / model specifics, **grep the User's Guide and official docs before trusting a web-search summary** — primaries are revision-aware; web summaries flatten that distinction.
+3. **Qualify anything that varies.** Facts that depend on **board revision (R1–R6), model, core/ROM/Hypervisor version, or toolchain** must carry that qualifier — never state them as universal. If you don't know which revision/version a source describes, find out before asserting.
+4. **Separate fact from framing.** Pedagogical simplifications and opinions ("only X matters") are not facts — flag them as such or omit them. Don't let an editorial shortcut read as a sourced claim.
+5. **Corroborate load-bearing or shaky claims.** When a central claim rests on a single weak source, or sources disagree, confirm with a second (User's Guide / web / live Discord) before it ships. Targeted, not blanket — corroborate what's important or uncertain, not every trivially-true sentence.
+
+When a check surfaces a genuinely new, high-quality source, queue it (`/pin-llm-wiki queue <url>`) per the standing wiki-update practice.
+
+---
+
 ## Git — never auto-commit
 
 **Do not** run `git commit` or `git push` after ingest, refresh, `run`, `lint`, `remove`, initial wiki scaffold, or any other file change in this repo—**unless the human explicitly asked you to commit or push in this conversation.**
