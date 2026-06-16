@@ -46,4 +46,4 @@ Single Xojo GUI project (`Code/`). Bundles pre-compiled CLI tools from [[MEGA65-
 
 ## Maintenance status
 
-13 stars, 1 fork, GPL-3.0, last pushed 2026-05-18, default branch `master`. Actively maintained; V2.5 released November 2025. No formal release tags in the GitHub repo — track latest via files.mega65.org.
+13 stars, 1 fork, GPL-3.0, last pushed 2026-05-18, default branch `master`. Actively maintained; V2.5 released November 2025. No formal release tags in the GitHub repo — track latest via [[files.mega65.org]].

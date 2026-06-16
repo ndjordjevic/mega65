@@ -9,7 +9,7 @@ created: 2026-06-12
 updated: 2026-06-12
 ---
 
-**mega65-examples** is the official community example repository for the MEGA65 — a curated collection of source code examples demonstrating every aspect of MEGA65 capabilities, organized by language and topic with per-example build instructions. It is linked from the official mega65.org documentation. Where [[RetroCogs-Mega65Tutorials]] focuses on 45GS02 assembly deep-dives and [[MEGA65-mega65-code-snippets]] is a meta-repo of referenced snippets, mega65-examples is the canonical place for self-contained, buildable, multi-language examples.
+**mega65-examples** is the official community example repository for the MEGA65 — a curated collection of source code examples demonstrating every aspect of MEGA65 capabilities, organized by language and topic with per-example build instructions. It is linked from the official [[mega65.org]] documentation. Where [[RetroCogs-Mega65Tutorials]] focuses on 45GS02 assembly deep-dives and [[MEGA65-mega65-code-snippets]] is a meta-repo of referenced snippets, mega65-examples is the canonical place for self-contained, buildable, multi-language examples.
 
 _All claims below are sourced from ../../raw/github/MEGA65-mega65-examples.md unless otherwise noted._
 
@@ -34,7 +34,7 @@ Clone the repo; enter any example directory and follow its README. Most assembly
 - Community-contributed, officially maintained
 - Multi-language: assembly, C, C++, Rust
 - Per-example `info.json` for tooling integration
-- Linked from mega65.org documentation
+- Linked from [[mega65.org]] documentation
 - PR-based contribution workflow
 
 ## Architecture

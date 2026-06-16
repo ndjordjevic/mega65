@@ -55,7 +55,7 @@ Read this post when:
 
 ## Maintenance status
 
-Single blog post, published October 2022. Blog (c65gs.blogspot.com) is maintained by Paul Gardner-Stephen (MEGA65 co-creator and FPGA lead); current focus is MEGAphone development (NLnet-funded, 2025–2026). No comments or issue tracker on the blog itself; the companion KiCad repo (6 stars) is the ongoing project artifact. (../../raw/github/MEGA65-mega65-kbd-pcb.md)
+Single blog post, published October 2022. Blog ([[c65gs.blogspot.com]]) is maintained by Paul Gardner-Stephen (MEGA65 co-creator and FPGA lead); current focus is MEGAphone development (NLnet-funded, 2025–2026). No comments or issue tracker on the blog itself; the companion KiCad repo (6 stars) is the ongoing project artifact. (../../raw/github/MEGA65-mega65-kbd-pcb.md)
 
 ## Ecosystem
 

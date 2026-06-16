@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 02 — Reading the MEGA65 Schematic</title>
+<style>
+  :root{
+    --ink:#1a1a17; --paper:#fdfcf8; --rule:#d9d4c5;
+    --accent:#7a1f1f; --soft:#6b6658; --chip:#eef2e9; --chip-b:#bcd0ad;
+    --fpga:#fbe7d6; --fpga-b:#e0a96d; --help:#e8eef5; --help-b:#9fb6d0;
+  }
+  *{box-sizing:border-box}
+  html{font-size:18px}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:48rem; margin:0 auto; padding:3.5rem 1.5rem 6rem}
+  .kicker{font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-family:ui-sans-serif,system-ui,sans-serif; margin:0 0 .4rem}
+  h1{font-size:2.1rem; line-height:1.15; margin:0 0 .3rem; font-weight:600}
+  .sub{color:var(--soft); font-style:italic; margin:0 0 2rem}
+  h2{font-size:1.3rem; margin:2.6rem 0 .6rem; font-weight:600; border-bottom:1px solid var(--rule); padding-bottom:.3rem}
+  h3.step{font-size:.8rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); font-family:ui-sans-serif,system-ui,sans-serif; margin:2.2rem 0 .55rem}
+  p{margin:.7rem 0}
+  a{color:var(--accent)}
+  .lead{font-size:1.12rem}
+  .mission{background:#f4f1e8; border-left:3px solid var(--accent); padding:.8rem 1rem; font-size:.95rem; color:#3a362c; margin:1.4rem 0}
+  strong.key{color:var(--accent)}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin:1rem 0}
+  .card{border:1px solid var(--rule); border-radius:8px; padding:.8rem .9rem; background:#fff}
+  .card h3{margin:.1rem 0 .3rem; font-size:1rem}
+  .card.fpga{background:var(--fpga); border-color:var(--fpga-b)}
+  .card.help{background:var(--help); border-color:var(--help-b)}
+  .small{font-size:.86rem; color:var(--soft)}
+  ul.tight{margin:.4rem 0; padding-left:1.2rem}
+  ul.tight li{margin:.25rem 0}
+  ol.tight{margin:.4rem 0; padding-left:1.2rem}
+  ol.tight li{margin:.25rem 0}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em; background:rgba(0,0,0,.06); color:inherit; padding:.05rem .3rem; border-radius:4px}
+  .src code{background:rgba(255,255,255,.12)}
+  sup.fn{color:var(--accent); font-size:.7rem; font-family:sans-serif}
+  figure{margin:1.6rem 0; text-align:center}
+  figcaption{font-size:.82rem; color:var(--soft); margin-top:.5rem; font-style:italic}
+  img.sch{display:block; width:100%; height:auto; border:1px solid var(--rule); border-radius:6px; background:#fff}
+  img.thumb{display:block; margin:.5rem auto .2rem; width:100%; max-width:30rem; height:auto; border:1px solid var(--rule); border-radius:6px; background:#fff}
+  .zoom{font-family:ui-sans-serif,system-ui,sans-serif; font-size:.72rem; color:var(--soft)}
+  .sheet{border-top:1px solid var(--rule); padding-top:1.2rem; margin-top:1.8rem}
+  .sheet h3{font-size:1.02rem; margin:.1rem 0 .2rem; font-weight:600}
+  .sheet h3 .pg{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.78rem; color:var(--accent); font-weight:400}
+  .sheet .purpose{margin:.1rem 0 .3rem; color:var(--soft); font-style:italic; font-size:.92rem}
+  details{background:#f4f1e8; border:1px solid var(--rule); border-radius:8px; padding:.6rem .9rem; margin:.6rem 0}
+  summary{cursor:pointer; font-weight:600; font-family:ui-sans-serif,system-ui,sans-serif; font-size:.92rem}
+  details p{margin:.5rem 0 0; font-size:.95rem}
+  table.rev{border-collapse:collapse; width:100%; font-size:.8rem; font-family:ui-sans-serif,system-ui,sans-serif; margin:1rem 0}
+  table.rev th,table.rev td{border:1px solid var(--rule); padding:.45rem .55rem; text-align:left; vertical-align:top}
+  table.rev th{background:#f4f1e8}
+  table.rev td:first-child{font-weight:700; white-space:nowrap; color:var(--accent)}
+  .src{background:#1a1a17; color:#f3efe4; border-radius:10px; padding:1.1rem 1.2rem; margin:2.2rem 0}
+  .src a{color:#f0c98a}
+  .src .label{font-family:sans-serif; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:#c9a36a}
+  .ask{font-family:ui-sans-serif,system-ui,sans-serif; font-size:.9rem; background:#eef2e9; border:1px dashed var(--chip-b); border-radius:8px; padding:.8rem 1rem; margin:1.4rem 0}
+  nav.foot{display:flex; justify-content:space-between; margin-top:3rem; padding-top:1rem; border-top:1px solid var(--rule); font-family:sans-serif; font-size:.85rem}
+  .muted{color:#aaa}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="kicker">MEGA65 Hardware &amp; FPGA · Lesson 02</p>
+  <h1>Reading the MEGA65 <em>schematic</em></h1>
+  <p class="sub">Lesson 01 said "one FPGA becomes the chipset." The schematic shows you exactly how it touches the real world.</p>
+
+  <div class="mission">
+    <strong>Why this lesson:</strong> the schematic is the board's <em>ground truth</em> — every chip, wire, and
+    connector, drawn by the people who built it. By the end you'll be able to (1) <strong>open the official R6
+    schematic and navigate it</strong> like a map, and (2) <strong>point to where each device from Lesson 01
+    lives</strong> and what it connects to. This is the bridge from "what a MEGA65 is" to "how it actually works."
+  </div>
+
+  <p class="lead">A schematic is not a picture of the board — it's a <em>diagram of connections</em>. It throws away
+  physical layout and keeps only what's electrically true: which pin of which chip joins which net. Learn to read one
+  and the machine stops being a mystery box.</p>
+
+  <h2>Where the schematic lives</h2>
+  <p>The official MEGA65 schematic is a PDF that ships inside the User's Guide source repo:<sup class="fn">1</sup></p>
+  <ul class="tight">
+    <li><code>raw/github/MEGA65-mega65-user-guide/assets/TE0765-06.PDF</code> — the <strong class="key">R6</strong> schematic, 21 sheets.</li>
+    <li>Older revisions sit beside it: <code>TE0765-03.PDF</code> (R3), <code>TE0765-02.PDF</code> (R2).</li>
+    <li>It's pulled into the books by <code>appendix-schematics.tex</code> (the Developer's Guide "Schematics" chapter).</li>
+  </ul>
+  <p><strong>"TE0765" is the board's part number.</strong> The MEGA65 mainboard is manufactured by
+  <strong class="key">Trenz Electronic</strong>; <code>TE0765</code> is their model, and the <code>-06</code> suffix is
+  the <strong class="key">R6</strong> revision — the same board Lesson 01 locked onto. The title block on every sheet
+  also reads "<strong>Rev. 06</strong>," dated 2023-12-14, and the design is released as
+  <strong>open hardware</strong> under the CERN-OHL-P v2.0 licence.<sup class="fn">1</sup></p>
+
+  <!-- ===================== PART A: LITERACY ===================== -->
+  <h2>Part A — How to read <em>any</em> schematic</h2>
+  <p>Before touring the MEGA65 specifically, five reading skills. They apply to every schematic you'll ever open.</p>
+
+  <h3 class="step">1 · It's hierarchical — start at the top sheet</h3>
+  <p>A board this size isn't one giant drawing. It's a <strong class="key">top sheet</strong> that lists
+  <em>sub-sheets</em>, each covering one function. Think of it as a table of contents. The MEGA65's top sheet names
+  20 sub-sheets — <code>HDMI</code>, <code>VGA</code>, <code>Ethernet</code>, <code>SOUND</code>,
+  <code>KEYBOARD</code>, <code>POWER</code>, <code>EXP_Slot</code>, and so on — plus housekeeping like mounting
+  holes and shielding.<sup class="fn">1</sup></p>
+  <figure>
+    <a href="assets/schematic-r6/03-top-overview.png" target="_blank"><img class="sch" src="assets/schematic-r6/03-top-overview.png" alt="MEGA65 R6 top-level schematic sheet listing all sub-sheets"></a>
+    <figcaption>Sheet 3 of 23 — <code>TE0765.SchDoc</code> (top level). The left column is the table of contents: every <code>*.SchDoc</code> sub-sheet. <span class="zoom">(click any sheet to open it full-size)</span></figcaption>
+  </figure>
+
+  <h3 class="step">2 · Every sheet has a title block (bottom-right)</h3>
+  <p>The boxed block in the corner of each sheet tells you <em>where you are</em>: the project (<strong>MEGA65</strong>),
+  the board number (<strong>TE0765</strong>), the <strong>Rev. (06)</strong>, the date, the <strong>page N of 23</strong>,
+  and the <strong>filename</strong> of that sub-sheet (e.g. <code>HDMI.SchDoc</code>). When someone says "see the sound
+  sheet," this is how you find it — and how you confirm you're reading the <em>right revision</em>.</p>
+
+  <h3 class="step">3 · The grid locates parts — "U10 is at B2"</h3>
+  <p>The numbers across the top/bottom (1–4 or 1–8) and letters down the sides (A–D) form a
+  <strong class="key">coordinate grid</strong>, like a paper map. A part or note is referenced by its square —
+  "the level shifter at C3." On a dense sheet this is the only sane way to point at something.</p>
+
+  <h3 class="step">4 · Wires you can't see: net labels &amp; power rails</h3>
+  <p>Not every connection is a drawn line. A <strong class="key">net label</strong> — a name like
+  <code>SDRAM_DQ0</code>, <code>C64_D7</code>, or <code>AUDIO_BCLK</code> — means "this wire is electrically the same
+  as every other wire with this name," even across different sheets. That's how the FPGA on one sheet reaches the SDRAM
+  on another without a literal wire between them. Special cases you'll see constantly:</p>
+  <ul class="tight">
+    <li><strong>Power rails:</strong> <code>3.3V</code>, <code>5V</code>, <code>1.8V</code>, <code>1V</code> — the voltages that feed everything.</li>
+    <li><strong>Ground:</strong> <code>GND</code> — the common return; the most-repeated label on the board.</li>
+    <li><strong>Off-sheet connectors:</strong> the little flag symbols (<code>B13</code>, <code>B16</code>, <code>B34</code>…) carry whole groups of signals to the matching flag on another sheet.</li>
+  </ul>
+
+  <h3 class="step">5 · Reference designators name the parts</h3>
+  <p>Every component has a <strong class="key">refdes</strong> — a letter for its type plus a number:</p>
+  <p class="small"><code>U</code> = IC/chip · <code>R</code> = resistor · <code>C</code> = capacitor ·
+  <code>L</code> = inductor/ferrite · <code>D</code> = diode/LED · <code>T</code> = transistor ·
+  <code>J</code> = connector/jack · <code>S</code> = switch · <code>Y</code>/oscillator = clock.</p>
+  <p>You'll notice <em>swarms</em> of small capacitors next to every chip — those are
+  <strong>decoupling capacitors</strong>, steadying the power supply right at each chip's pins. Once you learn to
+  mentally skip them, the real signal connections jump out.</p>
+  <p>One last representational trick: a single large part is often <strong class="key">drawn as several symbols
+  across different sheets</strong>. A big chip or a many-pin connector gets sliced into "units" sharing one number
+  with letter suffixes — <code>U1A</code>, <code>U1B</code>, <code>U1C</code>… — all the <em>same physical part</em>.
+  So when you see a lettered refdes, look for its siblings elsewhere. On the MEGA65 this trick matters more than on
+  almost any board — which is exactly where Part B begins.</p>
+
+  <!-- ===================== PART B: BLOCK TOUR ===================== -->
+  <h2>Part B — The board by function <span style="font-weight:400;color:var(--soft);font-size:.85em">(the logical view)</span></h2>
+  <p>This is the board grouped by <em>what it does</em> — the way an engineer thinks about it. We start at the center
+  (the FPGA), then walk outward to memory, boot, and every port. Each block maps to something you met in Lesson 01,
+  but now you can see the actual silicon. (Part C then walks the same board the <em>other</em> way — page by page,
+  as the schematic is literally drawn.)</p>
+
+  <h3 class="step">The center · the FPGA, drawn as its banks</h3>
+  <div class="card fpga">
+    <p style="margin:.2rem 0"><strong>This is the insight that ties back to Lesson 01.</strong> The FPGA —
+    <strong class="key">Xilinx XC7A200T-2FBG484C</strong> — appears on many sheets as <code>U1A</code>,
+    <code>U1B</code>, <code>U1C</code> … up to <code>U1J</code>. These are <em>not</em> ten chips. They are
+    <strong>one physical chip, U1</strong>, split across sheets because a 484-ball BGA package has far too many pins
+    to draw in a single symbol. Altium (the CAD tool) lets you slice one part into multiple "units," and the MEGA65
+    splits U1 <strong>by I/O bank</strong>.<sup class="fn">3</sup></p>
+  </div>
+  <p>So the FPGA's pins are grouped by <em>bank</em>, and each bank gets its own sheet — this is the spine the rest of
+  the tour hangs off:</p>
+  <ul class="tight">
+    <li><code>U1A</code> = Bank 13 · <code>U1B</code> = Bank 14 · <code>U1C</code> = Bank 15 · <code>U1D</code> = Bank 16 — general I/O.</li>
+    <li><code>U1E</code> = Bank 34 · <code>U1F</code> = Bank 35 — high-speed I/O (SDRAM, HDMI, Ethernet).</li>
+    <li><code>U1G</code> = Bank 0 — configuration/boot pins.</li>
+    <li><code>U1H</code> = Bank 216 — gigabit transceivers (mostly unused on MEGA65).</li>
+    <li><code>U1J</code> — the power &amp; ground balls (and the FPGA's own supply decoupling).</li>
+  </ul>
+  <p class="small">Seeing "the chip is the banks" makes the rest of the schematic legible: each I/O sheet is really
+  <em>"what does this slice of the FPGA connect to?"</em> — which is precisely the question each block below answers.</p>
+
+  <h3 class="step">Block 1 · Power — from barrel jack to FPGA rails</h3>
+  <p>Think of this as a step-down chain: raw wall power gets refined into progressively smaller, cleaner voltages the
+  closer it gets to the FPGA — because the chip can't run on messy high voltage directly.<sup class="fn">3</sup></p>
+  <ol class="tight">
+    <li><strong>Barrel jack (<code>J11</code>)</strong> — a 2.1 mm jack where the external power adapter plugs in.</li>
+    <li><strong>Fuse + surge protection</strong> — <code>F1</code> (a 3 A fuse) blows if something draws too much current; a TVS diode absorbs voltage spikes before they reach anything sensitive.</li>
+    <li><strong>Over/under-voltage guard</strong> — the <strong>LTC4365</strong> (<code>U34</code>) only lets power through inside a safe window (trips above ~14 V / below ~10 V), cutting the circuit before bad input can damage anything downstream.</li>
+    <li><strong>Main 5 V rail</strong> — the <strong>MP8869</strong> buck regulator (<code>U12</code>) steps the input down to a steady <strong>5 V</strong> — the board's main supply rail (rated ≤5 A) that most peripherals run on directly.</li>
+    <li><strong>FPGA-specific rails (the <code>POWER</code> sheet)</strong> — three more regulators take that 5 V and make the exact voltages the Artix-7 needs internally: <strong>1.0 V</strong> (<code>MPM3840</code> → VCCINT/VCCBRAM, the logic core), <strong>1.8 V</strong> (<code>MPM3834</code> → VCCAUX), and <strong>3.3 V</strong> (a second MP8869 → all the I/O).</li>
+  </ol>
+  <p class="small">Three of these regulators sit on an I2C bus so the board can monitor them — note the
+  <code>DCDC_SCL</code>/<code>DCDC_SDA</code> labels and addresses like <code>0x61</code>, <code>0x67</code>.</p>
+  <figure>
+    <a href="assets/schematic-r6/21-power-main.png" target="_blank"><img class="sch" src="assets/schematic-r6/21-power-main.png" alt="MEGA65 R6 main power schematic: jack, fuse, LTC4365, MP8869 to 5V"></a>
+    <figcaption>Sheet 21 of 23 — <code>PowerMain.SchDoc</code>: jack → fuse → LTC4365 over-voltage guard → MP8869 buck to 5 V.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/schematic-r6/22-power-rails.png" target="_blank"><img class="thumb" src="assets/schematic-r6/22-power-rails.png" alt="FPGA core power rails sheet: 1.0V, 1.8V, 3.3V regulators"></a>
+    <figcaption>Sheet 22 of 23 — <code>POWER.SchDoc</code>: the three regulators that turn that 5 V into the FPGA's own 1.0 V / 1.8 V / 3.3 V rails.</figcaption>
+  </figure>
+
+  <h3 class="step">Block 2 · The clock — one 100 MHz crystal</h3>
+  <p>This is the board's heartbeat — everything inside the FPGA needs to tick in sync, and it all starts from a single
+  source:</p>
+  <ol class="tight">
+    <li><strong>One oscillator</strong> — the <strong>SiT8008</strong> (<code>U17</code>, on the Bank 13 sheet) does nothing but produce a steady, precise pulse: <strong class="key">100 million ticks per second (100 MHz)</strong>.</li>
+    <li><strong>Into a clock-capable FPGA pin</strong> — it feeds <code>CLOCK_FPGA_MRCC</code>, a pin specifically built to receive a fast timing signal and distribute it internally.</li>
+    <li><strong>Multiplied/divided inside the FPGA</strong> — dedicated clock-management blocks built into the chip fan that one 100 MHz reference out into every clock the design needs — the CPU clock, the pixel clock, the audio clock, and more.<sup class="fn">3</sup></li>
+  </ol>
+  <p class="small">One crystal in, many clocks synthesised on-chip — no need for a dozen separate oscillators on the board.</p>
+  <figure>
+    <a href="assets/schematic-r6/06-fpga-bank13-vga.png" target="_blank"><img class="thumb" src="assets/schematic-r6/06-fpga-bank13-vga.png" alt="FPGA Bank 13 sheet showing the SiT8008 100 MHz oscillator"></a>
+    <figcaption>Sheet 6 of 23 — <code>B13.SchDoc</code>: the SiT8008 100 MHz oscillator (<code>U17</code>) feeding the FPGA's master clock pin.</figcaption>
+  </figure>
+
+  <h3 class="step">Block 3 · Memory — SDRAM (the Attic RAM) + HyperRAM</h3>
+  <p>Lesson 01's "Attic RAM" turns into two real, physical chips here — wired to two different FPGA banks, so they're
+  drawn on two different sheets:</p>
+  <ul class="tight">
+    <li><strong>SDRAM</strong> — an <strong>ISSI IS42S16320</strong> (<code>U44</code>), <strong>64 MiB</strong>, wired to FPGA <strong>Bank 34</strong> over the <code>SDRAM_*</code> nets. This is the R6 Attic-RAM backing store (of which the core currently maps 8 MiB; see Lesson 01).<sup class="fn">3</sup></li>
+    <li><strong>HyperRAM</strong> — an <strong>ISSI IS66WVH8M8</strong> (<code>U29</code>), <strong>8 MiB</strong>, on <strong>Bank 16</strong>. The older, smaller memory that the SDRAM was added (at revision R4) to surpass.<sup class="fn">3</sup></li>
+  </ul>
+  <p class="small">Both talk directly to the FPGA at high speed, with no buffer chip in between — which is why each is drawn right on its own bank sheet rather than grouped together on one "memory" page.</p>
+  <figure>
+    <a href="assets/schematic-r6/10-fpga-bank34-35-sdram-hdmi-eth.png" target="_blank"><img class="sch" src="assets/schematic-r6/10-fpga-bank34-35-sdram-hdmi-eth.png" alt="FPGA banks 34 and 35: SDRAM, HDMI TMDS, Ethernet"></a>
+    <figcaption>Sheet 10 of 23 — <code>B34.SchDoc</code>: FPGA Banks 34/35 (<code>U1E</code>/<code>U1F</code>). The 64 MiB SDRAM (<code>U44</code>, bottom-left), plus the HDMI TMDS pairs and the Ethernet RMII signals — the board's fastest links all live on these two banks.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/schematic-r6/09-fpga-bank16-sd-audio-kbd-hyperram.png" target="_blank"><img class="thumb" src="assets/schematic-r6/09-fpga-bank16-sd-audio-kbd-hyperram.png" alt="FPGA Bank 16 sheet showing the 8 MiB HyperRAM"></a>
+    <figcaption>Sheet 9 of 23 — <code>B16.SchDoc</code>: FPGA Bank 16 (<code>U1D</code>). The 8 MiB HyperRAM (<code>U29</code>) sits here alongside the SD card, audio I2S, keyboard, and the I2C support chips covered in Block 9.</figcaption>
+  </figure>
+
+  <h3 class="step">Block 4 · Boot — how the core gets into the FPGA</h3>
+  <p>An FPGA is blank silicon — it forgets everything when powered off, so every single power-up it has to be told
+  from scratch which circuit to become. Here's the mechanism, on the <code>FPGA-CFG</code> sheet:<sup class="fn">3</sup></p>
+  <ol class="tight">
+    <li><strong>Where the design lives</strong> — a <strong>Cypress S25FL512S</strong> QSPI flash (<code>U5A</code>, 512 Mbit = 64 MiB), a separate storage chip next to the FPGA holding the core bitstream(s) — this is where your "core slots" physically live.</li>
+    <li><strong>Boot mode — <code>MASTER SPI</code></strong> — at power-up the FPGA reads its own configuration directly from that flash over <strong>SPI</strong> (Serial Peripheral Interface, a simple, common protocol for one chip to pull data from another; the "Q" in QSPI means "Quad" — four data lines instead of one, for a faster boot read).</li>
+    <li><strong>JTAG — the developer side-door</strong> — a header (<code>FPGA_TCK/TDO/TDI/TMS</code>) lets a PC push a new bitstream straight into the FPGA, bypassing the flash — how developers flash a new core onto the board in the first place.</li>
+    <li><strong>Supporting parts</strong> — a reset switch (<code>S2</code>) and a power-supervisor chip round it out, making sure power is stable before boot starts.</li>
+  </ol>
+  <p class="small">The pattern: the FPGA is blank at every power-on → reads its "personality" from a dedicated flash chip via SPI → becomes whatever core was stored there. JTAG is just the side-door for writing a new core into that flash in the first place.</p>
+  <figure>
+    <a href="assets/schematic-r6/11-fpga-config.png" target="_blank"><img class="sch" src="assets/schematic-r6/11-fpga-config.png" alt="FPGA configuration sheet: QSPI flash, master SPI boot, JTAG"></a>
+    <figcaption>Sheet 11 of 23 — <code>FPGA-CFG.SchDoc</code>: the QSPI config flash (<code>U5A</code>, lower-left), master-SPI boot mode, and the JTAG pins — the path that turns a powered-off FPGA into a running MEGA65.</figcaption>
+  </figure>
+
+  <h3 class="step">Block 5 · Video out — VIC-IV → VGA &amp; HDMI</h3>
+  <p>This introduces a pattern you'll see repeated for audio and Ethernet too: the FPGA generates the <em>content</em>,
+  while a dedicated chip handles the <em>physical signal</em> going out the connector.</p>
+  <ul class="tight">
+    <li><strong>The VIC-IV</strong> (gateware, inside the FPGA) — the video-generation logic; it produces digital R/G/B pixel data.</li>
+    <li><strong>VGA — the ADV7125</strong> (<code>U3</code>) — a triple 8-bit video <strong>DAC</strong> (Digital-to-Analog Converter). VGA monitors expect analog voltage levels, not digital bits, so this chip converts the FPGA's digital R/G/B into analog signal for the 15-pin VGA connector (<code>J1</code>).<sup class="fn">3</sup></li>
+    <li><strong>HDMI — the PTN3363</strong> (<code>U10</code>) — HDMI is digital too, but uses a high-speed encoding scheme called <strong>TMDS</strong>; this chip buffers/re-drives the FPGA's TMDS pairs (<code>HDMI_TX0/1/2</code> + clock, from Bank 34) so they're clean and strong enough for the HDMI connector (<code>J4</code>).<sup class="fn">3</sup></li>
+  </ul>
+  <p class="small">The MEGA65 can drive both ports from the same VIC-IV source at once — VGA for older analog displays, HDMI for modern digital ones. Same data, two different physical translations.</p>
+  <figure>
+    <a href="assets/schematic-r6/17-vga.png" target="_blank"><img class="sch" src="assets/schematic-r6/17-vga.png" alt="VGA output sheet with ADV7125 video DAC and DSUB-15 connector"></a>
+    <figcaption>Sheet 17 of 23 — <code>VGA.SchDoc</code>: the ADV7125 video DAC (<code>U3</code>) and the DSUB-15 VGA jack (<code>J1</code>).</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/schematic-r6/18-hdmi.png" target="_blank"><img class="thumb" src="assets/schematic-r6/18-hdmi.png" alt="HDMI output sheet with PTN3363 redriver and connector"></a>
+    <figcaption>Sheet 18 of 23 — <code>HDMI.SchDoc</code>: the PTN3363 HDMI level-shifter/redriver (<code>U10</code>) and the HDMI connector (<code>J4</code>).</figcaption>
+  </figure>
+
+  <h3 class="step">Block 6 · Audio — the SID sound → a real DAC</h3>
+  <p>Same pattern again: the FPGA generates the sound data, and a dedicated chip turns it into an actual analog
+  signal you can hear.</p>
+  <ul class="tight">
+    <li><strong>Four SIDs</strong> (gateware, inside the FPGA) — the legendary C64 sound chip, recreated four times over in FPGA logic — enough for stereo and richer multi-voice sound than one original SID could do.</li>
+    <li><strong>Mixed and sent over I2S</strong> — the FPGA combines all four into one digital audio stream and sends it out over <strong>I2S</strong> (Inter-IC Sound — SPI's audio-specialized cousin) on <code>AUDIO_MCLK/BCLK/LRCLK/SDATA</code>.</li>
+    <li><strong>The AK4432</strong> (<code>U37</code>) — a stereo audio <strong>DAC</strong> that converts that digital I2S stream into actual analog voltage for the 3.5 mm jack and RCA outputs.<sup class="fn">3</sup></li>
+  </ul>
+  <p class="small">This high-quality DAC is itself a later-revision upgrade over earlier, simpler audio hardware — see the evolution table below.</p>
+  <figure>
+    <a href="assets/schematic-r6/23-sound.png" target="_blank"><img class="sch" src="assets/schematic-r6/23-sound.png" alt="Sound sheet with AK4432 I2S audio DAC and output jacks"></a>
+    <figcaption>Sheet 23 of 23 — <code>SOUND.SchDoc</code>: the AK4432 I2S DAC (<code>U37</code>, lower-left) and the audio output jacks.</figcaption>
+  </figure>
+
+  <h3 class="step">Block 7 · Ethernet — 45E100 → PHY → RJ45</h3>
+  <p>The same FPGA-does-protocol / chip-does-wire pattern, this time for networking.</p>
+  <ul class="tight">
+    <li><strong>The 45E100</strong> (gateware, inside the FPGA) — the Ethernet <em>controller</em> logic: framing packets and managing the protocol, but still in a simplified internal digital format.</li>
+    <li><strong>The KSZ8081</strong> (<code>U4</code>) — a dedicated Ethernet <strong>PHY</strong> (physical-layer) chip. It takes the FPGA's simplified <strong>RMII</strong> signals and converts them into the real electrical signaling an Ethernet cable requires.<sup class="fn">3</sup></li>
+    <li><strong>RJ45 jack</strong> (<code>J10A</code>) — with built-in magnetics (tiny transformers that electrically isolate the board from the cable); link/activity LEDs (<code>J10B</code>/<code>J10C</code>) sit alongside.</li>
+  </ul>
+  <p class="small">Same shape as video and audio: the FPGA owns the flexible protocol logic; a fixed-function chip next door meets the connector's exact electrical spec.</p>
+  <figure>
+    <a href="assets/schematic-r6/19-ethernet.png" target="_blank"><img class="thumb" src="assets/schematic-r6/19-ethernet.png" alt="Ethernet PHY sheet with KSZ8081 and RJ45 jack"></a>
+    <figcaption>Sheet 19 of 23 — <code>Ethernet.SchDoc</code>: the KSZ8081 RMII PHY (<code>U4</code>) and the RJ45 jack with integrated magnetics (<code>J10A</code>).</figcaption>
+  </figure>
+
+  <h3 class="step">Block 8 · Storage, keyboard, and the legacy ports</h3>
+  <p>The rest of Lesson 01's port list — this block is a grab-bag, since each of these is a genuinely separate
+  physical port with its own small sheet:</p>
+  <ul class="tight">
+    <li><strong>SD cards</strong> — two sockets, <code>SD1</code> (micro) and <code>SD2</code> (full-size), on the <code>LED_SW_BUT</code> sheet; their signals run to FPGA Banks 16/35. Two slots let you keep system/core files on one card and your own disk images on the other.</li>
+    <li><strong>Keyboard</strong> (<code>J5</code>, 10-pin connector) — the link out to the MK-II keyboard's <em>own</em> electronics: <code>KB_IO1/IO2/IO3</code> carry the key-matrix data read via the keyboard's I2C expanders (Lesson 01), plus the keyboard's own JTAG.</li>
+    <li><strong>Cartridge / expansion port</strong> — the <code>EXP_Slot</code> sheet, exposing the full C64-compatible bus so old cartridges and expansion hardware can plug in. It's dense with <strong>level shifters</strong> (SN74LVCH16T245) because the original C64 bus runs at 5 V while the FPGA's I/O is 3.3 V.</li>
+    <li><strong>Joysticks</strong> — two DE-9 ports (<code>JOY</code> sheet, the same connector as a real C64 joystick) with buffers, level shifters, and a switchable 5 V supply — needed because analog paddles and mice draw power through this same port.</li>
+    <li><strong>Floppy &amp; IEC</strong> — a 34-pin internal floppy header (<code>Floppy</code> sheet) for a real floppy mechanism, plus the IEC serial port (<code>EXT_HEADER</code> sheet) for classic 1541-style external drives.</li>
+  </ul>
+  <p class="small">The throughline: these are the "talk to old/external C64 hardware" ports — voltage-translating, bus-exposing connectors — as opposed to Blocks 5–7, which generate new digital media for modern devices.</p>
+  <figure>
+    <a href="assets/schematic-r6/05-exp-slot-cartridge.png" target="_blank"><img class="sch" src="assets/schematic-r6/05-exp-slot-cartridge.png" alt="Expansion/cartridge port sheet, dense with level shifters"></a>
+    <figcaption>Sheet 5 of 23 — <code>EXP_Slot.SchDoc</code>: the C64 cartridge/expansion port. The rows of <code>SN74LVCH16T245</code> chips are 3.3 V↔5 V level shifters — a good example of "skip the decoupling caps and the real job (bus translation) jumps out."</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/schematic-r6/15-keyboard.png" target="_blank"><img class="thumb" src="assets/schematic-r6/15-keyboard.png" alt="Keyboard connector sheet"></a>
+    <figcaption>Sheet 15 of 23 — <code>KEYBOARD.SchDoc</code>: the 10-pin keyboard connector (<code>J5</code>) — a simple pass-through, since the smarts live inside the keyboard itself.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/schematic-r6/14-joystick.png" target="_blank"><img class="thumb" src="assets/schematic-r6/14-joystick.png" alt="Joystick ports sheet"></a>
+    <figcaption>Sheet 14 of 23 — <code>JOY.SchDoc</code>: the two DE-9 joystick/paddle/mouse ports (<code>J7</code>, <code>J3</code>) and their switchable 5 V supply.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/schematic-r6/16-floppy.png" target="_blank"><img class="thumb" src="assets/schematic-r6/16-floppy.png" alt="Floppy header sheet"></a>
+    <figcaption>Sheet 16 of 23 — <code>Floppy.SchDoc</code>: the 34-pin internal floppy-drive header (<code>J14</code>) and its power taps.</figcaption>
+  </figure>
+
+  <h3 class="step">Block 9 · The quiet helpers — EEPROMs, clock, revision ID</h3>
+  <p>The housekeeping chips — small, slow support chips the board can't function properly without, even though none
+  of them do anything flashy. All four sit on the same <strong>I2C</strong> bus (a simple 2-wire bus — clock + data —
+  that many chips can share, each picked out by its own address), across the Bank 16 and <code>LED_SW_BUT</code>
+  sheets:<sup class="fn">3</sup></p>
+  <ul class="tight">
+    <li><strong>Config EEPROM</strong> — a 24LC128 (<code>U39</code>, I2C <code>0x56</code>) — stores settings that need to survive power-off, separate from the big QSPI flash that holds the actual FPGA core.</li>
+    <li><strong>MAC-address EEPROM</strong> — a 24AA025E48 (<code>U36</code>, I2C <code>0x50</code>) — holds the board's factory-assigned Ethernet MAC address, the unique ID every network device needs.</li>
+    <li><strong>Real-time clock</strong> — an RV-3032-C7 (<code>U38</code>, I2C <code>0x51</code>), kept ticking by its own CR2032 coin cell (<code>B1</code>) even when the board is unplugged — the same idea as the clock battery on a PC motherboard.</li>
+    <li><strong>I/O expander</strong> — a PCA9655 (<code>U32</code>, I2C <code>0x40</code>) — gives the FPGA extra digital inputs cheaply over I2C instead of spending dedicated pins on them. Here it reads the 8 DIP switches <em>and</em> reports the <strong>board revision</strong> in hardware, so the running core can ask "what board am I actually on?" instead of guessing.</li>
+  </ul>
+  <p class="small">That last point matters beyond this board: it's literally how the MEGA65 core detects its own hardware revision at runtime — the same reason this lesson insists on qualifying facts like "64 MiB SDRAM" by revision (see the evolution table below).</p>
+  <figure>
+    <a href="assets/schematic-r6/09-fpga-bank16-sd-audio-kbd-hyperram.png" target="_blank"><img class="thumb" src="assets/schematic-r6/09-fpga-bank16-sd-audio-kbd-hyperram.png" alt="FPGA Bank 16 sheet showing EEPROMs and RTC"></a>
+    <figcaption>Sheet 9 of 23 — <code>B16.SchDoc</code>: the config EEPROM (<code>U39</code>), MAC-address EEPROM (<code>U36</code>), and RV-3032 RTC (<code>U38</code>) sit here alongside the HyperRAM from Block 3.</figcaption>
+  </figure>
+  <figure>
+    <a href="assets/schematic-r6/20-sd-switches-revid.png" target="_blank"><img class="thumb" src="assets/schematic-r6/20-sd-switches-revid.png" alt="SD sockets, DIP switches, and revision ID sheet"></a>
+    <figcaption>Sheet 20 of 23 — <code>LED_SW_BUT.SchDoc</code>: the PCA9655 I/O expander (<code>U32</code>) reading the 8 DIP switches and the board's hardware revision straps.</figcaption>
+  </figure>
+
+  <!-- ===================== PART C: PAGE BY PAGE ===================== -->
+  <h2>Part C — The schematic, page by page <span style="font-weight:400;color:var(--soft);font-size:.85em">(the literal document)</span></h2>
+  <p>Part B grouped the board by <em>function</em>. Part C is the other lens: <strong class="key">every sheet of the
+  actual PDF, in order</strong> (pages 3→23), so after this you can open any page and know what every major part is.
+  For each sheet: its purpose, the drawing, and a high-level component list — chips and connectors, not every wire.</p>
+  <p class="small"><span class="zoom">Click any drawing to open it full-size.</span> Refdes reminder: <code>U</code> chip ·
+  <code>J</code> connector · <code>R</code>/<code>C</code>/<code>L</code> passives · <code>D</code> diode/LED · <code>T</code> transistor · <code>S</code> switch.</p>
+  <p class="small"><strong>Recurring helper parts</strong> (so the lists below can stay short — each does one simple job):
+  <strong>buffer</strong> (NC7SZ126, 74AHCT1G125) — drives or isolates a single signal;
+  <strong>level shifter</strong> (SN74LVCH16T245) — bridges the FPGA's 3.3 V to the 5 V legacy bus;
+  <strong>load switch</strong> (AP2196, MP5010, MP5077) — turns a power rail on or off under control;
+  <strong>MOSFET</strong> (2N7002) — a tiny transistor used as an on/off switch;
+  <strong>TVS / clamp diode</strong> (SMBJ, WE-TVS, BAV199) — shunts voltage spikes to protect a port;
+  <strong>decoupling cap</strong> — the cap swarms next to every chip, steadying its supply.</p>
+
+  <div class="sheet">
+    <h3>TE0765.SchDoc <span class="pg">— Sheet 3 of 23</span></h3>
+    <p class="purpose">Title &amp; index sheet — no circuitry; the table of contents for the other 20 sheets.</p>
+    <a href="assets/schematic-r6/03-top-overview.png" target="_blank"><img class="thumb" src="assets/schematic-r6/03-top-overview.png" alt="Top-level index sheet"></a>
+    <ul class="tight">
+      <li><strong>Sheet list</strong> (left column) — links to every sub-sheet (HDMI, VGA, Ethernet, SOUND, KEYBOARD, POWER, EXP_Slot…).</li>
+      <li><strong>Mounting holes</strong> (×6, 3.2 mm) and <strong>fiducials</strong> <code>PM1–PM6</code> — mechanical/assembly marks, not electrical.</li>
+      <li><strong>Shield outlines</strong> (DDR, FPGA, DCDC) — metal-can footprints.</li>
+      <li>Serial-number, CE/TE logo placements, and a note listing the board's <strong>I2C addresses</strong> (<code>0x40</code> IO expander, <code>0x61</code>/<code>0x67</code> DC-DC).</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>EXT_HEADER.SchDoc <span class="pg">— Sheet 4 of 23</span></h3>
+    <p class="purpose">Disk/serial port, expansion headers, and the developer debug/JTAG interface.</p>
+    <a href="assets/schematic-r6/04-ext-header-iec-pmod.png" target="_blank"><img class="thumb" src="assets/schematic-r6/04-ext-header-iec-pmod.png" alt="External header / IEC / PMOD sheet"></a>
+    <ul class="tight">
+      <li><strong><code>J6</code></strong> — IEC serial port (1541-style disk drives): SER_CLK/DATA/SRQ/RESET/ATN.</li>
+      <li><strong><code>U15/U16/U27</code></strong> (74AHCT1G125) + <strong><code>U20/U21/U28</code></strong> (NC7SZ126) — buffers/level-shifters for the IEC lines.</li>
+      <li><strong><code>J18</code></strong> — Grove connector (I2C); <strong><code>P1/P2</code></strong> — PMOD expansion sockets with TVS ESD diodes and load switch <code>U35</code>.</li>
+      <li><strong><code>J21</code></strong> — 16-pin debug header (DBG0–11, joystick test lines).</li>
+      <li><strong><code>JB1</code></strong> — TE0790 JTAG/UART module (FPGA_TCK/TDO/TDI/TMS + debug UART); status LEDs <code>D10/D12</code>.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>EXP_Slot.SchDoc <span class="pg">— Sheet 5 of 23</span></h3>
+    <p class="purpose">The C64-compatible cartridge / expansion port and its bus translation.</p>
+    <a href="assets/schematic-r6/05-exp-slot-cartridge.png" target="_blank"><img class="thumb" src="assets/schematic-r6/05-exp-slot-cartridge.png" alt="Expansion / cartridge slot sheet"></a>
+    <ul class="tight">
+      <li><strong><code>J8</code></strong> — the cartridge/expansion edge connector (full C64 bus: D0–7, A0–15, control lines).</li>
+      <li><strong><code>U2/U8/U9</code></strong> (SN74LVCH16T245) — 16-bit level shifters translating the 5 V C64 bus to the FPGA's 3.3 V.</li>
+      <li>NC7SZ126 / 74AHCT1G125 buffers — direction/enable control for ROMH, ROML, GAME, EXROM, RESET, NMI, IRQ.</li>
+      <li><strong><code>U65/U66</code></strong> — buffer + load switch for the expansion-slot 5 V supply.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>B13.SchDoc <span class="pg">— Sheet 6 of 23</span></h3>
+    <p class="purpose">FPGA I/O Bank 13 (symbol <code>U1A</code>) — the VGA/video-DAC pins and the master clock.</p>
+    <a href="assets/schematic-r6/06-fpga-bank13-vga.png" target="_blank"><img class="thumb" src="assets/schematic-r6/06-fpga-bank13-vga.png" alt="FPGA Bank 13 sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1A</code></strong> — the FPGA's Bank 13 pins; <em>carries the video-DAC and sync signals out to the VGA sheet</em> (VDAC_CLK, HSYNC, VSYNC, R/G/B bits, VGA DDC).</li>
+      <li><strong><code>U17</code></strong> — <strong>100 MHz SiT8008 oscillator</strong> (the board's master clock) → a clock-capable FPGA pin.</li>
+      <li><strong><code>U18/U19</code></strong> (NC7SZ126) — HSYNC/VSYNC buffers; plus the bank's decoupling-cap array.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>B14.SchDoc <span class="pg">— Sheet 7 of 23</span></h3>
+    <p class="purpose">FPGA I/O Bank 14 (<code>U1B</code>) — serial/IEC, the config-flash SPI, and part of the C64 bus.</p>
+    <a href="assets/schematic-r6/07-fpga-bank14-serial-spi.png" target="_blank"><img class="thumb" src="assets/schematic-r6/07-fpga-bank14-serial-spi.png" alt="FPGA Bank 14 sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1B</code></strong> — the FPGA's Bank 14 pins; <em>handles the IEC serial port, the link to the boot/config flash, and some C64-bus lines</em> (F_SER_*, SPI-DQ0–3/CS, F_C64_*, Ethernet LED).</li>
+      <li><strong><code>D9</code></strong> — ULED status LED; plus bank decoupling.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>B15.SchDoc <span class="pg">— Sheet 8 of 23</span></h3>
+    <p class="purpose">FPGA I/O Bank 15 (<code>U1C</code>) — analog joystick/paddle inputs and debug lines.</p>
+    <a href="assets/schematic-r6/08-fpga-bank15-joy-analog.png" target="_blank"><img class="thumb" src="assets/schematic-r6/08-fpga-bank15-joy-analog.png" alt="FPGA Bank 15 sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1C</code></strong> — the FPGA's Bank 15 pins; <em>reads the analog paddle inputs and the debug lines</em> (JA/JB paddle X/Y, DBG*/CP0–3, PMOD enables, C64 address).</li>
+      <li><strong><code>T7–T10</code></strong> (2N7002 MOSFETs) — paddle charge/discharge timing front-ends.</li>
+      <li><strong><code>U6/U40/U41/U42</code></strong> (NC7SZ126) — buffers; plus bank decoupling.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>B16.SchDoc <span class="pg">— Sheet 9 of 23</span></h3>
+    <p class="purpose">FPGA I/O Bank 16 (<code>U1D</code>) — SD card, audio I2S, keyboard, HyperRAM, and the I2C support chips.</p>
+    <a href="assets/schematic-r6/09-fpga-bank16-sd-audio-kbd-hyperram.png" target="_blank"><img class="thumb" src="assets/schematic-r6/09-fpga-bank16-sd-audio-kbd-hyperram.png" alt="FPGA Bank 16 sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1D</code></strong> — the FPGA's Bank 16 pins; <em>connects the SD card, the audio I2S link, the keyboard, and the HyperRAM/I2C chips below</em> (SD2_*, AUDIO_*, KB_IO1/2/3 + KB JTAG, Grove).</li>
+      <li><strong><code>U29</code></strong> — IS66WVH8M8 <strong>HyperRAM (8 MiB)</strong>.</li>
+      <li><strong><code>U39</code></strong> — 24LC128 config EEPROM (I2C <code>0x56</code>); <strong><code>U36</code></strong> — 24AA025E48 EEPROM holding the factory <strong>MAC address</strong> (I2C <code>0x50</code>).</li>
+      <li><strong><code>U38</code></strong> — RV-3032-C7 real-time clock (I2C <code>0x51</code>) + <strong><code>B1</code></strong> CR2032 coin cell + BAT54C.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>B34.SchDoc <span class="pg">— Sheet 10 of 23</span></h3>
+    <p class="purpose">FPGA high-speed Banks 34 &amp; 35 (<code>U1E</code>/<code>U1F</code>) — SDRAM, HDMI, Ethernet, second SD.</p>
+    <a href="assets/schematic-r6/10-fpga-bank34-35-sdram-hdmi-eth.png" target="_blank"><img class="thumb" src="assets/schematic-r6/10-fpga-bank34-35-sdram-hdmi-eth.png" alt="FPGA Banks 34/35 sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1E</code></strong> — the FPGA's Bank 34 pins; <em>drives the two fastest links — the SDRAM bus and the HDMI video pairs</em> (SDRAM_*, HDMI TX0/1/2 + clock).</li>
+      <li><strong><code>U1F</code></strong> — the FPGA's Bank 35 pins; <em>drives the Ethernet PHY and the second SD card</em> (ETH_* RMII, SD1, audio).</li>
+      <li><strong><code>U44</code></strong> — IS42S16320 <strong>SDRAM (64 MiB)</strong>, the R6 Attic-RAM backing store; plus large bank decoupling arrays.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>FPGA-CFG.SchDoc <span class="pg">— Sheet 11 of 23</span></h3>
+    <p class="purpose">How the FPGA boots — configuration flash, boot mode, JTAG, reset, supervisor.</p>
+    <a href="assets/schematic-r6/11-fpga-config.png" target="_blank"><img class="thumb" src="assets/schematic-r6/11-fpga-config.png" alt="FPGA configuration sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1G</code></strong> — FPGA Bank 0 (config pins): CCLK, DONE, PROGRAM_B, INIT, M0–2 mode pins, XADC analog (V_P/V_N, AVCC).</li>
+      <li><strong><code>U5A</code></strong> — S25FL512S <strong>QSPI config flash</strong> (512 Mbit) holding the core bitstream/slots; <code>BOOTMODE = MASTER SPI</code>.</li>
+      <li><strong>JTAG</strong> pins (FPGA_TCK/TDO/TDI/TMS) — PC bitstream loading; <strong><code>S2</code></strong> reset switch; <strong><code>U67</code></strong> STM6710 power supervisor; <code>D15</code> INIT LED.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>FPGA-MGT.SchDoc <span class="pg">— Sheet 12 of 23</span></h3>
+    <p class="purpose">The FPGA's gigabit transceivers — present but essentially unused on the desktop MEGA65.</p>
+    <a href="assets/schematic-r6/12-fpga-mgt.png" target="_blank"><img class="thumb" src="assets/schematic-r6/12-fpga-mgt.png" alt="FPGA MGT transceiver sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1H</code></strong> — FPGA Bank 216 (MGT): MGTAVCC/MGTAVTT supplies, MGTREFCLK, and the MGTPRX/MGTPTX serial pairs.</li>
+      <li>Most transceiver pairs are left unconnected (drawn with an ✗) — the MEGA65 core doesn't use them.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>FPGA-PWR.SchDoc <span class="pg">— Sheet 13 of 23</span></h3>
+    <p class="purpose">The FPGA's own power &amp; ground — supply pins and the big decoupling-cap field.</p>
+    <a href="assets/schematic-r6/13-fpga-power.png" target="_blank"><img class="thumb" src="assets/schematic-r6/13-fpga-power.png" alt="FPGA power and ground sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U1I</code></strong> — FPGA core-supply pins: VCCINT (1 V), VCCAUX (1.8 V), VCCBRAM (1 V).</li>
+      <li><strong><code>U1J</code></strong> — all of the FPGA's GND balls.</li>
+      <li>Large banks of <strong>decoupling capacitors</strong> (VCCINT/VCCBRAM/VCCAUX) that steady the FPGA's internal rails.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>JOY.SchDoc <span class="pg">— Sheet 14 of 23</span></h3>
+    <p class="purpose">The two DE-9 joystick / paddle / mouse ports and their switchable 5 V supply.</p>
+    <a href="assets/schematic-r6/14-joystick.png" target="_blank"><img class="thumb" src="assets/schematic-r6/14-joystick.png" alt="Joystick ports sheet"></a>
+    <ul class="tight">
+      <li><strong><code>J7</code></strong> (port A), <strong><code>J3</code></strong> (port B) — DE-9 connectors.</li>
+      <li><strong><code>U45–U54</code></strong> (74AHCT1G125) + <strong><code>U22–U26</code></strong> (NC7SZ126) — buffers/level-shifters for up/down/left/right/fire on both ports (with the R4+ drive-low ability).</li>
+      <li><strong><code>U33</code></strong> — MP5010 load switch providing switchable <code>5V_JOY</code>; <code>T1/T2</code> (2N7002) control.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>KEYBOARD.SchDoc <span class="pg">— Sheet 15 of 23</span></h3>
+    <p class="purpose">The keyboard connector — the link to the MK-II keyboard's own electronics.</p>
+    <a href="assets/schematic-r6/15-keyboard.png" target="_blank"><img class="thumb" src="assets/schematic-r6/15-keyboard.png" alt="Keyboard connector sheet"></a>
+    <ul class="tight">
+      <li><strong><code>J5</code></strong> — 10-pin keyboard connector: <code>KB_IO1/IO2/IO3</code> (matrix data, read via the keyboard's own I2C expanders) plus the keyboard's JTAG (<code>KB_TCK/TDO/TMS/TDI</code>, <code>KB_JTAGEN</code>).</li>
+      <li>(<code>J12</code> — alternate footprint, unpopulated.) A simple pass-through sheet — the smarts are in the keyboard.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>Floppy.SchDoc <span class="pg">— Sheet 16 of 23</span></h3>
+    <p class="purpose">The internal 34-pin floppy-drive header and its power taps.</p>
+    <a href="assets/schematic-r6/16-floppy.png" target="_blank"><img class="thumb" src="assets/schematic-r6/16-floppy.png" alt="Floppy header sheet"></a>
+    <ul class="tight">
+      <li><strong><code>J14</code></strong> — 34-pin floppy ribbon header (INDEX, MOTEA, DRVSA, DIR, STEP, WDATE, WGATE, SIDE1, TRCK0, WPT, RDATA1, DSCKCHG…).</li>
+      <li><strong><code>J13/J16</code></strong> — 4-pin power connectors (12V_FUSED / 5 V / GND) for the drives.</li>
+      <li><strong><code>U7</code></strong> — SN74LVCH16T245 level shifter (3.3 V ↔ 5 V) for all floppy signals; 22 R series + 4K7 pull-up resistors.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>VGA.SchDoc <span class="pg">— Sheet 17 of 23</span></h3>
+    <p class="purpose">Analog VGA video output.</p>
+    <a href="assets/schematic-r6/17-vga.png" target="_blank"><img class="thumb" src="assets/schematic-r6/17-vga.png" alt="VGA output sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U3</code></strong> — ADV7125 triple 8-bit <strong>video DAC</strong> (170 MHz): converts the FPGA's digital R/G/B to analog voltages.</li>
+      <li><strong><code>J1</code></strong> — DSUB-15 VGA connector; 75 R output resistors, 49R9 on H/VSync.</li>
+      <li><strong><code>T3/T4</code></strong> (2N7002) — level shifters for the VGA DDC I2C (SDA/SCL).</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>HDMI.SchDoc <span class="pg">— Sheet 18 of 23</span></h3>
+    <p class="purpose">Digital HDMI/DVI video output.</p>
+    <a href="assets/schematic-r6/18-hdmi.png" target="_blank"><img class="thumb" src="assets/schematic-r6/18-hdmi.png" alt="HDMI output sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U10</code></strong> — PTN3363 HDMI <strong>level-shifter/redriver</strong> (config at I2C <code>0x40</code>): buffers the FPGA's TMDS pairs out to the connector.</li>
+      <li><strong><code>J4</code></strong> — HDMI connector (Data0–2 + Clock TMDS, DDC SCL/SDA, CEC, Hot-Plug-Detect).</li>
+      <li><strong><code>F2</code></strong> polyswitch + ESD diodes — 5 V_HDMI protection.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>Ethernet.SchDoc <span class="pg">— Sheet 19 of 23</span></h3>
+    <p class="purpose">100 Mbit Ethernet physical layer (the 45E100 controller lives inside the FPGA).</p>
+    <a href="assets/schematic-r6/19-ethernet.png" target="_blank"><img class="thumb" src="assets/schematic-r6/19-ethernet.png" alt="Ethernet PHY sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U4</code></strong> — KSZ8081 <strong>RMII 10/100 Ethernet PHY</strong> (RXD/TXD, TX_EN, CRS_DV, MDIO/MDC, REF_CLK, RST).</li>
+      <li><strong><code>J10A</code></strong> — RJ45 jack with integrated magnetics; <strong><code>J10B/J10C</code></strong> — link/activity LEDs; PHY 1.2 V supply filtering.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>LED_SW_BUT.SchDoc <span class="pg">— Sheet 20 of 23</span></h3>
+    <p class="purpose">SD-card sockets, DIP switches, and the hardware board-revision identifier.</p>
+    <a href="assets/schematic-r6/20-sd-switches-revid.png" target="_blank"><img class="thumb" src="assets/schematic-r6/20-sd-switches-revid.png" alt="SD sockets, switches, revision ID sheet"></a>
+    <ul class="tight">
+      <li><strong><code>J2</code></strong> — micro-SD socket (SD1); <strong><code>J15</code></strong> — full-size SD/MMC socket (SD2).</li>
+      <li><strong><code>U32</code></strong> — PCA9655 I2C IO expander (<code>0x40</code>): reads the 8 DIP switches (<code>S4</code>) and the board <code>REV_BIT0–3</code> / <code>SUBREV_BIT0–3</code> straps.</li>
+      <li>A resistor strap network <strong>encodes the revision in hardware</strong> (e.g. R6 = <code>0110</code>) — how the running core auto-detects which board it's on.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>PowerMain.SchDoc <span class="pg">— Sheet 21 of 23</span></h3>
+    <p class="purpose">Power entry, protection, and the main 5 V rail.</p>
+    <a href="assets/schematic-r6/21-power-main.png" target="_blank"><img class="thumb" src="assets/schematic-r6/21-power-main.png" alt="Main power sheet"></a>
+    <ul class="tight">
+      <li><strong><code>J11</code></strong> — 2.1 mm barrel jack; <strong><code>F1</code></strong> 3 A fuse; <strong><code>D5</code></strong> SMBJ20A TVS surge diode; <strong><code>L5</code></strong> common-mode choke; <strong><code>S1</code></strong> power switch.</li>
+      <li><strong><code>U34</code></strong> — LTC4365 <strong>over/under-voltage protection</strong> (OV ≈ 14 V, UV ≈ 10 V) with AO4832 pass MOSFETs (<code>T5</code>).</li>
+      <li><strong><code>U12</code></strong> — MP8869 buck regulator (I2C <code>0x61</code>) → <strong>5 V main rail</strong> (≤5 A); also the 12V_FUSED tap.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>POWER.SchDoc <span class="pg">— Sheet 22 of 23</span></h3>
+    <p class="purpose">The FPGA's core voltage rails, derived from 5 V.</p>
+    <a href="assets/schematic-r6/22-power-rails.png" target="_blank"><img class="thumb" src="assets/schematic-r6/22-power-rails.png" alt="Power rails sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U11</code></strong> — MPM3840 → <strong>1.0 V</strong> (VCCINT/VCCBRAM, the FPGA logic core).</li>
+      <li><strong><code>U13</code></strong> — MPM3834 → <strong>1.8 V</strong> (VCCAUX).</li>
+      <li><strong><code>U14</code></strong> — MP8869 (I2C <code>0x67</code>) → <strong>3.3 V</strong> (all I/O, ≤5 A). Power-good (PG_*) and soft-start networks throughout.</li>
+    </ul>
+  </div>
+
+  <div class="sheet">
+    <h3>SOUND.SchDoc <span class="pg">— Sheet 23 of 23</span></h3>
+    <p class="purpose">Audio output — the digital SID stream turned into analog line-out.</p>
+    <a href="assets/schematic-r6/23-sound.png" target="_blank"><img class="thumb" src="assets/schematic-r6/23-sound.png" alt="Sound output sheet"></a>
+    <ul class="tight">
+      <li><strong><code>U37</code></strong> — AK4432 <strong>I2S stereo audio DAC</strong> (control at I2C <code>0x19</code>): fed by AUDIO_MCLK/BCLK/SDATA/LRCLK.</li>
+      <li><strong><code>J9</code></strong> — 3.5 mm / RCA output jack; <strong><code>J19</code></strong> — audio header.</li>
+      <li>BAV199 clamp diodes + output filter caps; V_P/V_N reference network.</li>
+    </ul>
+  </div>
+
+  <!-- ===================== EVOLUTION ===================== -->
+  <h2>How the MEGA65 board evolved (R1 → R6)</h2>
+  <p>The board you're reading is one snapshot in a decade of revisions. The MEGA65 began as an FPGA experiment on
+  hobbyist dev boards and matured into the Trenz-built desktop machine — and crucially, <strong>hardware facts depend
+  on which revision you mean.</strong> The early "three FPGAs" and "8 MiB only" descriptions were true once and aren't
+  now. Here's the arc, from the User's Guide's "Model Specific Features" appendix:<sup class="fn">2</sup></p>
+  <table class="rev">
+    <tr><th>Rev</th><th>Year / use</th><th>What changed</th></tr>
+    <tr><td>R1</td><td>earliest prototype</td><td>First desktop prototype hardware (id <code>$01</code>).</td></tr>
+    <tr><td>R2</td><td>prototype</td><td>Desktop board with battery-backed RTC + NVRAM, an ADV7511 digital-video chip, and a mono PC speaker amp.</td></tr>
+    <tr><td>R3 / R3A</td><td>DevKit 2020; production 2022–23</td><td>Dropped the ADV7511; stereo speaker amp. <strong>R3A</strong> is the same PCB with a bigger QSPI flash — 8 core slots instead of 4.</td></tr>
+    <tr><td>R4</td><td>major rework</td><td><strong>Removed the Intel MAX10 helper FPGA entirely</strong> — the second on-board programmable chip — simplifying the design and removing a failure mode. Added a <strong>64 MiB SDRAM</strong> alongside the 8 MiB HyperRAM, a high-quality audio DAC, the new RV-3032 RTC, joystick drive-low capability, and the J21 debug header.</td></tr>
+    <tr><td>R5</td><td>supply-chain rework</td><td>Minor rework of R4 (power-regulator parts). Made several expansion-port signals bidirectional, added 4 more DIP switches (8 total) behind an I2C expander, and exposed the <strong>board revision in hardware</strong> via that expander.</td></tr>
+    <tr><td><strong>R6</strong></td><td><strong>production 2024 — this board</strong></td><td><strong>Electrically identical to R5.</strong> The current shipping desktop MEGA65, and the schematic this lesson reads.</td></tr>
+  </table>
+  <p class="small"><strong>The "three FPGAs" story, accurately:</strong> R2/R3 really did have three programmable chips —
+  the Artix-7, the Intel <strong>MAX10</strong> helper (removed at R4, above), and a <strong>Lattice</strong> chip in
+  the MK-I keyboard. The keyboard's chip went away in a separate redesign — the <strong>MK-II keyboard</strong> reads
+  its matrix through plain I2C IO-expanders instead (Lesson 01). So today's R6 desktop + MK-II keyboard has exactly
+  <strong>one FPGA</strong>, the Artix-7 — verified against this very schematic.<sup class="fn">2</sup></p>
+  <p class="small">There's also a handheld branch — the <strong>MEGAphone</strong> (id <code>$21</code>) — with a touch
+  screen, accelerometer, and I2C-controlled power, plus FPGA dev-board targets (Nexys4DDR, QMTECH) for builders
+  without a real board. A running MEGA65 reports its own revision: the core reads it from the I2C expander, and you can
+  check yours via <code>$D629</code> after enabling the MEGA65 I/O personality.<sup class="fn">2</sup></p>
+  <p class="small"><strong>Takeaway for accuracy:</strong> whenever you state a MEGA65 hardware fact, anchor it to a
+  revision. "The MEGA65 has a 64 MiB SDRAM" is an <em>R4-and-later</em> fact; "three FPGAs" was an
+  <em>R2/R3</em> fact. This lesson is R6 throughout.</p>
+
+  <h2>Check yourself (retrieval practice)</h2>
+  <p class="small">Answer out loud <em>before</em> opening each.</p>
+  <details><summary>On the schematic, <code>U1A</code> through <code>U1J</code> appear on many sheets. How many chips is that?</summary>
+    <p>One. They're all units of <strong>U1</strong>, the single Xilinx XC7A200T FPGA, split by I/O bank because the 484-ball package has too many pins to draw as one symbol.</p></details>
+  <details><summary>You see the label <code>SDRAM_DQ0</code> on two different sheets with no wire between them. Are they connected?</summary>
+    <p>Yes — identical <strong>net labels</strong> are the same electrical wire, even across sheets. That's how the FPGA on one sheet reaches the SDRAM on another.</p></details>
+  <details><summary>The VIC-IV is gateware inside the FPGA. So what are the ADV7125 and PTN3363 chips for?</summary>
+    <p>Physical output. The FPGA <em>generates</em> the video; the ADV7125 is the analog VGA DAC and the PTN3363 drives the HDMI TMDS lines. The FPGA does protocol; dedicated chips do the wire. (Same pattern as the KSZ8081 Ethernet PHY for the 45E100.)</p></details>
+  <details><summary>Where does the core come from at power-on, and which sheet shows it?</summary>
+    <p>From the S25FL512S QSPI <strong>flash</strong> (<code>U5A</code>) on the <code>FPGA-CFG</code> sheet, in <code>MASTER SPI</code> boot mode. JTAG is the alternate path for loading a bitstream from a PC.</p></details>
+  <details><summary>Why is "the MEGA65 has 64 MiB of RAM" an incomplete statement?</summary>
+    <p>Because it's revision-specific. The 64 MiB SDRAM arrived at <strong>R4</strong>; R2/R3 had only the 8 MiB HyperRAM. Always anchor a hardware fact to a revision.</p></details>
+
+  <div class="src">
+    <p class="label">Primary source — the schematic itself</p>
+    <p style="margin:.3rem 0 0"><a href="https://github.com/MEGA65/mega65-user-guide">MEGA65 User's Guide</a> repo →
+    <code>assets/TE0765-06.PDF</code> (the R6 schematic, 21 sheets) and the <strong>"Model Specific Features"</strong>
+    appendix for the revision history.</p>
+    <p class="small" style="color:#cabf97">Open the PDF beside this lesson and walk the same sheets at full resolution. The schematic is a primary source — every block claim above is read straight off it.</p>
+  </div>
+
+  <div class="ask">
+    💬 <strong>I'm your teacher — ask me anything.</strong> Want to zoom into a specific sheet together? Curious what
+    a particular chip (the LTC4365, the AK4432, an I2C expander) actually does? Want to compare the R3 and R6
+    schematics to <em>see</em> the MAX10 disappear? Just ask before moving on.
+  </div>
+
+  <p class="small">↪ See the running <a href="../reference/glossary.html">Glossary</a> for every term in bold.</p>
+
+  <nav class="foot">
+    <span>◀ Prev: <a href="0001-what-a-mega65-physically-is.html"><em>01 — What a MEGA65 physically is</em></a></span>
+    <span>Lesson 02 of the MEGA65 Hardware track</span>
+    <span class="muted">Next: <em>03 — What an FPGA really is</em> ▶</span>
+  </nav>
+
+  <hr style="border:none;border-top:1px solid var(--rule);margin:2.5rem 0 1rem">
+  <p class="small">
+    <strong>Footnotes / sources.</strong>
+    <sup class="fn">1</sup> The R6 schematic <code>TE0765-06.PDF</code> in the <a href="https://github.com/MEGA65/mega65-user-guide">MEGA65 User's Guide</a> repo (<code>assets/</code>), included via <code>appendix-schematics.tex</code>; title block reads MEGA65 / TE0765 / Rev. 06 / 2023-12-14, licensed CERN-OHL-P v2.0; Trenz Electronic is the board manufacturer.
+    <sup class="fn">2</sup> MEGA65 User's Guide, <em>Model Specific Features</em> appendix (<code>appendix-target-specific.tex</code>): per-revision change lists (R2–R6, R3A, MEGAphone) and the <code>$D629</code> hardware-identifier table.
+    <sup class="fn">3</sup> Component identities (XC7A200T-2FBG484C FPGA and its bank split U1A–U1J; IS42S16320 SDRAM; IS66WVH8M8 HyperRAM; S25FL512S config flash; ADV7125 VGA DAC; PTN3363 HDMI redriver; KSZ8081 Ethernet PHY; AK4432 audio DAC; LTC4365/MP8869/MPM3840/MPM3834 power; 24LC128/24AA025E48 EEPROMs; RV-3032 RTC; PCA9655 I/O expander) read directly from the corresponding sheets of <code>TE0765-06.PDF</code>.
+  </p>
+
+</div>
+</body>
+</html>
