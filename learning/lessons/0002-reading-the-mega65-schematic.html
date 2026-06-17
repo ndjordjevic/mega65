@@ -287,22 +287,48 @@
     <a href="assets/schematic-r6/03-top-overview.png" target="_blank"><img class="thumb" src="assets/schematic-r6/03-top-overview.png" alt="Top-level index sheet"></a>
     <ul class="tight">
       <li><strong>Sheet list</strong> (left column) — links to every sub-sheet (HDMI, VGA, Ethernet, SOUND, KEYBOARD, POWER, EXP_Slot…).</li>
-      <li><strong>Mounting holes</strong> (×6, 3.2 mm) and <strong>fiducials</strong> <code>PM1–PM6</code> — mechanical/assembly marks, not electrical.</li>
-      <li><strong>Shield outlines</strong> (DDR, FPGA, DCDC) — metal-can footprints.</li>
+      <li><strong>Mounting holes</strong> (×6, 3.2 mm) — each tied to <code>GND</code>, so the case screws also chassis-ground the board (helps with EMI). <strong>Fiducials</strong> <code>PM1–PM6</code> are optical alignment dots for the assembly machines — purely mechanical, no signal.</li>
+      <li><strong>Shield outlines</strong> (DDR, FPGA, DCDC) — footprints for metal EMI-shield cans (several left unpopulated on this board).</li>
       <li>Serial-number, CE/TE logo placements, and a note listing the board's <strong>I2C addresses</strong> (<code>0x40</code> IO expander, <code>0x61</code>/<code>0x67</code> DC-DC).</li>
     </ul>
   </div>
 
   <div class="sheet">
     <h3>EXT_HEADER.SchDoc <span class="pg">— Sheet 4 of 23</span></h3>
-    <p class="purpose">Disk/serial port, expansion headers, and the developer debug/JTAG interface.</p>
+    <p class="purpose">The board's outside-world and developer connectors: the legacy disk/serial port, the
+    Grove and PMOD expansion sockets, a joystick-line breakout header, and the JTAG/UART "way into the FPGA."</p>
     <a href="assets/schematic-r6/04-ext-header-iec-pmod.png" target="_blank"><img class="thumb" src="assets/schematic-r6/04-ext-header-iec-pmod.png" alt="External header / IEC / PMOD sheet"></a>
     <ul class="tight">
-      <li><strong><code>J6</code></strong> — IEC serial port (1541-style disk drives): SER_CLK/DATA/SRQ/RESET/ATN.</li>
-      <li><strong><code>U15/U16/U27</code></strong> (74AHCT1G125) + <strong><code>U20/U21/U28</code></strong> (NC7SZ126) — buffers/level-shifters for the IEC lines.</li>
-      <li><strong><code>J18</code></strong> — Grove connector (I2C); <strong><code>P1/P2</code></strong> — PMOD expansion sockets with TVS ESD diodes and load switch <code>U35</code>.</li>
-      <li><strong><code>J21</code></strong> — 16-pin debug header (DBG0–11, joystick test lines).</li>
-      <li><strong><code>JB1</code></strong> — TE0790 JTAG/UART module (FPGA_TCK/TDO/TDI/TMS + debug UART); status LEDs <code>D10/D12</code>.</li>
+      <li><strong><code>J6</code> — IEC serial port.</strong> The round 6-pin Commodore connector for legacy peripherals:
+      1541/1571/1581 floppy drives, modern SD2IEC/Pi1541 emulators, and Commodore printers (all daisy-chainable).
+      Carries five bus signals — CLK, DATA, SRQ, ATN, RESET — plus ground.</li>
+      <li><strong>IEC buffers — <code>U20/U21/U28</code> + <code>U15/U16/U27</code>.</strong> The voltage bridge for the
+      three active bus wires (CLK, DATA, SRQ). Each wire gets <em>two</em> one-way buffers: one reads the bus's 5 V
+      <em>down</em> to the FPGA's 3.3 V, the other drives the FPGA's 3.3 V back <em>up</em> to 5 V — so the FPGA can
+      both listen and talk on a 1980s bus. (ATN/RESET need lighter handling and sit elsewhere.)</li>
+      <li><strong><code>J18</code> — Grove connector (I²C).</strong> A snap-in 4-pin port for plug-and-play I²C
+      sensors and small displays (Seeed Grove standard), with its bus pull-ups and an ESD-protection diode. Sits
+      by the coin-cell battery; <em>internal</em> (case-open access).</li>
+      <li><strong><code>P1/P2</code> — two PMOD expansion sockets.</strong> General-purpose ports that bring raw FPGA
+      GPIO straight out (Digilent PMOD standard) — for ADCs/DACs, sensors, displays, keypads, etc. Each port has ESD
+      protection and its own <em>switchable, current-protected</em> 3.3 V supply (load switch <code>U35</code>).
+      Reached through the <strong>trapdoor under the case</strong>; the planned 8 MB "CELLAR RAM" HyperRAM module and
+      a community DB9-joystick adapter both use these.</li>
+      <li><strong><code>J21</code> — joystick-line breakout header.</strong> Despite the <code>DBGx</code> net names,
+      this is <em>not</em> a generic debug bus and <em>not</em> an extra joystick port. Per the User's Guide it brings
+      the two control ports' <em>output</em> lines, plus two spare FPGA pins, out on a 16-pin header — for low-level
+      development and a possible add-on <strong>daughter-board</strong>. Interior, by the SD-card slot.
+      <em>Community note:</em> developers treat J21 as an <strong>open/experimental header with no single defined
+      use</strong> (the forums literally ask "what's it for?"); on older R2/R3 boards this header broke out
+      <code>MAX10</code> pins instead, so its meaning is revision-dependent.</li>
+      <li><strong><code>JB1</code> — JTAG + UART programmer socket.</strong> A Trenz <strong>TE0790</strong> USB module
+      mounts here and is the developer's way in: load a new FPGA core over JTAG and get a serial debug console, all
+      over one USB cable (PC → USB → TE0790 → FPGA). Next to the microSD slot.</li>
+      <li><strong><code>D10</code> (green) / <code>D12</code> (red) — two diagnostic LEDs</strong> near the config DIP
+      switch. <em>Distinct</em> from the keyboard's RGB power/disk-activity lights (those are on the keyboard PCB).
+      Their exact meaning is <strong>undocumented</strong> — not in the User's Guide, the wiki, or the MEGA65 Discord
+      (checked). <strong>To confirm:</strong> trace <code>LED_G</code>/<code>LED_R</code> to their FPGA pins and look
+      those pins up in the core's pin-constraints (<code>.xdc</code>) file, where the signal name reveals the function.</li>
     </ul>
   </div>
 
@@ -512,6 +538,30 @@
       <li>BAV199 clamp diodes + output filter caps; V_P/V_N reference network.</li>
     </ul>
   </div>
+
+  <!-- ===================== PART D: BOM (PLACEHOLDER) ===================== -->
+  <h2>Part D — Bill of materials <span style="font-weight:400;color:var(--soft);font-size:.85em">(coming soon)</span></h2>
+  <p class="small"><em>Placeholder.</em> The plan: a flat reference list of every chip (and any other component worth
+  calling out) across the whole board — a BOM-style view, cross-linked back to the sheet(s) in Part C and the
+  block(s) in Part B where each one appears. Scope and format (chips-only vs. chips+connectors, table vs. list,
+  grouped by function vs. alphabetical/by refdes) still to be decided when we get here.</p>
+
+  <!-- ===================== PART E: BOARD RENDERS (PLACEHOLDER) ===================== -->
+  <h2>Part E — The physical board, front &amp; back <span style="font-weight:400;color:var(--soft);font-size:.85em">(coming soon)</span></h2>
+  <p class="small"><em>Placeholder.</em> The plan: walk the actual PCB renders —
+  <code>raw/github/MEGA65-mega65-user-guide/assets/TE0765-06-front.PDF</code> and
+  <code>TE0765-06-back.PDF</code> — connecting the physical component placement on the real board to the
+  schematic blocks/sheets covered in Parts B and C. Scope and format still to be decided when we get here.</p>
+
+  <!-- ===================== PART F: NEXYS WIDGET BOARD (PLACEHOLDER) ===================== -->
+  <h2>Part F — The Nexys widget board <span style="font-weight:400;color:var(--soft);font-size:.85em">(coming soon)</span></h2>
+  <p class="small"><em>Placeholder.</em> The plan: a different, smaller board —
+  <code>raw/github/MEGA65-mega65-user-guide/assets/nexys-widget-board-sch.pdf</code> and
+  <code>nexys-widget-board-pcb.pdf</code> (project title <code>c65Keyb</code>) — not part of the TE0765 mainboard
+  series at all. It's the adapter board (built around two STM32F407 microcontrollers) that bridges a real
+  C64/C65 keyboard and joysticks into a bare Digilent Nexys4DDR FPGA dev-board's headers, for builders running
+  the MEGA65 core on dev-board hardware instead of the official desktop mainboard. Scope and format still to be
+  decided when we get here.</p>
 
   <!-- ===================== EVOLUTION ===================== -->
   <h2>How the MEGA65 board evolved (R1 → R6)</h2>
