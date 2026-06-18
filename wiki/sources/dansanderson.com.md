@@ -6,10 +6,10 @@ related: [mega65.org, retrocogs.mega65.com, wiebow.mega65.com, dansanderson-easy
 product: dansanderson
 detail_level: deep
 created: 2026-06-10
-updated: 2026-06-12
+updated: 2026-06-18
 ---
 
-Dan Sanderson's MEGA65 hub — the single best onboarding and programming tutorial resource in the ecosystem. Dan is a MEGA65 Steering Committee member and contributor to the official documentation, ROM, and FPGA core. The site hosts the **MEGA65 Welcome Guide** (19-chapter new-owner booklet), **Dan's MEGA65 Digest** (monthly newsletter with deep technical articles), and the **Cross Development series**. This wiki covers the Welcome Guide, the **complete Digest (all 44 posts)**, and 7 related **Lab Notes** articles (the deep technical posts under `/lab-notes/`, cross-tagged to MEGA65 but not part of the numbered Digest).
+Dan Sanderson's MEGA65 hub — the single best onboarding and programming tutorial resource in the ecosystem. Dan is a MEGA65 Steering Committee member and contributor to the official documentation, ROM, and FPGA core. The site hosts the **MEGA65 Welcome Guide** (19-chapter new-owner booklet), **Dan's MEGA65 Digest** (monthly newsletter with deep technical articles), and the **Cross Development series**. This wiki covers the Welcome Guide, the **complete Digest (all 45 posts)**, and 7 related **Lab Notes** articles (the deep technical posts under `/lab-notes/`, cross-tagged to MEGA65 but not part of the numbered Digest).
 
 **How to use this page:** the tables below are an index — each row links to a raw page under `../../raw/web/dansanderson.com/`. Those raw pages are **condensed summaries** (key concepts, registers, and representative code), not full copies. For the complete article — every code listing and step — open the `- URL:` at the top of the raw page (the original on dansanderson.com). Answer chain: this index → raw summary → original URL.
 
@@ -26,10 +26,11 @@ _All claims below are sourced from ../../raw/web/dansanderson.com/ unless otherw
 
 ---
 
-## Digest articles (all 44, newest first — matches the blog at /mega65/)
+## Digest articles (all 45, newest first — matches the blog at /mega65/)
 
 | Date | Article | Summary |
 |---|---|---|
+| 2026-06-16 | [classic-rogue.md](../../raw/web/dansanderson.com/classic-rogue.md) | *Rogue* design + C-source architecture (game loop, daemon/fuse system, curses display, screen-as-truth collision); Calypsi port attempt blocked by 112 KB build vs 31 KB linker limit; Roguecraft DX, MiSTer2MEGA65 guide |
 | 2026-05-25 | [calypsi-part-1.md](../../raw/web/dansanderson.com/calypsi-part-1.md) | Calypsi C toolchain: installation, hello world, PETSCII encoding, mega65.h register structs, multi-file projects, stdint types |
 | 2026-04-22 | [pixies.md](../../raw/web/dansanderson.com/pixies.md) | Soft sprites via RRB: GOTOX for X positioning, Y offset (±7) and row masking for vertical positioning |
 | 2026-03-14 | [raster-rewrite-buffer.md](../../raw/web/dansanderson.com/raster-rewrite-buffer.md) | RRB intro via Roguecraft DX: GOTOX, transparency, layering strategies, CHRCOUNT/LINESTEP, hot registers, DBLRR |

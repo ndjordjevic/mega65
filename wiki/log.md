@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-06-18 | update | dansanderson.com | added "Classic Rogue" Digest post (2026-06-16) — Digest now 45 posts
+
+- Created: raw/web/dansanderson.com/classic-rogue.md (condensed summary)
+- Updated: wiki/sources/dansanderson.com.md (new top row in Digest table; post count 44→45; `updated` date)
+
 ## 2026-06-13 | update | m-e-g-a.org | added full blog index — all 117 posts (2010→2026)
 
 - Updated: wiki/sources/m-e-g-a.org.md (added `## Post index` — 117 posts, title + date + 1-line gloss, grouped by year), raw/web/m-e-g-a.org.md (appended `## Posts (newest first)`)
