@@ -79,6 +79,7 @@ Drop URLs below under `## Pending`. Run `/pin-llm-wiki run <url>` to ingest a si
 - [x] https://www.youtube.com/watch?v=9Ib7z64z9N4  <!-- note: "MiSTer2MEGA65 Explained" (Oliver Graf, 18:52). First ~7 min = clearest spoken "what is an FPGA / MEGA65-as-core"; rest = porting MiSTer cores. Transcript-verified. --> <!-- ingested 2026-06-13 -->
 - [x] https://www.m-e-g-a.org/  <!-- ingested 2026-06-13 --> <!-- updated 2026-06-13: added full blog index, all 117 posts via WP feed -->
 - [x] https://c65gs.blogspot.com/ <!-- note: creator's dev blog — ingested as an INDEX of all 427 posts (title + 1-line gloss each) via Blogger feed API, not full-text. Single full post (MK-II keyboard) is [[c65gs-mk-ii-keyboard]]. --> <!-- ingested 2026-06-13 -->
+- [x] https://dansanderson.com/mega65/calypsi-part-2/ <!-- note: "Calypsi C, part 2: Using memory" Digest post — added as new top row to the existing dansanderson.com Digest table --> <!-- ingested 2026-07-16 -->
 
 <!-- Processed lines are moved here automatically.
      Format after ingest: - [x] https://... with an "ingested YYYY-MM-DD" HTML comment appended.
