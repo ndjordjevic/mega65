@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-08-30 | update | dansanderson.com | added "Calypsi C, part 3: Making Large Programs" Digest post (2026-08-29) — Digest now 47 posts
+
+- Created: raw/web/dansanderson.com/calypsi-part-3.md (condensed summary)
+- Updated: wiki/sources/dansanderson.com.md (new top row in Digest table; post count 46→47; `updated` date)
+
 ## 2026-07-16 | update | dansanderson.com | added "Calypsi C, part 2: Using memory" Digest post (2026-07-15) — Digest now 46 posts
 
 - Created: raw/web/dansanderson.com/calypsi-part-2.md (condensed summary)
