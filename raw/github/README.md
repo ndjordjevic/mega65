@@ -45,3 +45,4 @@ Immutable GitHub repo captures. Written by the fetch step; never edited manually
 | raw/github/Edilbert-BSA.md | Edilbert/BSA | 33 | master | none | 2026-06-12 | |
 | raw/github/sy2002-MiSTer2MEGA65.md | sy2002/MiSTer2MEGA65 | 40 | master | V2.0.1 | 2026-06-13 | |
 | raw/github/MEGA65-mega65-kbd-pcb.md | MEGA65/mega65-kbd-pcb | 6 | master | none | 2026-06-13 | CC-BY-SA 4.0; KiCad PCB design |
+| raw/github/CTalkobt-Programming_The_Mega-65.md | CTalkobt/Programming_The_Mega-65 | 0 | main | none | 2026-10-12 | LGPL-2.1; source of m65.ctalkobt.net (AI-assisted book) |

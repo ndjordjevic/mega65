@@ -63,5 +63,6 @@ created: 2026-06-10
 | [[9Ib7z64z9N4-mister2mega65-explained]] | youtube | standard | 2026-06-13 | Oliver Graf explainer: FPGA basics, MEGA65 vs MiSTer, M2M framework, QNICE, early C64 core demo |
 | [[m-e-g-a.org]] | web | standard | 2026-06-13 | German museum org; MEGA65 community hub; MegaSPUTM SCUMM engine; indexes all 117 blog posts (2010→2026) |
 | [[c65gs.blogspot.com]] | web | standard | 2026-06-13 | creator's dev blog — index of all 427 posts (2014→2026, C65GS bring-up → MEGAphone); Blogger feed API |
+| [[m65.ctalkobt.net]] | web | standard | 2026-10-12 | *Programming the MEGA65* — AI-assisted, West-style 17-chapter online book (Craig Taylor); secondary source, verify against official books; unified with CTalkobt/Programming_The_Mega-65 |
 
-_51 sources ingested._
+_52 sources ingested._

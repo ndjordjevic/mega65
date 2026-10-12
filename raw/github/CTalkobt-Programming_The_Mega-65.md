@@ -1,0 +1,71 @@
+# CTalkobt/Programming_The_Mega-65
+
+## Metadata
+- Stars: 0
+- Forks: 0
+- Primary language: HTML
+- Default branch: main
+- Latest release: none
+- License: LGPL-2.1 (GNU Lesser General Public License v2.1)
+- Homepage: (empty in repo metadata; site is served at m65.ctalkobt.net via CNAME)
+- Created: 2026-10-11
+- Last push: 2026-10-12T02:38:11Z
+- Commits on main at fetch: 21
+- Fetched: 2026-10-12
+- Final URL: https://github.com/CTalkobt/Programming_The_Mega-65
+
+## Description
+My attempt at using AI to generate the equivalent of a Programming the Mega65 book similar to Programming the C64
+
+## README
+(No README in the repository — `GET /repos/CTalkobt/Programming_The_Mega-65/readme` returns 404. The repo's `CLAUDE.md`, reproduced under Docs, is the only orientation document.)
+
+## Docs
+
+### CLAUDE.md
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## What this repository is
+
+*Programming the MEGA65* is a book, published as a static HTML site on GitHub Pages at `m65.ctalkobt.net` (see `CNAME`). It is modeled on Raeto Colin West's *Programming the Commodore 64*: the machine and BASIC 65 first, then 45GS02 machine language, then graphics, sound, storage and peripherals. The license is LGPL 2.1.
+
+There is no build system, test suite or linter. The HTML files at the root are the published site. To preview it, open `index.html` in a browser or run `python3 -m http.server`. The only CI is `.github/workflows/link-check.yml`, which runs lychee on every push to `main`, on pull requests and weekly. It checks internal links, `#anchor` fragments and external links, so renaming a heading breaks any link to its `id`.
+
+## Structure
+
+- `index.html` is the table of contents. It is hand-written, minified onto a few lines, and links every chapter. Its footer (`p.version`) shows the version, which a small inline script fetches when the page loads: the short hash of the latest commit on `main`, from the GitHub API. Don't hard-code a hash there, because a file can't contain the hash of the commit that adds it.
+- `changelog.html` is a hand-written list of reader-visible changes, newest date first. It isn't in the chapter list; the version footer on `index.html` links to it.
+- `chNN-<slug>.html` (chapters 1–17) and `appendices.html` hold the book's content. Each is a standalone pandoc-generated HTML5 page (`<meta name="generator" content="pandoc">`) with pandoc's default inline `<style>` block, plus a link to the shared `style.css`.
+- `style.css` holds the shared look: a narrow serif body, dark mode through `prefers-color-scheme`, tables that scroll sideways, and `nav.chapnav`.
+
+The pandoc source (Markdown) is **not** in this repo, so edit the HTML directly.
+
+## Conventions to preserve when editing
+
+- **Chapter navigation:** each chapter has an identical `<nav class="chapnav">` bar right after `<body>` and again right before `</body>`. It has three parts: a "← Previous" link (an empty `<span></span>` in chapter 1), a link to "Contents", and a "Next →" link. If you add, remove or rename a chapter, update the nav bars in the chapters on either side and the list in `index.html`.
+- **Page header:** each chapter has one `<h1>` in the form "Programming the MEGA65 — Chapter N: Title", followed by a date/byline paragraph (`<p>Oct 4, 2026 · @Craig Taylor</p>`). When you change a page's content (not just markup), add or update an "Updated" date after the original date: `<p>Oct 4, 2026 · Updated Oct 11, 2026 · @Craig Taylor</p>`. Heading `id`s are pandoc-style slugs.
+- **Citations:** facts taken from the official MEGA65 manual are cited inline as `(MEGA65 Book, p. X-NN)`. This refers to the August 2025 edition of the MEGA65 Book. When a newer source supersedes it, the text cites that source instead.
+- **Code:** BASIC and assembly listings go in `<pre><code>`. Register addresses, keywords and opcodes go in inline `<code>`. Reference material (registers, opcodes, keywords, ROM entry points) mostly lives in tables (`<table>` with `<thead>`/`<tbody>`).
+- **Changelog:** when you change the book's content, add a line to `changelog.html` under the heading for that day's date, in the form `<h2 id="YYYY-MM-DD">Month D, YYYY</h2>`. Create the heading if it doesn't exist, and put the newest date at the top. Name the chapter at the start of the line, as in "Chapter 11: …". Leave out changes readers won't notice, such as edits to `CLAUDE.md`.
+- **Version-dependent features:** the text says which ROM, core or Hypervisor version introduced a feature. Chapter 11 explains how a program can detect the version it is running on.
+
+
+### Recent commits (latest 5 on main, 2026-10-12)
+- 2026-10-12 df1a343 Ch11: explain RAM-copied far calls and why addresses aren't stable; Ch12 $FFFF
+- 2026-10-12 5f3ee28 Update from recent mega65-core PRs; add GOTOX, SuperSID, trace, 15 kHz
+- 2026-10-12 9eef870 Re-check Chapters 1, 5, 8, 11 and 16 for history and citations
+- 2026-10-12 e0118d9 Chapter 9: refine what SYS leaves in omitted registers
+- 2026-10-12 3e5ec88 Check the BASIC chapters (2, 3, 4, 6, 9) against the ROM and manual
+
+## Top-level structure
+- `.github/workflows/link-check.yml` — only CI: lychee link check (internal links, #anchors, external links) on push to main, PRs, weekly
+- `CLAUDE.md` — agent instructions for editing the book (structure, citation and changelog conventions)
+- `CNAME` — GitHub Pages custom domain (m65.ctalkobt.net)
+- `LICENSE` — LGPL 2.1
+- `index.html` — table of contents (hand-written, minified); footer fetches latest commit hash from GitHub API as the version
+- `ch01-introduction.html` … `ch17-major-peripherals.html` — the 17 chapters, pandoc-generated HTML5 (Markdown source not in repo)
+- `appendices.html` — Appendices A–G
+- `changelog.html` — hand-written reader-visible change list, newest first
+- `style.css` — shared stylesheet (serif body, dark mode, scrolling tables, chapter nav)

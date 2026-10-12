@@ -10,6 +10,12 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-10-12 | ingest | m65.ctalkobt.net | *Programming the MEGA65* — AI-assisted 17-chapter online programming book (West's C64 book as model), version-aware, cites MEGA65 Book pages
+
+- Created: wiki/sources/m65.ctalkobt.net.md
+- Updated: wiki/index.md, wiki/overview.md, wiki/log.md, raw/web/README.md, raw/github/README.md, inbox.md, wiki/sources/MEGA65-mega65-user-guide.md (related), wiki/sources/dansanderson.com.md (related)
+- Companion: raw/github/CTalkobt-Programming_The_Mega-65.md
+
 ## 2026-08-30 | update | dansanderson.com | added "Calypsi C, part 3: Making Large Programs" Digest post (2026-08-29) — Digest now 47 posts
 
 - Created: raw/web/dansanderson.com/calypsi-part-3.md (condensed summary)

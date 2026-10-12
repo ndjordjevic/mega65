@@ -17,3 +17,4 @@ Immutable web page/site captures. Written by the fetch step; never edited manual
 | raw/web/c65gs-mk-ii-keyboard.md | c65gs-mk-ii-keyboard | 2 | 2026-06-13 | companion: MEGA65-mega65-kbd-pcb |
 | raw/web/m-e-g-a.org.md | m-e-g-a.org | 3 | 2026-06-13 | + 117-post blog index (WP feed, 2026-06-13) |
 | raw/web/c65gs.blogspot.com.md | c65gs.blogspot.com | 427 | 2026-06-13 | blog post index (Blogger feed API; all 427 posts) |
+| raw/web/m65.ctalkobt.net.md | m65.ctalkobt.net | 6 | 2026-10-12 | + heading outline of all 17 chapters; companion: CTalkobt-Programming_The_Mega-65 |
