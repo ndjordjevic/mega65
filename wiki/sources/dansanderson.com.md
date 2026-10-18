@@ -6,10 +6,10 @@ related: [mega65.org, retrocogs.mega65.com, wiebow.mega65.com, dansanderson-easy
 product: dansanderson
 detail_level: deep
 created: 2026-06-10
-updated: 2026-10-12
+updated: 2026-10-18
 ---
 
-Dan Sanderson's MEGA65 hub — the single best onboarding and programming tutorial resource in the ecosystem. Dan is a MEGA65 Steering Committee member and contributor to the official documentation, ROM, and FPGA core. The site hosts the **MEGA65 Welcome Guide** (19-chapter new-owner booklet), **Dan's MEGA65 Digest** (monthly newsletter with deep technical articles), and the **Cross Development series**. This wiki covers the Welcome Guide, the **complete Digest (all 47 posts)**, and 7 related **Lab Notes** articles (the deep technical posts under `/lab-notes/`, cross-tagged to MEGA65 but not part of the numbered Digest).
+Dan Sanderson's MEGA65 hub — the single best onboarding and programming tutorial resource in the ecosystem. Dan is a MEGA65 Steering Committee member and contributor to the official documentation, ROM, and FPGA core. The site hosts the **MEGA65 Welcome Guide** (19-chapter new-owner booklet), **Dan's MEGA65 Digest** (monthly newsletter with deep technical articles), and the **Cross Development series**. This wiki covers the Welcome Guide, the **complete Digest (all 48 posts)**, and 7 related **Lab Notes** articles (the deep technical posts under `/lab-notes/`, cross-tagged to MEGA65 but not part of the numbered Digest).
 
 **How to use this page:** the tables below are an index — each row links to a raw page under `../../raw/web/dansanderson.com/`. Those raw pages are **condensed summaries** (key concepts, registers, and representative code), not full copies. For the complete article — every code listing and step — open the `- URL:` at the top of the raw page (the original on dansanderson.com). Answer chain: this index → raw summary → original URL.
 
@@ -26,10 +26,11 @@ _All claims below are sourced from ../../raw/web/dansanderson.com/ unless otherw
 
 ---
 
-## Digest articles (all 47, newest first — matches the blog at /mega65/)
+## Digest articles (all 48, newest first — matches the blog at /mega65/)
 
 | Date | Article | Summary |
 |---|---|---|
+| 2026-10-17 | [2026-filehost-roundup.md](../../raw/web/dansanderson.com/2026-filehost-roundup.md) | Summer Filehost roundup (500th Filehost upload): MEGASPUTM plays Zak McKracken, Simon the Sorcerer port, Ozmoo Z6 support; Filehost tools (MyLISP65, Pascal65, MegaPad, Net Tools, RTC Tool) and Tiwaz's 11 genAI titles; "Summer of Cores" status table (Amiga 500 V2 beta, C64 v6 alpha, Megamiga R6+, Mega//e, Mega800, QL4M65, CPC4MEGA65, C128, IMSAI 8080…); PicoPi JTAG core loader; @mega65files Mastodon bot |
 | 2026-08-29 | [calypsi-part-3.md](../../raw/web/dansanderson.com/calypsi-part-3.md) | Calypsi inter-region function calls: `region_dispatch` macro/asm dispatcher with auto MAP-register switching on call/return, 16-deep nested-call MAPLO stack, `#pragma clang section` per-region placement, `--no-cross-call` / `--no-interprocedural-cross-jump` flags, Calypsi inline-asm constraints; Rogue port hits ~90 KB across 2 banks then pivots to a purpose-built game shell; Calypsi 5.18 |
 | 2026-07-15 | [calypsi-part-2.md](../../raw/web/dansanderson.com/calypsi-part-2.md) | Calypsi memory management: `__far`/`__huge` pointers, Scheme `.scm` linker configs, multi-region MAP-switching (5×24 KB), printf/exit size trims, boot-loader BLOAD pattern; Rogue port shrunk 112 KB→86 KB |
 | 2026-06-16 | [classic-rogue.md](../../raw/web/dansanderson.com/classic-rogue.md) | *Rogue* design + C-source architecture (game loop, daemon/fuse system, curses display, screen-as-truth collision); Calypsi port attempt blocked by 112 KB build vs 31 KB linker limit; Roguecraft DX, MiSTer2MEGA65 guide |

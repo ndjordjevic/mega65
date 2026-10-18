@@ -10,6 +10,11 @@ Append-only record of all ingests, refreshes, and significant changes. Newest en
 
 ---
 
+## 2026-10-18 | update | dansanderson.com | added "MEGA65 Summer Filehost Roundup" Digest post (2026-10-17) — Digest now 48 posts
+
+- Created: raw/web/dansanderson.com/2026-filehost-roundup.md (condensed summary)
+- Updated: wiki/sources/dansanderson.com.md (new top row in Digest table; post count 47→48; `updated` date)
+
 ## 2026-10-12 | ingest | m65.ctalkobt.net | *Programming the MEGA65* — AI-assisted 17-chapter online programming book (West's C64 book as model), version-aware, cites MEGA65 Book pages
 
 - Created: wiki/sources/m65.ctalkobt.net.md
